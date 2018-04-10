@@ -33,6 +33,6 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start"
   },
-   "proxy": "http://localhost:3000",
-   "main": "server/index.js"
+  "main": "server/index.js",
+  "proxy": "http://localhost:3009"
 }
