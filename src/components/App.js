@@ -5,7 +5,7 @@ import home from '../components/Home/Home';
 import route from '../components/Route/Route';
 import areas from '../components/Areas/Areas';
 import profile from '../components/Profile/Profile';
-
+import add from '../components/Add/Add';
 
 class App extends Component {
   render() {
@@ -17,6 +17,7 @@ class App extends Component {
             <Route path='/route/:id' component={route} />
             <Route path='/user/:id' component={profile} />
             <Route path='/areas/:id' component={areas} />
+            <Route path='/add' component={add} />
           </Switch>
         </HashRouter>
       </div>
