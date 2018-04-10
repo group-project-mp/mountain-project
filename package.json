@@ -11,6 +11,7 @@
     "express-session": "^1.15.6",
     "massive": "^4.7.1",
     "node-sass-chokidar": "^1.2.2",
+    "nodemon": "^1.17.3",
     "npm-run-all": "^4.1.2",
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.1",
@@ -31,5 +32,7 @@
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start"
-  }
+  },
+   "proxy": "http://localhost:3000",
+   "main": "server/index.js"
 }
