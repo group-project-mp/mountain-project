@@ -17,7 +17,7 @@ module.exports = {
     getUserInfo: (req, res, next) => {
         const id = 1
         const db = req.app.get('db');
-        db.get_user_info(id)
+        db.user.get_user_info(id)
         .then( user => res.status(200).send( user ))
         .catch( () => res.status(500).send());
     }
