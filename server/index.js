@@ -1,26 +1,24 @@
-require('dotenv').config()
-const express = require('express'),
-    session = require('express-session'),
-    passport = require('passport'),
-    Auth0Strategy = require('passport-auth0'),
-    massive = require('massive'),
-    bodyParser = require('body-parser'),
-    controller = require('./controller/controller')
+require('dotenv').config();
+const express = require('express')
+    , app = express()
+    , bodyParser = require('body-parser')
+    , massive = require('massive')
+    , cors = require('cors')
+    , session = require('express-session')
+    , passport = require('passport')
+    , Auth0Strategy = require('passport-auth0')
+    , path = require('path');
 
-    const  {
-        CONNECTION_STRING,
-        SECRET,
-        SERVER_PORT
-    } = process.env
+const { CONNECTION_STRING, SERVER_PORT } = process.env;
 
-    massive(CONNECTION_STRING).then(db => {
-        app.set('db', db);
-    })
+const controller = require('./controller/controller');
 
-    const app = express();
+app.use(bodyParser.json());
+app.use(cors());
 
-    app.use(bodyParser.json())
-    
-    app.post('/api/test', controller.add)
+app.post('/api/test', controller.add)
 
-    app.listen(SERVER_PORT, () => { console.log(`Server listening on port ${SERVER_PORT}`) });
+massive(CONNECTION_STRING).then(db => {
+    app.set('db', db);
+    app.listen(SERVER_PORT, () => { console.log(`Server listening on port ${SERVER_PORT}`) })
+});

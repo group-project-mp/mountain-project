@@ -9,7 +9,7 @@ export default class Home extends Component {
     }
 
     test() {
-        axios.post('/api/test').then(res => {
+        axios.post(`/api/test`).then(res => {
             console.log(res)
         })
     }
