@@ -13,6 +13,9 @@ const { CONNECTION_STRING, SERVER_PORT } = process.env;
 
 const controller = require('./controller/controller');
 
+//users
+app.get('/getuserinfo', controller.getUserInfo)
+
 app.use(bodyParser.json());
 app.use(cors());
 
