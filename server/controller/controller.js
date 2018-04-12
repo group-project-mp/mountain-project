@@ -43,7 +43,12 @@ module.exports = {
         db.user.delete_todo(userId, routeId)
         .then((todos)=> res.status(200).send(todos))
         .catch(() => res.status(500).send())
-    }
-
-
+    },
+    distinct2: (req, res) => {
+        const db = req.app.get('db');
+        const { id } = req.params;
+        db.gets.slot2_distinct(id).then(response => {
+            res.status(200).send(response)
+        }).catch(res.status(500).send('Error'))
+     }
 }
