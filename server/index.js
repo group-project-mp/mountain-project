@@ -18,6 +18,7 @@ const controller = require('./controller/controller');
 app.use(bodyParser.json());
 app.use(cors());
 
+//===== ENDPOINTS =====//
 //users
 app.get('/getuserinfo', controller.getUserInfo)
 app.get('/getticks', controller.getTicks)
@@ -25,7 +26,11 @@ app.get('/gettodos', controller.getTodos)
 app.delete('/deletetodo/:id', controller.deleteTodo)
 
 //mp api data access
+
+//routes
 app.post('/api/test', controller.add)
+app.get('/api/stateCount', controller.getStates);
+app.get('/api/area', controller.slot_2);
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
