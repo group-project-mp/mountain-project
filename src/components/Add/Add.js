@@ -3,9 +3,15 @@ import { Form, Button, Dropdown, Checkbox, Rating, TextArea } from 'semantic-ui-
 import boulder from './Boulder';
 import difficulty from './Difficulty';
 import { connect } from 'react-redux';
-import { handleInput } from '../../ducks/routes';
+import { handleInput, getStates, getSlot2 } from '../../ducks/routes';
+import Select from './Select';
 
 class Add extends Component {
+
+    componentDidMount() {
+        this.props.getStates();
+    }
+
     handleSelect(event, data) {
         this.props.handleInput(data.placeholder, data.value || data.checked)
     }
@@ -15,7 +21,7 @@ class Add extends Component {
     }
 
     render() {
-        const { route, handleInput } = this.props;
+        const { route, handleInput, states, getSlot2 } = this.props;
         return (
             <div id='add-main'>
                 <h1>New Route</h1>
@@ -83,6 +89,11 @@ class Add extends Component {
                             <input placeholder="Longitude" onChange={(e) => handleInput('longitude', e.target.value)} />
                         </Form.Field>
 
+                        <Form.Field>
+                            <label>Select State</label>
+                            <Select options={states} action={getSlot2} prop='stateSelected' />
+                        </Form.Field>
+
                         <Button type='submit'>Submit</Button>
                     </Form>
                 </div>
@@ -93,8 +104,9 @@ class Add extends Component {
 
 function mapStateToProps(state) {
     return {
-        route: state.routes
+        route: state.routes,
+        states: state.routes.states
     }
 }
 
-export default connect(mapStateToProps, { handleInput })(Add);
+export default connect(mapStateToProps, { handleInput, getStates, getSlot2 })(Add);
