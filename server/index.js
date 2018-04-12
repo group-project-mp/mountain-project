@@ -13,12 +13,18 @@ const { CONNECTION_STRING, SERVER_PORT } = process.env;
 
 const controller = require('./controller/controller');
 
-//users
-app.get('/getuserinfo', controller.getUserInfo)
+
 
 app.use(bodyParser.json());
 app.use(cors());
 
+//users
+app.get('/getuserinfo', controller.getUserInfo)
+app.get('/getticks', controller.getTicks)
+app.get('/gettodos', controller.getTodos)
+app.delete('/deletetodo/:id', controller.deleteTodo)
+
+//mp api data access
 app.post('/api/test', controller.add)
 
 massive(CONNECTION_STRING).then(db => {
