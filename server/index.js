@@ -27,6 +27,10 @@ app.get('/api/stateCount', controller.getStates);
 app.get('/api/area', controller.slot_2);
 app.get('/api/slot2/:id', addController.distinct2);
 app.get(`/api/slot3/:id`, addController.distinct3);
+app.get(`/api/slot4/:id`, addController.distinct4);
+app.get(`/api/slot5/:id`, addController.distinct5);
+app.get(`/api/slot6/:id`, addController.distinct6);
+app.post('/api/newRoute', addController.submit);
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);

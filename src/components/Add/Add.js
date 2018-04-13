@@ -3,7 +3,7 @@ import { Form, Button, Dropdown, Checkbox, Rating, TextArea } from 'semantic-ui-
 import boulder from './Boulder';
 import difficulty from './Difficulty';
 import { connect } from 'react-redux';
-import { handleInput, getStates, getSlot2 } from '../../ducks/routes';
+import { handleInput, getStates, getSlot2, submitNew } from '../../ducks/routes';
 import AreaDropdowns from './AreaDropdowns';
 
 class Add extends Component {
@@ -21,7 +21,23 @@ class Add extends Component {
     }
 
     render() {
-        const { route, handleInput } = this.props;
+        const { route, handleInput, state, submitNew } = this.props;
+        console.log(state.Type)
+        let type = state.topRope ? type = state.Type + ', TR' : state.Type;
+        let body = {
+            name: state.name,
+            difficulty: state.Difficulty,
+            type: type,
+            image: state.image,
+            latitude: state.latitude,
+            longitude: state.longitude,
+            pitches: state.pitches,
+            protection: state.protection,
+            rating: state.rating,
+            location: state.selected,
+            description: state.description
+        };
+        console.log(type)
         return (
             <div id='add-main'>
                 <h1>New Route</h1>
@@ -81,12 +97,12 @@ class Add extends Component {
 
                         <Form.Field>
                             <label>Latitude</label>
-                            <input placeholder="Latitude" onChange={(e) => handleInput('latitude', e.target.value)} />
+                            <input placeholder="Latitude" type='number' onChange={(e) => handleInput('latitude', e.target.value)} />
                         </Form.Field>
 
                         <Form.Field>
                             <label>Longitude</label>
-                            <input placeholder="Longitude" onChange={(e) => handleInput('longitude', e.target.value)} />
+                            <input placeholder="Longitude" type='number' onChange={(e) => handleInput('longitude', e.target.value)} />
                         </Form.Field>
 
                         <Form.Field>
@@ -94,7 +110,7 @@ class Add extends Component {
                             <AreaDropdowns />
                         </Form.Field>
 
-                        <Button type='submit'>Submit</Button>
+                        <Button type='submit' onClick={() => submitNew(body)}>Submit</Button>
                     </Form>
                 </div>
             </div>
@@ -104,8 +120,9 @@ class Add extends Component {
 
 function mapStateToProps(state) {
     return {
-        route: state.routes
+        route: state.routes,
+        state: state.routes
     }
 }
 
-export default connect(mapStateToProps, { handleInput, getStates, getSlot2 })(Add);
+export default connect(mapStateToProps, { handleInput, getStates, getSlot2, submitNew })(Add);

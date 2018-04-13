@@ -11,8 +11,8 @@ const initialState = {
     description: '',
     protection: '',
     image: '',
-    latitude: '',
-    longitude: '',
+    latitude: null,
+    longitude: null,
     typeOptions: [
         { key: 'Trad', value: 'Trad', text: 'Trad' },
         { key: 'Sport', value: 'Sport', text: 'Sport' },
@@ -23,7 +23,9 @@ const initialState = {
     selected: [],
     slot2: [],
     slot3: [],
-    slot4: []
+    slot4: [],
+    slot5: [],
+    slot6: []
 }
 
 const _PENDING = '_PENDING';
@@ -31,8 +33,11 @@ const _FULFILLED = '_FULFILLED';
 const ADDINPUT = 'ADDINPUT';
 const GETSTATES = 'GETSTATES';
 const GETSLOT2 = 'GETSLOT2';
-const GETSLOT3 = 'GETSLOT3'
-const GETSLOT4 = 'GETSLOT4'
+const GETSLOT3 = 'GETSLOT3';
+const GETSLOT4 = 'GETSLOT4';
+const GETSLOT5 = 'GETSLOT5';
+const GETSLOT6 = 'GETSLOT6';
+const SUBMIT = 'SUBMIT';
 
 
 export default function reducer(state = initialState, action) {
@@ -65,6 +70,25 @@ export default function reducer(state = initialState, action) {
                 ...state, slot4: payload.data, loading: false,
                 selected: [...state.selected, payload.value]
             }
+        case GETSLOT5 + _PENDING:
+            return { ...state, loading: true }
+        case GETSLOT5 + _FULFILLED:
+            return {
+                ...state, slot5: payload.data, loading: false,
+                selected: [...state.selected, payload.value]
+            }
+        case GETSLOT6 + _PENDING:
+            return { ...state, loading: true }
+        case GETSLOT6 + _FULFILLED:
+            return {
+                ...state, slot6: payload.data, loading: false,
+                selected: [...state.selected, payload.value]
+            }
+        case SUBMIT + _PENDING:
+            return { ...state, loading: true }
+        case SUBMIT + _FULFILLED:
+            state = initialState
+            return state
         default:
             return state;
     }
@@ -102,9 +126,33 @@ export function getSlot3(value) {
 }
 
 export function getSlot4(value) {
-    let promise = axios.get(`/api/slot3/${value}`).then(res => ({ data: res.data, value }));
+    let promise = axios.get(`/api/slot4/${value}`).then(res => ({ data: res.data, value }));
     return {
         type: GETSLOT4,
+        payload: promise
+    }
+}
+
+export function getSlot5(value) {
+    let promise = axios.get(`/api/slot5/${value}`).then(res => ({ data: res.data, value }));
+    return {
+        type: GETSLOT5,
+        payload: promise
+    }
+}
+
+export function getSlot6(value) {
+    let promise = axios.get(`/api/slot6/${value}`).then(res => ({ data: res.data, value }));
+    return {
+        type: GETSLOT6,
+        payload: promise
+    }
+}
+
+export function submitNew(body) {
+    let promise = axios.post('/api/newRoute', body).then(res => res.data);
+    return {
+        type: SUBMIT,
         payload: promise
     }
 }
