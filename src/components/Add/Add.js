@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Dropdown, Checkbox, Rating, TextArea } from 'semantic-ui-react';
+import { Form, Button, Dropdown, Checkbox, Rating, TextArea } from 'semantic-ui-react'
 import boulder from './Boulder';
 import difficulty from './Difficulty';
 import { connect } from 'react-redux';
