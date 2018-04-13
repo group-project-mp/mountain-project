@@ -35,7 +35,7 @@ class Profile extends Component {
         })
 
         const mappedTodos = todos.map((todo) => {
-            return <div className='todos' style={tickStyle}>
+            return <div className='todos' key={todo.todo_id} style={tickStyle}>
                 {/* {console.log(todo)} */}
                 {/* for tick.name make it a link to '/route/{tick.route_id} */}
 

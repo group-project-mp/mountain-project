@@ -27,14 +27,14 @@ module.exports = {
         }).catch(err => res.status(500).send('Error'))
     },
     getUserInfo: (req, res, next) => {
-        const id = 1
+        const id = req.user.user_id
         const db = req.app.get('db');
         db.user.get_user_info(id)
         .then( user => res.status(200).send( user ))
         .catch( () => res.status(500).send());
     },
     getTicks: (req, res, next) => {
-        const id = 1
+        const id = req.user.user_id
         const db = req.app.get('db');
         db.user.get_ticks(id)
         .then( ticks => res.status(200).send( ticks ))
@@ -42,20 +42,25 @@ module.exports = {
     },
     getTodos: (req, res, next) => {
         const db = req.app.get('db');
-        const id = 1
+        const id = req.user.user_id
         // arr will by req.user.todos probably
         db.user.get_todos(id)
         .then( todos => res.status(200).send( todos ))
         .catch( () => res.status(500).send());
     },
     deleteTodo: (req, res, next) => {
-        const userId = 1
+        const userId = req.user.user_id
         const routeId = req.params.id
         const db = req.app.get('db');
         db.user.delete_todo(userId, routeId)
         .then((todos)=> res.status(200).send(todos))
         .catch(() => res.status(500).send())
-    }
-
-
+    },
+    distinct2: (req, res) => {
+        const db = req.app.get('db');
+        const { id } = req.params;
+        db.gets.slot2_distinct(id).then(response => {
+            res.status(200).send(response)
+        }).catch(res.status(500).send('Error'))
+     }
 }
