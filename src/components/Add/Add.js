@@ -4,7 +4,7 @@ import boulder from './Boulder';
 import difficulty from './Difficulty';
 import { connect } from 'react-redux';
 import { handleInput, getStates, getSlot2 } from '../../ducks/routes';
-import Select from './Select';
+import AreaDropdowns from './AreaDropdowns';
 
 class Add extends Component {
 
@@ -21,7 +21,7 @@ class Add extends Component {
     }
 
     render() {
-        const { route, handleInput, states, getSlot2 } = this.props;
+        const { route, handleInput } = this.props;
         return (
             <div id='add-main'>
                 <h1>New Route</h1>
@@ -91,7 +91,7 @@ class Add extends Component {
 
                         <Form.Field>
                             <label>Select State</label>
-                            <Select options={states} action={getSlot2} prop='stateSelected' />
+                            <AreaDropdowns />
                         </Form.Field>
 
                         <Button type='submit'>Submit</Button>
@@ -104,8 +104,7 @@ class Add extends Component {
 
 function mapStateToProps(state) {
     return {
-        route: state.routes,
-        states: state.routes.states
+        route: state.routes
     }
 }
 
