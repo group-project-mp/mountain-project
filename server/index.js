@@ -7,8 +7,7 @@ const express = require('express')
     , session = require('express-session')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
-    , path = require('path'),
-     controller = require('./controller/controller');
+    , path = require('path')
 
 const { 
     REACT_APP_SUCCESS,
@@ -21,8 +20,13 @@ const {
     CALLBACK_URL
  } = process.env;
 
+
+const controller = require('./controller/controller');
+const addController = require('./controller/addRoute');
+
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
+
 
     app.use(bodyParser.json());
     app.use(cors());
@@ -97,6 +101,12 @@ app.delete('/deletetodo/:id', controller.deleteTodo)
 app.post('/api/test', controller.add)
 app.get('/api/stateCount', controller.getStates);
 app.get('/api/area', controller.slot_2);
+app.get('/api/slot2/:id', addController.distinct2);
+app.get(`/api/slot3/:id`, addController.distinct3);
+app.get(`/api/slot4/:id`, addController.distinct4);
+app.get(`/api/slot5/:id`, addController.distinct5);
+app.get(`/api/slot6/:id`, addController.distinct6);
+app.post('/api/newRoute', addController.submit);
 
     app.listen(SERVER_PORT, () => { console.log(`Server listening on port ${SERVER_PORT}`) })
 });
