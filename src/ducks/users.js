@@ -11,6 +11,8 @@ const GET_TICKS = 'GET_TICKS'
 const GET_TODOS = 'GET_TODOS'
 const DELETE_TODO = 'DELETE_TODO'
 
+
+
 export function getUserInfo() {
     let userData = axios.get('/getuserinfo').then(res => {
         // console.log(res.data)
@@ -57,6 +59,7 @@ export function deleteTodo(id) {
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+    
         case GET_USER_INFO + '_FULFILLED':
         return Object.assign({}, state, {user: action.payload});
 
