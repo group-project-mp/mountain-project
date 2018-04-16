@@ -6,6 +6,7 @@ import difficulty from './Difficulty';
 import quality from './Quality';
 import pitches from './Pitches';
 import { inputChange, getRoutes } from '../../ducks/filterroutes';
+import { get } from 'https';
 
 
 
@@ -13,23 +14,42 @@ import { inputChange, getRoutes } from '../../ducks/filterroutes';
 
 class Filter extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            routes: []
-        }
+constructor(props) {
+    super(props);
+    this.state = {
+        route: props.routes
     }
-
+    this.handleSelect = this.handleSelect.bind(this)
+}
+    
 
     handleSelect(event, data) {
-        this.props.inputChange(data.placeholder, data.value || data.checked)
+      
+       
+       this.props.inputChange(data.placeholder, data.value)
     }
 
     findRoutes() {
         this.props.getRoutes
     }
     render() {
-        const { route } = this.props
+    
+        const { filter } = this.props
+    //     let routeDisplay = this.state.route.map((routes, index) => (
+    //         <div key={index} className='filteredRoutes'>
+    //             <div className='routes'>
+    //                 <p>{routes.name}</p>
+    //                 <p>{routes.areas}</p>
+    //                 <p>{routes.stars}</p>
+    //                 <p>{routes.difficulty}</p>
+    //                 <p>{routes.type}</p>
+    //                 <p>{routes.pitches}</p>
+    //             </div>
+    //         </div>
+    //     )
+    // )
+
+    console.log(this.props.type)
         return (
             <div className='filtermain'>
                 <h1>Route Finder</h1>
@@ -39,31 +59,34 @@ class Filter extends Component {
                 <Form.Field>
                     <label>Quality</label>
                     <Dropdown placeholder='All Routes'
-                        selection options={quality} />
+                        selection options={quality} onChange={this.handleSelect} />
                 </Form.Field>
                 <br />
                 <Form.Field>
                     <label>Pitches</label>
                     <Dropdown placeholder='Any Number'
-                        selection options={pitches} />
+                        selection options={pitches} onChange={this.handleSelect} />
                 </Form.Field>
                 <br />
                 <Form.Field>
                     <label>Type</label>
-                    <Dropdown placeholder='' selection options={route.typeOptions} onChange={this.handleSelect.bind(this)} />
+                    <Dropdown placeholder='type' selection options={filter.typeOptions} onChange={this.handleSelect} />
                 </Form.Field>
                 <br />
                 <Form.Field>
-                    {route.type === 'Boulder' ?
+                    {filter.type === 'Boulder' ?
                         <Dropdown placeholder='Min' search selection options={vSystem} /> :
-                        <Dropdown placeholder='Min' search selection options={difficulty} />}
+                        <Dropdown placeholder='Min' search selection options={difficulty} onChange={this.handleSelect} />}
                     <h4>to</h4>
-                    {route.type === 'Boulder' ?
+                    {filter.type === 'Boulder' ?
                         <Dropdown placeholder='Max' search selection options={vSystem} /> :
-                        <Dropdown placeholder='Max' search selection options={difficulty} />}
+                        <Dropdown placeholder='Max' search selection options={difficulty} onChange={this.handleSelect} />}
                 </Form.Field>
                 <br />
                 <Button onClick={getRoutes}>Find Routes</Button>
+
+                <h1>Filtered Routes</h1>
+                {/* {routeDisplay} */}
             </div>
         )
     }
@@ -72,8 +95,17 @@ class Filter extends Component {
 
 function mapStateToProps(state) {
     return {
-        route: state.routes,
+        filter: state.filter,
+        type: state.type,
+
     }
 }
 
-export default connect(mapStateToProps, { inputChange, getRoutes })(Filter);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        inputChange: (placeholder, data) => dispatch(inputChange(placeholder, data)),
+        getRoutes: () => dispatch(getRoutes())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

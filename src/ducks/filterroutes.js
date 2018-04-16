@@ -11,8 +11,6 @@ const initialstate = {
         { key: 'Trad', value: 'Trad', text: 'Trad' },
         { key: 'Sport', value: 'Sport', text: 'Sport' },
         { key: 'Boulder', value: 'Boulder', text: 'Boulder' }],
-    typeSelected: null,
-    
 };
 
 
@@ -45,8 +43,8 @@ export default function reducer(state = initialstate, action) {
     switch (action.type) {
         case CHANGE_INPUT:
             return { ...state, [action.payload.prop]: action.payload.val }
-        case GET_ROUTES:
-            return 
+        case GET_ROUTES + _FULFILLED:
+            return Object.assign({}, state, {routes: action.payload})
         default:
          return state;
     }
