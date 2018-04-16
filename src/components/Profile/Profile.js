@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUserInfo, getTicks, getTodos, deleteTodo } from '../../ducks/users';
+import Chart from './Chart'
 
 
 class Profile extends Component {
@@ -35,7 +36,7 @@ class Profile extends Component {
         })
 
         const mappedTodos = todos.map((todo) => {
-            return <div className='todos' style={tickStyle}>
+            return <div className='todos' key={todo.todo_id} style={tickStyle}>
                 {/* {console.log(todo)} */}
                 {/* for tick.name make it a link to '/route/{tick.route_id} */}
 
@@ -61,8 +62,10 @@ class Profile extends Component {
                         <div>name {user.user_name}</div>
                         <div>ticks{mappedTicks}</div>
                         <div>todo List{mappedTodos}</div>
+                        <Chart/>
                     </div>
                     : null}
+                    
             </div>
         )
     }

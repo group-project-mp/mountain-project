@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <HashRouter >
+        <HashRouter>
           <Switch>
             <Route exact path='/' component={home} />
             <Route path='/route/:id' component={route} />

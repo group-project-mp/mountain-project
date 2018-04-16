@@ -20,8 +20,10 @@ export default class Home extends Component {
             <div>
                 <Carousel/>
                 Home
+                <div>
                 <button onClick={this.test}>click me</button>
                 <br/>
+                </div>
             </div>
         )
     }
