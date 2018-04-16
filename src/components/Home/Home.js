@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 export default class Home extends Component {
     constructor() {
@@ -9,7 +10,7 @@ export default class Home extends Component {
     }
 
     test() {
-        axios.post('/api/test').then(res => {
+        axios.post(`/api/test`).then(res => {
             console.log(res)
         })
     }
@@ -18,7 +19,10 @@ export default class Home extends Component {
         return (
             <div>
                 Home
+                <div>
                 <button onClick={this.test}>click me</button>
+                <a href={'http://localhost:3009/auth'}><button>Login/Register</button></a>
+            </div>
             </div>
         )
     }

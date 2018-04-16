@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AreaList from './AreaList';
 
 class Areas extends Component {
     constructor() {
@@ -8,7 +9,7 @@ class Areas extends Component {
     render() {
         return (
             <div>
-                Areas
+                <AreaList />
             </div>
         )
     }
