@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Form, Button, Dropdown, Checkbox, Rating, TextArea } from 'semantic-ui-react';
+import { Form, Button, Dropdown } from 'semantic-ui-react';
 import vSystem from './VSystem';
 import difficulty from './Difficulty';
 import quality from './Quality';
 import pitches from './Pitches';
-import { inputChange } from '../../ducks/filterroutes';
+import { inputChange, getRoutes } from '../../ducks/filterroutes';
 
 
 
@@ -13,11 +13,21 @@ import { inputChange } from '../../ducks/filterroutes';
 
 class Filter extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            routes: []
+        }
+    }
+
 
     handleSelect(event, data) {
         this.props.inputChange(data.placeholder, data.value || data.checked)
     }
 
+    findRoutes() {
+        this.props.getRoutes
+    }
     render() {
         const { route } = this.props
         return (
@@ -40,20 +50,20 @@ class Filter extends Component {
                 <br />
                 <Form.Field>
                     <label>Type</label>
-                    <Dropdown placeholder='' selection options={route.typeOptions} />
+                    <Dropdown placeholder='' selection options={route.typeOptions} onChange={this.handleSelect.bind(this)} />
                 </Form.Field>
                 <br />
                 <Form.Field>
-                    {route.Type === 'Boulder' ?
+                    {route.type === 'Boulder' ?
                         <Dropdown placeholder='Min' search selection options={vSystem} /> :
                         <Dropdown placeholder='Min' search selection options={difficulty} />}
-                        <h4>to</h4>
-                    {route.Type === 'Boulder' ?
+                    <h4>to</h4>
+                    {route.type === 'Boulder' ?
                         <Dropdown placeholder='Max' search selection options={vSystem} /> :
                         <Dropdown placeholder='Max' search selection options={difficulty} />}
                 </Form.Field>
-                <br/>
-                <button>Find Routes</button>
+                <br />
+                <Button onClick={getRoutes}>Find Routes</Button>
             </div>
         )
     }
@@ -66,4 +76,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Filter);
+export default connect(mapStateToProps, { inputChange, getRoutes })(Filter);
