@@ -1,0 +1,37 @@
+
+
+.detail-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    width: 95%;
+    margin: auto;
+    // border: solid 1px pink;
+    div {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+    }
+    h1{
+        font-size: 32px;
+        margin-top: 10px;
+    }
+}
+
+.route-locations {
+    width: 95%;
+    margin: auto;
+}
+
+.route-stars-rating {
+    width: 40%;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    h2 {
+        font-size: 18px;
+    }
+}
