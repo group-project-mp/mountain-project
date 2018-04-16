@@ -37,7 +37,6 @@ class Add extends Component {
             location: state.selected,
             description: state.description
         };
-        console.log(type)
         return (
             <div id='add-main'>
                 <h1>New Route</h1>
