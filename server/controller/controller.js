@@ -197,30 +197,19 @@ module.exports = {
         const db = req.app.get('db');
         routes.map(e => db.adds.add_route(e.imgMedium, e.latitude, e.longitude, e.name, e.pitches, e.rating, e.star_votes, e.stars, e.type, e.location[0], e.location[1], e.location[2], e.location[3], e.location[4], e.location[5]).then(() => {
             res.status(200).send('added route')
-            .catch(err => console.log(err) )
+                .catch(err => console.log(err))
         }))
         console.log('hit')
     },
-   
+
     filter: (req, res) => {
         const db = req.app.get('db');
-<<<<<<< HEAD
-<<<<<<< HEAD
         db.gets.get_filtered_routes().then(response => {
-=======
-=======
->>>>>>> 0729d1bd119f2ee425ae36029eb35b8f7eed0174
-        routes.map(e => db.adds.add_route(e.imgMedium, e.latitude, e.longitude, e.name, e.pitches, e.rating, e.star_votes, e.stars, e.type, e.location[0], e.location[1], e.location[2], e.location[3], e.location[4], e.location[5]).then(() => {
-            res.status(200).send('added route')
-            .catch(err => console.log(err) )
-        }))
-        console.log('hit')
-    }
-}
-        const { id } = req.params;
-        db.gets.slot2_distinct(id).then(response => {
->>>>>>> 0729d1bd119f2ee425ae36029eb35b8f7eed0174
-            res.status(200).send(response)
-        }).catch(err => res.status(500).send('Error'))
+            routes.map(e => db.adds.add_route(e.imgMedium, e.latitude, e.longitude, e.name, e.pitches, e.rating, e.star_votes, e.stars, e.type, e.location[0], e.location[1], e.location[2], e.location[3], e.location[4], e.location[5]).then(() => {
+                res.status(200).send('added route')
+                    .catch(err => console.log(err))
+            }))
+            console.log('hit')
+        })
     }
 }
