@@ -66,12 +66,7 @@ module.exports = {
     filter: (req, res) => {
         const db = req.app.get('db');
         db.gets.get_filtered_routes().then(response => {
-            routes.map(e => db.adds.add_route(e.imgMedium, e.latitude, e.longitude, e.name, e.pitches, e.rating, e.star_votes, e.stars, e.type, e.location[0], e.location[1], e.location[2], e.location[3], e.location[4], e.location[5]).then(() => {
-                res.status(200).send('added route')
-                    .catch(err => console.log(err))
-            }))
-            console.log('hit')
-        })
+            res.status(200).send(response)
+        }).catch(err => res.status(500).send('Error'))
     }
-   
 }
