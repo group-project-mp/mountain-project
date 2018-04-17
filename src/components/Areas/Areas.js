@@ -1,18 +1,9 @@
-import React, { Component } from 'react';
-import AreaList from './AreaList';
+import React from 'react';
 
-class Areas extends Component {
-    constructor() {
-        super();
-    }
-
-    render() {
-        return (
-            <div>
-                <AreaList />
-            </div>
-        )
-    }
+export default function Areas(){
+    return (
+        <div>
+            areas
+        </div>
+    )
 }
-
-export default Areas;

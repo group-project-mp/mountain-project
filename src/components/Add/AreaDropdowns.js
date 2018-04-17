@@ -5,7 +5,7 @@ import { getSlot2, getSlot3, getSlot4, getSlot5, getSlot6 } from '../../ducks/ro
 
 class AreaDropdowns extends Component {
     render() {
-        const { getSlot2, slot2, slot3, selected, getSlot4, getSlot5, getSlot6, states, getSlot3, slot4, slot5, slot6 } = this.props;
+        const { getSlot2, slot2, slot3, getSlot4, getSlot5, getSlot6, states, getSlot3, slot4, slot5, slot6 } = this.props;
 
         return (
             <div>

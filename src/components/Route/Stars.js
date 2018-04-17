@@ -8,7 +8,7 @@ export default function Stars(props) {
         starIcons.push(<Icon name='star' key={i} size='large' color='blue' />)
     };
     return (
-        <div>
+        <div className='star-container'>
             {starIcons}
         </div>
     )

@@ -36,7 +36,7 @@ export default function RouteHeader(props) {
             <div className='detail-name'>
                 <h1>{route.name}</h1>
                 <div>
-                    <span>Imporove This Page</span>
+                    <span>Improve This Page</span>
                     <span>Add To Page</span>
                 </div>
             </div>
