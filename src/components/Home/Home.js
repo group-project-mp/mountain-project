@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import Carousel from '../Carousel/Carousel';
 
 export default class Home extends Component {
     constructor() {
@@ -18,11 +18,12 @@ export default class Home extends Component {
     render() {
         return (
             <div>
+                <Carousel/>
                 Home
                 <div>
                 <button onClick={this.test}>click me</button>
-                <a href={'http://localhost:3009/auth'}><button>Login/Register</button></a>
-            </div>
+                <br/>
+                </div>
             </div>
         )
     }
