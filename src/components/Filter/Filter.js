@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Form, Button, Dropdown } from 'semantic-ui-react';
+import { Form, Dropdown } from 'semantic-ui-react';
 import vSystem from './VSystem';
 import difficulty from './Difficulty';
 import quality from './Quality';
 import pitches from './Pitches';
+import typeOptions from './TypeOptions';
 import { inputChange, getRoutes } from '../../ducks/filterroutes';
 
 
@@ -17,20 +18,26 @@ class Filter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            route: props.routes
         }
         this.handleSelect = this.handleSelect.bind(this)
     }
 
-
+  
     handleSelect(event, data) {
         this.props.inputChange(data.placeholder, data.value)
     }
     render() {
+        const filter = this.props.filter;
 
-        const { filter } = this.props
+         let routeDisplay = Array.isArray(filter.routes) ? filter.routes.map((route, index) => {
 
-
+          return  (<div key={index} className='routes'>
+            <p>{route.name}</p>
+            <p>{route.stars}</p>
+            <p>{route.rating}</p>
+            </div>
+          )
+        }): null
 
         return (
             <div className='filtermain'>
@@ -52,7 +59,7 @@ class Filter extends Component {
                 <br />
                 <Form.Field>
                     <label>Type</label>
-                    <Dropdown placeholder='type' selection options={filter.typeOptions} onChange={this.handleSelect} />
+                    <Dropdown placeholder='type' selection options={typeOptions} onChange={this.handleSelect} />
                 </Form.Field>
                 <br />
                 <div className='difficulty'>
@@ -67,9 +74,10 @@ class Filter extends Component {
                     </Form.Field>
                 </div>
                 <br />
-                <button onClick={() => getRoutes(this.props.filter)} color='rgb(44,92,142)'>Find Routes</button>
+                <button onClick={() => this.props.getRoutes(filter)} color='rgb(44,92,142)'>Find Routes</button>
 
                 <h1>Filtered Routes</h1>
+                <span>{routeDisplay}</span>
 
             </div>
         )
@@ -78,18 +86,19 @@ class Filter extends Component {
 
 
 function mapStateToProps(state) {
-    console.log(state)
+    
     return {
         filter: state.filter,
         type: state.type,
-
+        loading: state.loading,
+        routes: state.routes
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         inputChange: (placeholder, data) => dispatch(inputChange(placeholder, data)),
-        getRoutes: (min, max, quality, pitches, type) => dispatch(getRoutes(min, max, quality, pitches, type))
+        getRoutes: (filter) => dispatch(getRoutes(filter))
     }
 }
 

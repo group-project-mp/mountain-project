@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 75%;
+    width: 80%;
     height: 80vh;
 }
 
@@ -12,9 +12,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 75%;
-    height: 80vh;
-    margin-left: 0;
+    width: 80%;
+    height: 60vh;
+    margin-left: 10px;
 }
 
 .mainLanding > img {
@@ -22,7 +22,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 75%;
+    width: 80%;
     height: 100vh;
     margin-left: 0;
+}
+
+.slider-slide {
+    display: flex;
+    width: 50%;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Carousel from '../Carousel/Carousel';
+import Filter from '../Filter/Filter';
 
 export default class Home extends Component {
     constructor() {
@@ -17,8 +18,9 @@ export default class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className='main'>
                 <Carousel/>
+                {/* <Filter/> */}
                 Home
                 <div>
                 <button onClick={this.test}>click me</button>

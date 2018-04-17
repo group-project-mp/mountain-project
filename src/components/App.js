@@ -7,6 +7,7 @@ import areas from '../components/Areas/Areas';
 import profile from '../components/Profile/Profile';
 import add from '../components/Add/Add';
 import filter from '../components/Filter/Filter';
+import FilteredRoutes from './Filter/FilteredRoutes';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route path='/areas' component={areas} />
             <Route path='/add' component={add} />
             <Route path='/filter' component={filter}/>
+            <Route path='/filteredroutes' component={FilteredRoutes}/>
           </Switch>
         </HashRouter>
       </div>
