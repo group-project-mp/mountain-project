@@ -10,6 +10,7 @@ import slot_3 from '../components/Areas/Slot_3';
 import slot_4 from '../components/Areas/Slot_4';
 import slot_5 from '../components/Areas/Slot_5';
 import slot_6 from '../components/Areas/Slot_6';
+import filter from '../components/Filter/Filter';
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
             <Route path='/subarea/:area' component={slot_4}/>
             <Route path='/subarea5/:area' component={slot_5}/>
             <Route path='/subarea6/:area' component={slot_6}/>
+            <Route path='/filter' component={filter}/>
           </Switch>
         </HashRouter>
       </div>
