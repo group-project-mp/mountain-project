@@ -5,6 +5,15 @@ import Chart from './Chart'
 
 
 class Profile extends Component {
+    constructor(){
+        super()
+
+        this.state = {
+            showAllTicks: false,
+            showAllTodos: false,
+        }
+    }
+    
 
     componentDidMount() {
         this.props.getUserInfo();
@@ -16,6 +25,24 @@ class Profile extends Component {
         const user = this.props.users.user[0]
         const ticks = this.props.users.ticks
         const todos = this.props.users.todos
+        const fiveTicks = this.props.users.ticks.slice(0,5).map((tick) => {
+            return <div className='ticks' key={tick.tick_id} style={tickStyle}>
+                {/* {console.log(tick)} */}
+                {/* for tick.name make it a link to '/route/{tick.route_id} */}
+                <h3 style={h3}>{tick.name}</h3>
+                <p>{tick.slot_2}</p>
+                <p>{tick.slot_3}</p>
+                <p>{tick.slot_4}</p>
+                <p>{tick.slot_5}</p>
+                <p>{tick.slot_6}</p>
+                <h3 style={h3}>{tick.stars}</h3>
+                <h3 style={h3}>{tick.star_votes}</h3>
+                <h3 style={h3}>{tick.rating}</h3>
+                <h3 style={h3}>{tick.type}</h3>
+                <h3 style={h3}>{tick.date}</h3>
+                <h3 style={h3}>{tick.notes}</h3>
+            </div>
+        })
         const mappedTicks = ticks.map((tick) => {
             return <div className='ticks' key={tick.tick_id} style={tickStyle}>
                 {/* {console.log(tick)} */}
@@ -60,8 +87,13 @@ class Profile extends Component {
                 {user ?
                     <div>
                         <div>name {user.user_name}</div>
-                        <div>ticks{mappedTicks}</div>
-                        <div>todo List{mappedTodos}</div>
+                        <div>
+                            ticks{this.state.showAllTicks? mappedTicks : fiveTicks}
+                            <button onClick = {() => this.setState({showAllTicks:!this.state.showAllTicks})}>{this.state.showAllTicks ? <p>Close</p> : <p>Show All</p>}</button>
+                        </div>
+                        <div>todo List{mappedTodos}
+                        <button onClick = {() => this.setState({showAllTodos:!this.state.showAllTodos})}>{this.state.showAllTodos ? <p>Close</p> : <p>Show All</p>}</button>
+                        </div>
                         <Chart/>
                     </div>
                     : null}

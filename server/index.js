@@ -7,8 +7,7 @@ const express = require('express')
     , session = require('express-session')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
-    , path = require('path'),
-     controller = require('./controller/controller');
+    , path = require('path')
 
 const { 
     REACT_APP_SUCCESS,
@@ -110,6 +109,16 @@ app.get(`/api/slot6/:id`, addController.distinct6);
 app.post('/api/newRoute', addController.submit);
 app.get('/api/route/:id', routeDetail.routeDetail);
 
+//areas
+
+app.get('/getfinalarea/:area', controller.getFinalAreaRoutes)
+app.get('/getslot1', controller.getSlot1)
+app.get('/getslot2/:area', controller.getSlot2)
+app.get('/getslot3/:area', controller.getSlot3)
+app.get('/getslot4/:area', controller.getSlot4)
+app.get('/getslot5/:area', controller.getSlot5)
+app.get('/getslot6/:area', controller.getSlot6)
+app.get('/getdescription/:area', controller.getDescription)
 
     app.listen(SERVER_PORT, () => { console.log(`Server listening on port ${SERVER_PORT}`) })
 });
