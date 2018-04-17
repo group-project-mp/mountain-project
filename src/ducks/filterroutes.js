@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 
-const initialstate = {
+const initialState = {
     routes: [],
     quality: '',
     pitches: 0,
-    difficulty: '',
+    min: '',
+    max: '',
     type: '',
     typeOptions: [
         { key: 'Trad', value: 'Trad', text: 'Trad' },
@@ -23,15 +24,19 @@ const _FULFILLED = '_FULFILLED'
 
 
 export function inputChange(prop, val) {
+  
     return {
         type: CHANGE_INPUT,
         payload: { prop, val }
     }
 }
 
-export function getRoutes() {
-    let filteredRoutes = axios.get('/filteredroutes').then(res => {
+export function getRoutes({min,max,quality,pitches,type}) {
+    console.log(min,max,quality,pitches,type)
+    let filteredRoutes = axios.get(`/filteredroutes?min=${min}&max=${max}&quality=${quality}pitches=&${pitches}&type=${type}`).then(res => {
+        console.log(res.data)
         return res.data
+        
     })
     return {
         type: GET_ROUTES,
@@ -39,8 +44,9 @@ export function getRoutes() {
     }
 }
 
-export default function reducer(state = initialstate, action) {
+export default function reducer(state = initialState, action) {
     switch (action.type) {
+        
         case CHANGE_INPUT:
             return { ...state, [action.payload.prop]: action.payload.val }
         case GET_ROUTES + _FULFILLED:

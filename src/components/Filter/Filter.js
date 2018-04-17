@@ -6,7 +6,7 @@ import difficulty from './Difficulty';
 import quality from './Quality';
 import pitches from './Pitches';
 import { inputChange, getRoutes } from '../../ducks/filterroutes';
-import { get } from 'https';
+
 
 
 
@@ -14,42 +14,24 @@ import { get } from 'https';
 
 class Filter extends Component {
 
-constructor(props) {
-    super(props);
-    this.state = {
-        route: props.routes
+    constructor(props) {
+        super(props);
+        this.state = {
+            route: props.routes
+        }
+        this.handleSelect = this.handleSelect.bind(this)
     }
-    this.handleSelect = this.handleSelect.bind(this)
-}
-    
+
 
     handleSelect(event, data) {
-      
-       
-       this.props.inputChange(data.placeholder, data.value)
-    }
-
-    findRoutes() {
-        this.props.getRoutes
+        this.props.inputChange(data.placeholder, data.value)
     }
     render() {
-    
-        const { filter } = this.props
-    //     let routeDisplay = this.state.route.map((routes, index) => (
-    //         <div key={index} className='filteredRoutes'>
-    //             <div className='routes'>
-    //                 <p>{routes.name}</p>
-    //                 <p>{routes.areas}</p>
-    //                 <p>{routes.stars}</p>
-    //                 <p>{routes.difficulty}</p>
-    //                 <p>{routes.type}</p>
-    //                 <p>{routes.pitches}</p>
-    //             </div>
-    //         </div>
-    //     )
-    // )
 
-    console.log(this.props.type)
+        const { filter } = this.props
+
+
+
         return (
             <div className='filtermain'>
                 <h1>Route Finder</h1>
@@ -58,13 +40,13 @@ constructor(props) {
                 <br />
                 <Form.Field>
                     <label>Quality</label>
-                    <Dropdown placeholder='All Routes'
+                    <Dropdown placeholder='quality'
                         selection options={quality} onChange={this.handleSelect} />
                 </Form.Field>
                 <br />
                 <Form.Field>
                     <label>Pitches</label>
-                    <Dropdown placeholder='Any Number'
+                    <Dropdown placeholder='pitches'
                         selection options={pitches} onChange={this.handleSelect} />
                 </Form.Field>
                 <br />
@@ -73,20 +55,22 @@ constructor(props) {
                     <Dropdown placeholder='type' selection options={filter.typeOptions} onChange={this.handleSelect} />
                 </Form.Field>
                 <br />
-                <Form.Field>
-                    {filter.type === 'Boulder' ?
-                        <Dropdown placeholder='Min' search selection options={vSystem} /> :
-                        <Dropdown placeholder='Min' search selection options={difficulty} onChange={this.handleSelect} />}
-                    <h4>to</h4>
-                    {filter.type === 'Boulder' ?
-                        <Dropdown placeholder='Max' search selection options={vSystem} /> :
-                        <Dropdown placeholder='Max' search selection options={difficulty} onChange={this.handleSelect} />}
-                </Form.Field>
+                <div className='difficulty'>
+                    <Form.Field>
+                        {filter.type === 'Boulder' ?
+                            <Dropdown placeholder='min' search selection options={vSystem} /> :
+                            <Dropdown placeholder='min' search selection options={difficulty} onChange={this.handleSelect} />}
+                        <h4>to</h4>
+                        {filter.type === 'Boulder' ?
+                            <Dropdown placeholder='max' search selection options={vSystem} /> :
+                            <Dropdown placeholder='max' search selection options={difficulty} onChange={this.handleSelect} />}
+                    </Form.Field>
+                </div>
                 <br />
-                <Button onClick={getRoutes}>Find Routes</Button>
+                <button onClick={() => getRoutes(this.props.filter)} color='rgb(44,92,142)'>Find Routes</button>
 
                 <h1>Filtered Routes</h1>
-                {/* {routeDisplay} */}
+
             </div>
         )
     }
@@ -94,6 +78,7 @@ constructor(props) {
 
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
         filter: state.filter,
         type: state.type,
@@ -104,7 +89,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => {
     return {
         inputChange: (placeholder, data) => dispatch(inputChange(placeholder, data)),
-        getRoutes: () => dispatch(getRoutes())
+        getRoutes: (min, max, quality, pitches, type) => dispatch(getRoutes(min, max, quality, pitches, type))
     }
 }
 

@@ -1,0 +1,19 @@
+.filtermain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 600px;
+    width: 400px;
+    margin-left: 100px;
+}
+
+.filtermain > button {
+    max-width: 150px;
+    background: black;
+    color: white;
+}
+
+.field {
+    display: flex;
+    justify-content: space-around;
+}
