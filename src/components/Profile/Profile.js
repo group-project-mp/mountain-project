@@ -61,7 +61,24 @@ class Profile extends Component {
                 <h3 style={h3}>{tick.notes}</h3>
             </div>
         })
+        const fiveTodos = this.props.users.ticks.slice(0,5).map((todo) => {
+            return <div className='todos' key={todo.todo_id} style={tickStyle}>
+                {/* {console.log(todo)} */}
+                {/* for tick.name make it a link to '/route/{tick.route_id} */}
 
+                <h3 style={h3}>{todo.name}</h3>
+                <p>{todo.slot_2}</p>
+                <p>{todo.slot_3}</p>
+                <p>{todo.slot_4}</p>
+                <p>{todo.slot_5}</p>
+                <p>{todo.slot_6}</p>
+                <h3 style={h3}>{todo.stars}</h3>
+                <h3 style={h3}>{todo.star_votes}</h3>
+                <h3 style={h3}>{todo.rating}</h3>
+                <h3 style={h3}>{todo.type}</h3>
+                <button onClick={() => this.props.deleteTodo(todo.route_id)}>delete</button>
+            </div>
+        })
         const mappedTodos = todos.map((todo) => {
             return <div className='todos' key={todo.todo_id} style={tickStyle}>
                 {/* {console.log(todo)} */}
@@ -91,7 +108,7 @@ class Profile extends Component {
                             ticks{this.state.showAllTicks? mappedTicks : fiveTicks}
                             <button onClick = {() => this.setState({showAllTicks:!this.state.showAllTicks})}>{this.state.showAllTicks ? <p>Close</p> : <p>Show All</p>}</button>
                         </div>
-                        <div>todo List{mappedTodos}
+                        <div>todo List{this.state.showAllTodos? mappedTodos : fiveTodos}
                         <button onClick = {() => this.setState({showAllTodos:!this.state.showAllTodos})}>{this.state.showAllTodos ? <p>Close</p> : <p>Show All</p>}</button>
                         </div>
                         <Chart/>
