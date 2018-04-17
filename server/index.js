@@ -7,7 +7,7 @@ const express = require('express')
     , session = require('express-session')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
-    , path = require('path');
+    , path = require('path')
 
 const { 
     REACT_APP_SUCCESS,
@@ -23,6 +23,7 @@ const {
 const controller = require('./controller/controller');
 const addController = require('./controller/addRoute');
 const routeDetail = require('./controller/routeDetail');
+const mailer = require('./controller/mail');
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
@@ -108,6 +109,9 @@ app.get(`/api/slot5/:id`, addController.distinct5);
 app.get(`/api/slot6/:id`, addController.distinct6);
 app.post('/api/newRoute', addController.submit);
 app.get('/api/route/:id', routeDetail.routeDetail);
+
+// nodemailer
+app.post('/api/email', mailer.mail);
 
 
     app.listen(SERVER_PORT, () => { console.log(`Server listening on port ${SERVER_PORT}`) })
