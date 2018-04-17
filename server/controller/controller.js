@@ -3,7 +3,7 @@ const axios = require('axios')
 module.exports = {
     add: (req, res) => {
         const db = req.app.get('db');
-        axios.get('https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=42.078&lon=-113.724&maxResults=500&maxDistance=25&minDiff=5.6&maxDiff=5.15&key=107710868-83b40f4d964852ae1674deb85b4e6a00')
+        axios.get('https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=39.277&lon=-111.174&maxResults=200&maxDistance=25&minDiff=V0&maxDiff=V12&key=107710868-83b40f4d964852ae1674deb85b4e6a00')
             .then(response => {
                 response.data.routes.map(e => db.ADDS.add_route(e.imgMedium, e.latitude, e.longitude, e.name, e.pitches, e.rating, e.starVotes, e.stars, e.type, e.id, e.location[0], e.location[1], e.location[2], e.location[3], e.location[4], e.location[5])
                     .then(response => {
@@ -62,5 +62,58 @@ module.exports = {
         db.gets.slot2_distinct(id).then(response => {
             res.status(200).send(response)
         }).catch(res.status(500).send('Error'))
+     },
+     getSlot1: (req, res, next) => {
+         const db = req.app.get('db');
+         db.areas.get_slot_1()
+         .then((areas) =>  res.status(200).send(areas))
+         .catch(() => res.status(500).send())
+     },
+     getSlot2: (req, res, next) => {
+         const db = req.app.get('db');
+        //  console.log(req.params)
+         db.areas.get_slot_2(req.params.area)
+         .then((areas) =>  res.status(200).send(areas))
+         .catch(() => res.status(500).send())
+     },
+     getSlot3: (req, res, next) => {
+         const db = req.app.get('db');
+        //  console.log(req.params)
+         db.areas.get_slot_3(req.params.area)
+         .then((areas) =>  res.status(200).send(areas))
+         .catch(() => res.status(500).send())
+     },
+     getSlot4: (req, res, next) => {
+         const db = req.app.get('db');
+        //  console.log(req.params)
+         db.areas.get_slot_4(req.params.area)
+         .then((areas) =>  res.status(200).send(areas))
+         .catch(() => res.status(500).send())
+     },
+     getSlot5: (req, res, next) => {
+         const db = req.app.get('db');
+        //  console.log(req.params)
+         db.areas.get_slot_5(req.params.area)
+         .then((areas) =>  res.status(200).send(areas))
+         .catch(() => res.status(500).send())
+     },
+     getSlot6: (req, res, next) => {
+         const db = req.app.get('db');
+        //  console.log(req.params)
+         db.areas.get_slot_6(req.params.area)
+         .then((areas) =>  res.status(200).send(areas))
+         .catch(() => res.status(500).send())
+     },
+     getFinalAreaRoutes: (req, res, next) => {
+         const db = req.app.get('db');
+         db.areas.get_final_area_routes(req.params.area)
+         .then((areas) =>  res.status(200).send(areas))
+         .catch(() => res.status(500).send())
+     },
+     getDescription: (req, res, next) => {
+         const db = req.app.get('db');
+         db.areas.get_description(req.params.area)
+         .then((areas) =>  res.status(200).send(areas))
+         .catch(() => res.status(500).send())
      }
 }
