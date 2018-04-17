@@ -1,0 +1,28 @@
+.carousel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    height: 80vh;
+}
+
+.mainLanding {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    height: 80vh;
+    margin-left: 0;
+}
+
+.mainLanding > img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    height: 100vh;
+    margin-left: 0;
+}
