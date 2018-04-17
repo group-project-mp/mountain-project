@@ -26,11 +26,13 @@ class Route extends Component {
 
                     <div>
                         <h1>Description</h1>
-                        {route.description}
+                        {route.description ? route.description : <span>Click here to submit a description for this route</span>}
+                        {}
                     </div>
                     <div>
                         <h1>Protection</h1>
-                        {route.protection}
+                        {route.protection ? route.protection : <span>Click here to submit protection details for this route</span>}
+
                     </div>
                     <div>
                         <h1>Location</h1>
