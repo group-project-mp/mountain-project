@@ -64,9 +64,10 @@ module.exports = {
        }).catch(res.status(500).send('Error'))
 
     },
-    filter: (req, res) => {
+    getRoutes: (req, res) => {
         const db = req.app.get('db');
-        db.gets.get_filtered_routes().then(response => {
+        const {quality, type, pitches, min, max} = req.query;
+        db.gets.get_filtered_routes(min, max, quality, pitches, type).then(response => {
             res.status(200).send(response)
         }).catch(err => res.status(500).send('Error'))
 

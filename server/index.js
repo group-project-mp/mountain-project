@@ -20,7 +20,6 @@ const {
     CALLBACK_URL
  } = process.env;
 
-const controller = require('./controller/controller');
 const addController = require('./controller/addRoute');
 const routeDetail = require('./controller/routeDetail');
 const mailer = require('./controller/mail');
@@ -94,6 +93,7 @@ app.get('/getuserinfo', controller.getUserInfo)
 app.get('/getticks', controller.getTicks)
 app.get('/gettodos', controller.getTodos)
 app.delete('/deletetodo/:id', controller.deleteTodo)
+app.get('/filteredroutes', controller.getRoutes)
 
 //mp api data access
 
