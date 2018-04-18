@@ -7,12 +7,17 @@ import { handleInput, getStates, getSlot2, submitNew } from '../../ducks/routes'
 import AreaDropdowns from './AreaDropdowns';
 
 class Add extends Component {
+    constructor(){
+        super();
+
+        this.handleSelect = this.handleSelect.bind(this);
+    }
 
     componentDidMount() {
         this.props.getStates();
     }
 
-    handleSelect(event, data) {
+    handleSelect(event, data){
         this.props.handleInput(data.placeholder, data.value || data.checked)
     }
 
@@ -22,7 +27,6 @@ class Add extends Component {
 
     render() {
         const { route, handleInput, state, submitNew } = this.props;
-        console.log(state.Type)
         let type = state.topRope ? type = state.Type + ', TR' : state.Type;
         let body = {
             name: state.name,
@@ -54,25 +58,25 @@ class Add extends Component {
 
                         <Form.Field>
                             <label>Type</label>
-                            <Dropdown placeholder='Type' selection options={route.typeOptions} onChange={this.handleSelect.bind(this)} />
+                            <Dropdown placeholder='Type' selection options={route.typeOptions} onChange={this.handleSelect} />
                         </Form.Field>
 
                         <Form.Field>
                             <label>Difficulty</label>
                             {route.Type === 'Boulder'
-                                ? <Dropdown placeholder='Difficulty' search selection options={boulder} onChange={this.handleSelect.bind(this)} />
-                                : <Dropdown placeholder='Difficulty' search selection options={difficulty} onChange={this.handleSelect.bind(this)} />
+                                ? <Dropdown placeholder='Difficulty' search selection options={boulder} onChange={this.handleSelect} />
+                                : <Dropdown placeholder='Difficulty' search selection options={difficulty} onChange={this.handleSelect} />
                             }
                         </Form.Field>
 
                         <Form.Field>
                             <label>Top Rope</label>
-                            <Checkbox label='You can set up a TR without leading the route.' placeholder='topRope' onChange={this.handleSelect.bind(this)} />
+                            <Checkbox label='You can set up a TR without leading the route.' placeholder='topRope' onChange={this.handleSelect} />
                         </Form.Field>
                         <br />
                         <Form.Field>
                             <label>Your Star Rating</label>
-                            <Rating maxRating={5} icon='star' size='massive' onRate={this.handleRate.bind(this)} />
+                            <Rating maxRating={5} icon='star' size='massive' onRate={this.handleRate} />
                         </Form.Field>
 
                         <Form.Field>

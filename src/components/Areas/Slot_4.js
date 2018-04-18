@@ -1,0 +1,51 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getSlot4, getDescription } from '../../ducks/areas'
+import { Link } from 'react-router-dom'
+
+
+class Slot_4 extends Component {
+    componentDidMount() {
+        this.props.getSlot4(this.props.match.params.area);
+        this.props.getDescription(this.props.match.params.area);
+    }
+
+    render() {
+        const mappedAreas = this.props.areas.slot_4.map((area) => {
+            // {console.log(area.slot_4)}
+               return < div > 
+                {(area.slot_5) ? <Link to={`/subarea5/${area.slot_4}`}><p>{area.slot_4}</p></Link>
+                   : <Link to={`/finalarea/${area.slot_4}`}><p>{area.slot_4}</p></Link>}
+                      <p>{area.count}</p>
+                </div >
+    })
+    console.log(mappedAreas)
+    return(
+        <div>
+                <h2>{this.props.match.params.area}</h2>
+                {this.props.areas.description[0] ? <div>
+                    <div>
+                        <h3>Directions</h3>
+                        <p>{this.props.areas.description[0].description}</p>
+                        </div>
+                        <div>
+                            <h3>Getting There</h3>
+                    <p>{this.props.areas.description[0].getting_there}</p>
+                    </div>
+                </div>
+                    : null}
+                    <h3>Areas</h3>
+                {mappedAreas}
+            </div>
+        )
+}
+}
+
+function mapStateToProps(state) {
+    return {
+        areas: state.areas
+
+    }
+}
+
+export default connect(mapStateToProps, { getSlot4, getDescription })(Slot_4)
