@@ -31,12 +31,11 @@ class Filter extends Component {
         const filter = this.props.filter;
 
         let routeDisplay = Array.isArray(filter.routes) ? filter.routes.map((route, index) => {
-
             return (<div key={index} className='routes'>
-               <p style={{ textAlign: 'left', alignContent: 'center' }}> {route.name}</p> 
+              <Link to={`/route/${route.id}`}><p style={{ textAlign: 'left', alignContent: 'center'}}>{route.name}</p></Link>
                 <p style={{ textAlign: 'center', alignContent: 'center' }}>{route.stars}</p>
                 <p style={{ textAlign: 'left', alignContent: 'center' }}>{route.rating}</p>
-                <p style={{ textAlign: 'left', alignContent: 'right', background: 'green' }}>{route.type}</p>
+                {/* <p style={{ textAlign: 'left', alignContent: 'right'}}>{route.type}</p> */}
             </div>
             )
         }) : null
@@ -80,8 +79,9 @@ class Filter extends Component {
                     <button onClick={() => this.props.getRoutes(filter)} color='rgb(44,92,142)'>Find Routes</button>
 
                 </div>
+                <br/>
                 <div className='results'>
-                    <h1>Filtered Routes</h1>
+                    {/* <h1>Filtered Routes</h1> */}
                     <span>{routeDisplay}</span>
                 </div>
 

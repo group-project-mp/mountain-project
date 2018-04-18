@@ -19,12 +19,13 @@ export default class Home extends Component {
     render() {
         return (
             <div className='main'>
-                <Carousel/>
-                {/* <Filter/> */}
-                Home
-                <div>
-                <button onClick={this.test}>click me</button>
-                <br/>
+                {/* <div className='mainheader'> */}
+                    <div className='carousel'>
+                        <Carousel />
+                    </div>
+                    <div className='filter'>
+                        <Filter />
+                    {/* </div> */}
                 </div>
             </div>
         )

@@ -12,7 +12,7 @@
     width: 450px;
     height: 600px;
     border: 1px solid black;
-    border-radius: 5px;
+
     background: gray;
 }
 
@@ -35,11 +35,10 @@
 
 .routes{
     display: grid;
-    width: 50%;
+    width: 100%;
     p {
         width: 100%;
         grid-template-columns: 200px 100px 100px;
-        align-items: center;
     }
 }   
 
