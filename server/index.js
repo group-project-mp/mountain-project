@@ -92,7 +92,9 @@ massive(CONNECTION_STRING).then(db => {
 app.get('/getuserinfo', controller.getUserInfo)
 app.get('/getticks', controller.getTicks)
 app.get('/gettodos', controller.getTodos)
-app.delete('/deletetodo/:id', controller.deleteTodo)
+app.delete('/deletetodo/:id', controller.deleteTodo);
+app.post('/api/addTick/:route', routeDetail.addTick);
+app.post('/api/addTodo/:route', routeDetail.addTodo);
 
 //mp api data access
 

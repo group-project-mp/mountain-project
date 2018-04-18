@@ -35,7 +35,7 @@ class Route extends Component {
 
                         <div className='similar-tick-container'>
                             <SimilarArea area={slot_6 ? slot_6 : slot_5 ? slot_5 : slot_4 ? slot_4 : slot_3} />
-                            <ImageTicks type={route.type} pitches={route.pitches} />
+                            <ImageTicks type={route.type} pitches={route.pitches} id={route.id}/>
                         </div>
                     </div>
 
