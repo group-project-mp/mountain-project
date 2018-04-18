@@ -56,22 +56,120 @@
 // ===== ROUTES IN AREA CONTAINER ===== //
 
 .similar-tick-container {
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
-    border: solid 1px pink;
+    width: 100%;
 }
 
 .similar-tick {
     margin: auto;
     margin-top: 10px;
+    margin-bottom: 10px;
     padding: 10px;
-    width: 85%;
+    width: 95%;
     min-height: 200px;
     background-color: #f2f2f2;
+    overflow: hidden;
+    border: solid 1px #2e2e2e;
+    border-radius: 10px;
 }
 
 .similar-container {
+    overflow: hidden;
     h4 {
         text-align: center;
+    }
+}
+
+.similar-route-container {
+    width: 85%;
+    margin: auto;
+    height: 30px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    border-bottom: solid 1px #2e2e2e;
+}
+
+.area-type {
+    text-align: right;
+}
+
+@media (min-width:768px){
+    .similar-tick {
+        margin-top: 0px;
+        padding: 10px;
+        // width: 85%;
+        min-height: 275px;
+    }
+}
+
+// ===== IMAGE ===== //
+
+.detail-image-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    padding-bottom: 25px;
+    img {
+        border-radius: 10px;
+        border: solid 1px #2e2e2e;
+        max-width: 80%;
+        box-shadow: 0px 0px 66px 0px rgba(9, 38, 58, 0.575);
+    }
+}
+
+.no-photo {
+    background-color: #f2f2f2;
+    width: 75%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width:768px){
+    .detail-image-container {
+        width: 90%;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        padding-bottom: 0px;
+        img {
+            max-width: 100%;
+        }
+    }
+}
+
+// ===== TOP SECTION ===== //
+
+@media (min-width:768px){
+    .route-detail-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.route-detail-top {
+    padding: 10px;
+}
+
+// ===== BOTTOM SECTION ===== // 
+
+.route-detail-bottom {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-section-container {
+    margin-bottom: 25px;
+    p {
+        padding-left: 20px;
     }
 }

@@ -3,13 +3,13 @@ import axios from 'axios';
 const initialState = {
     loading: false,
     route: [],
-    areaRoutes: []
+    comments: []
 }
 
 const _PENDING = '_PENDING';
 const _FULFILLED = '_FULFILLED';
 const GETROUTE = 'GETROUTE';
-const GETAREA = 'GETAREA';
+const GETCOMMENTS = 'GETCOMMENTS';
 
 
 export default function reducer(state = initialState, action) {
@@ -19,10 +19,10 @@ export default function reducer(state = initialState, action) {
             return { ...state, loading: true }
         case GETROUTE + _FULFILLED:
             return { ...state, route: payload, loading: false }
-        case GETAREA + _PENDING:
+        case GETCOMMENTS + _PENDING:
             return { ...state, loading: true }
-        case GETAREA + _FULFILLED:
-            return { ...state, loading: false, areaRoutes: payload }
+        case GETCOMMENTS +_FULFILLED:
+            return { ...state, loading: false, comments: payload }
         default:
             return state;
     }
@@ -36,10 +36,10 @@ export function getRoute(id) {
     }
 }
 
-export function getSimilar(prop) {
-    let promise = axios.get(`/api/similar/${prop}`).then(res => res.data);
+export function getComments(id){
+    let promise = axios.get(`/api/comments/${id}`).then(res => res.data);
     return {
-        type: GETAREA,
+        type: GETCOMMENTS,
         payload: promise
     }
 }

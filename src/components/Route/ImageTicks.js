@@ -23,7 +23,6 @@ export default function ImageTicks(props) {
                 </div>
             </div>
 
-            <img src={props.photo} alt='route' className='route-detail-image' />
         </div>
     )
 }

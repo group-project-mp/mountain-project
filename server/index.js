@@ -56,7 +56,6 @@ massive(CONNECTION_STRING).then(db => {
             }
         })
     }))
-
     passport.serializeUser((id, done) => {
         done(null, id)
     })
@@ -69,6 +68,7 @@ massive(CONNECTION_STRING).then(db => {
     
     app.get('/auth', passport.authenticate('auth0'));
     app.get('/auth/callback', passport.authenticate('auth0', {
+        
         successRedirect: REACT_APP_SUCCESS,
         failureRedirect: 'http://localhost:3000/#/',
     }))
@@ -80,7 +80,6 @@ massive(CONNECTION_STRING).then(db => {
             res.status(401).send('didnt work')
         }
     })
-    
     app.get('/auth/logout', (req, res) => {
         req.logOut();
         res.redirect('/')
@@ -109,7 +108,8 @@ app.get(`/api/slot5/:id`, addController.distinct5);
 app.get(`/api/slot6/:id`, addController.distinct6);
 app.post('/api/newRoute', addController.submit);
 app.get('/api/route/:id', routeDetail.routeDetail);
-
+app.get('/api/similar/:id', routeDetail.getSimilar);
+app.get('/api/comments/:id', routeDetail.comments);
 
 // nodemailer
 app.post('/api/email', mailer.mail);
