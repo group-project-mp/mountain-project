@@ -1,11 +1,27 @@
 .filtermain {
-    display: flex;
+    display: grid;
     flex-direction: column;
     height: 200vh;
-    width: 400px;
-    margin-left: 100px;
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 100px;
+    padding: 0;
 }
 
+.filterbody {
+    width: 450px;
+    height: 600px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: gray;
+}
+
+.results {
+    text-align: left;
+    div:nth-child(odd){
+        background-color:lightgray;
+    }
+}
 .filtermain > button {
     max-width: 150px;
     background: black;
@@ -16,3 +32,14 @@
     display: flex;
     justify-content: space-around;
 }
+
+.routes{
+    display: grid;
+    width: 50%;
+    p {
+        width: 100%;
+        grid-template-columns: 200px 100px 100px;
+        align-items: center;
+    }
+}   
+
