@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Form, Button, Dropdown } from 'semantic-ui-react';
+import { Form, Dropdown } from 'semantic-ui-react';
 import vSystem from './VSystem';
 import difficulty from './Difficulty';
 import quality from './Quality';
 import pitches from './Pitches';
+import typeOptions from './TypeOptions';
 import { inputChange, getRoutes } from '../../ducks/filterroutes';
+
 
 
 
@@ -14,56 +17,74 @@ import { inputChange, getRoutes } from '../../ducks/filterroutes';
 class Filter extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            routes: []
         }
+        this.handleSelect = this.handleSelect.bind(this)
     }
 
 
     handleSelect(event, data) {
-        this.props.inputChange(data.placeholder, data.value || data.checked)
-    }
-
-    findRoutes() {
-        this.props.getRoutes
+        this.props.inputChange(data.placeholder, data.value)
     }
     render() {
-        const { route } = this.props
+        const filter = this.props.filter;
+
+        let routeDisplay = Array.isArray(filter.routes) ? filter.routes.map((route, index) => {
+            return (<div key={index} className='routes'>
+              <Link to={`/route/${route.id}`}><p style={{ textAlign: 'left', alignContent: 'center'}}>{route.name}</p></Link>
+                <p style={{ textAlign: 'center', alignContent: 'center' }}>{route.stars}</p>
+                <p style={{ textAlign: 'left', alignContent: 'center' }}>{route.rating}</p>
+                {/* <p style={{ textAlign: 'left', alignContent: 'right'}}>{route.type}</p> */}
+            </div>
+            )
+        }) : null
+
         return (
             <div className='filtermain'>
-                <h1>Route Finder</h1>
-                <br />
-                <h3>Tell us what you like, we'll tell you what to climb!</h3>
-                <br />
-                <Form.Field>
-                    <label>Quality</label>
-                    <Dropdown placeholder='All Routes'
-                        selection options={quality} />
-                </Form.Field>
-                <br />
-                <Form.Field>
-                    <label>Pitches</label>
-                    <Dropdown placeholder='Any Number'
-                        selection options={pitches} />
-                </Form.Field>
-                <br />
-                <Form.Field>
-                    <label>Type</label>
-                    <Dropdown placeholder='' selection options={route.typeOptions} onChange={this.handleSelect.bind(this)} />
-                </Form.Field>
-                <br />
-                <Form.Field>
-                    {route.type === 'Boulder' ?
-                        <Dropdown placeholder='Min' search selection options={vSystem} /> :
-                        <Dropdown placeholder='Min' search selection options={difficulty} />}
-                    <h4>to</h4>
-                    {route.type === 'Boulder' ?
-                        <Dropdown placeholder='Max' search selection options={vSystem} /> :
-                        <Dropdown placeholder='Max' search selection options={difficulty} />}
-                </Form.Field>
-                <br />
-                <Button onClick={getRoutes}>Find Routes</Button>
+                <div className='filterbody'>
+                    <h1>Route Finder</h1>
+                    <br />
+                    <h3>Tell us what you like, we'll tell you what to climb!</h3>
+                    <br />
+                    <Form.Field>
+                        <label>Quality</label>
+                        <Dropdown placeholder='quality'
+                            selection options={quality} onChange={this.handleSelect} />
+                    </Form.Field>
+                    <br />
+                    <Form.Field>
+                        <label>Pitches</label>
+                        <Dropdown placeholder='pitches'
+                            selection options={pitches} onChange={this.handleSelect} />
+                    </Form.Field>
+                    <br />
+                    <Form.Field>
+                        <label>Type</label>
+                        <Dropdown placeholder='type' selection options={typeOptions} onChange={this.handleSelect} />
+                    </Form.Field>
+                    <br />
+                    <div className='difficulty'>
+                        <Form.Field>
+                            {filter.type === 'Boulder' ?
+                                <Dropdown placeholder='min' search selection options={vSystem} /> :
+                                <Dropdown placeholder='min' search selection options={difficulty} onChange={this.handleSelect} />}
+                            <h4>to</h4>
+                            {filter.type === 'Boulder' ?
+                                <Dropdown placeholder='max' search selection options={vSystem} /> :
+                                <Dropdown placeholder='max' search selection options={difficulty} onChange={this.handleSelect} />}
+                        </Form.Field>
+                    </div>
+                    <br />
+                    <button onClick={() => this.props.getRoutes(filter)} color='rgb(44,92,142)'>Find Routes</button>
+
+                </div>
+                <br/>
+                <div className='results'>
+                    {/* <h1>Filtered Routes</h1> */}
+                    <span>{routeDisplay}</span>
+                </div>
+
             </div>
         )
     }
@@ -71,9 +92,20 @@ class Filter extends Component {
 
 
 function mapStateToProps(state) {
+
     return {
-        route: state.routes,
+        filter: state.filter,
+        type: state.type,
+        loading: state.loading,
+        routes: state.routes
     }
 }
 
-export default connect(mapStateToProps, { inputChange, getRoutes })(Filter);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        inputChange: (placeholder, data) => dispatch(inputChange(placeholder, data)),
+        getRoutes: (filter) => dispatch(getRoutes(filter))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

@@ -27,7 +27,8 @@ class Add extends Component {
 
     render() {
         const { route, handleInput, state, submitNew } = this.props;
-        let type = state.topRope ? type = state.Type + ', TR' : state.Type;
+        let type;
+        type = state.topRope ? type = state.Type + ', TR' : state.Type;
         let body = {
             name: state.name,
             difficulty: state.Difficulty,

@@ -6,14 +6,14 @@ module.exports = {
         const db = req.app.get('db');
         axios.get('https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=39.277&lon=-111.174&maxResults=200&maxDistance=25&minDiff=V0&maxDiff=V12&key=107710868-83b40f4d964852ae1674deb85b4e6a00')
             .then(response => {
-                response.data.routes.map(e => db.ADDS.add_route(e.imgMedium, e.latitude, e.longitude, e.name, e.pitches, e.rating, e.starVotes, e.stars, e.type, e.id, e.location[0], e.location[1], e.location[2], e.location[3], e.location[4], e.location[5])
+                response.data.routes.map(e => db.adds.add_route(e.imgMedium, e.latitude, e.longitude, e.name, e.pitches, e.rating, e.starVotes, e.stars, e.type, e.id, e.location[0], e.location[1], e.location[2], e.location[3], e.location[4], e.location[5])
                     .then(response => {
                         res.status(200).send('added route')
                     })
                     .catch(err => console.log(err))
                 )
-            } )
-        },
+            }
+            )},
    getStates: (req, res) => {
        const db = req.app.get('db');
        db.gets.state_and_count().then(response => {
@@ -65,9 +65,10 @@ module.exports = {
        }).catch(res.status(500).send('Error'))
 
     },
-    filter: (req, res) => {
+    getRoutes: (req, res) => {
         const db = req.app.get('db');
-        db.gets.get_filtered_routes().then(response => {
+        const {quality, type, pitches, min, max} = req.query;
+        db.gets.get_filtered_routes(min, max, quality, pitches, type).then(response => {
             res.status(200).send(response)
         }).catch(err => res.status(500).send('Error'))
 
