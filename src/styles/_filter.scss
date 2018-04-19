@@ -3,21 +3,35 @@
     flex-direction: column;
     height: 200vh;
     width: 100%;
-    margin-left: 10px;
-    margin-right: 100px;
-    padding: 0;
+    padding: 20px;;
 }
 
 .filterbody {
-    width: 450px;
-    height: 600px;
+    width: 100%;
+    height: 60%;
     border: 1px solid black;
-
     background: gray;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    button {
+        min-width: 100px;
+        max-width: 100px;
+        height: 35px;
+        border-radius: 5px;
+        // margin-left: 40px;
+    }
+    h4 {
+        display: flex;
+        margin-left: 75px;
+    }
 }
+
 
 .results {
     text-align: left;
+    margin-top: 0px;
+    padding: 20px;
     div:nth-child(odd){
         background-color:lightgray;
     }
@@ -28,17 +42,30 @@
     color: white;
 }
 
-.field {
+// .field {
+//     display: flex;
+//     justify-content: space-around;
+//     align-content: center;
+// }
+.dropdown {
     display: flex;
-    justify-content: space-around;
+    align-content: center;
+
 }
 
 .routes{
-    display: grid;
     width: 100%;
-    p {
-        width: 100%;
-        grid-template-columns: 200px 100px 100px;
-    }
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
 }   
+
+.results {
+
+    a {
+        text-align: left;
+        align-content: center;
+    }
+}
 

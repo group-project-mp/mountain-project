@@ -7,6 +7,7 @@ import difficulty from './Difficulty';
 import quality from './Quality';
 import pitches from './Pitches';
 import typeOptions from './TypeOptions';
+import Spinner from '../Spinner/Spinner';
 import { inputChange, getRoutes } from '../../ducks/filterroutes';
 
 
@@ -32,10 +33,10 @@ class Filter extends Component {
 
         let routeDisplay = Array.isArray(filter.routes) ? filter.routes.map((route, index) => {
             return (<div key={index} className='routes'>
-              <Link to={`/route/${route.id}`}><p style={{ textAlign: 'left', alignContent: 'center'}}>{route.name}</p></Link>
-                <p style={{ textAlign: 'center', alignContent: 'center' }}>{route.stars}</p>
-                <p style={{ textAlign: 'left', alignContent: 'center' }}>{route.rating}</p>
-                {/* <p style={{ textAlign: 'left', alignContent: 'right'}}>{route.type}</p> */}
+                <p style={{ textAlign: 'left', alignContent: 'center' }}><Link to={`/route/${route.id}`}>{route.name}</Link></p>
+                <p>{route.stars}</p>
+                <p>{route.rating}</p>
+                <p>{route.type}</p>
             </div>
             )
         }) : null
@@ -77,13 +78,14 @@ class Filter extends Component {
                     </div>
                     <br />
                     <button onClick={() => this.props.getRoutes(filter)} color='rgb(44,92,142)'>Find Routes</button>
-
                 </div>
-                <br/>
+                {/* <Spinner /> */}
+                {/* <br /> */}
                 <div className='results'>
-                    {/* <h1>Filtered Routes</h1> */}
+                    <h1>Filtered Routes</h1>
                     <span>{routeDisplay}</span>
                 </div>
+
 
             </div>
         )
