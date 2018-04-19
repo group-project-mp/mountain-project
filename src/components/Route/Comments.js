@@ -1,19 +1,40 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getComments, handleInput, addComment } from '../../ducks/routeDetail';
 import { Button } from 'semantic-ui-react';
+import axios from 'axios';
 import { withRouter } from 'react-router';
 
-
 class Comments extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            comments: [],
+            newComment: ''
+        }
+    }
 
     componentDidMount() {
-        this.props.getComments(this.props.match.params.id)
+        axios.get(`/api/comments/${this.props.match.params.id}`).then(res => {
+            this.setState({ comments: res.data })
+        })
+    }
+
+    handleInput(value) {
+        this.setState({ newComment: value })
+    }
+
+    handleSubmit(id, body) {
+        axios.post(`/api/comments/${id}`, body).then(res => {
+            res.data === 'no'
+                ? alert('please login to add comment')
+                : this.setState({ comments: [...this.state.comments, res.data], newComment: '' })
+        });
     }
 
     render() {
-        const { comments, handleInput, addComment, newComment } = this.props;
+        const { comments, newComment } = this.state;
         const { id } = this.props.match.params;
+
         let commentList = comments.map((x, i) => {
             return (
                 <div key={i} className='comment-container'>
@@ -22,7 +43,7 @@ class Comments extends Component {
                         <span>{x.date || '04/17/2018'}</span>
                     </div>
                     <span className='comment'>{x.comment}</span>
-                    <span className='flag-button'>Flag</span>
+                    <span className='flag-button' onClick={() => alert('Admin has been notified of flag')}>Flag</span>
 
                 </div>
             )
@@ -39,13 +60,13 @@ class Comments extends Component {
             mm = '0' + mm
         }
         today = mm + '/' + dd + '/' + yyyy;
-        
+
         return (
             <div>
                 <h1>{comments.length} Comments</h1>
                 <div className='comment-input-container'>
-                    <input placeholder='Write a comment' onChange={(e) => handleInput('newComment', e.target.value)} />
-                    <Button color='blue' onClick={(e) => addComment(id, {date: today, comment: newComment})}>Submit</Button>
+                    <input placeholder='Write a comment' onChange={(e) => this.handleInput(e.target.value)} />
+                    <Button color='blue' onClick={() => this.handleSubmit(id, { date: today, comment: newComment })}>Submit</Button>
                 </div>
                 {comments ? commentList : null}
             </div>
@@ -60,4 +81,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default withRouter(connect(mapStateToProps, { getComments, handleInput, addComment })(Comments));
+export default withRouter(Comments);

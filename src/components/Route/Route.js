@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getRoute, getComments } from '../../ducks/routeDetail';
+import { getRoute } from '../../ducks/routeDetail';
 import RouteHeader from './RouteHeader';
 import ImageTicks from './ImageTicks';
 import SimilarArea from './SimilarArea';
@@ -13,7 +13,7 @@ class Route extends Component {
     componentDidMount() {
         const { id } = this.props.match.params;
         this.props.getRoute(id);
-        this.props.getComments(id);
+        // this.props.getComments(id);
     }
 
     render() {
@@ -75,4 +75,4 @@ var mapStateToProps = (state) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, { getRoute, getComments })(Route));
+export default withRouter(connect(mapStateToProps, { getRoute })(Route));
