@@ -56,6 +56,7 @@ class ImageTicks extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div className='similar-tick'>
                 <div className='you-and-this-route'>
@@ -70,6 +71,7 @@ class ImageTicks extends Component {
                     </div>
                     <div className='you-sub'>
                         <span style={{ fontWeight: 'bold' }}>Your Difficulty Rating:</span>
+                        
                         <select onChange={(e) => this.handleInput('difficuly', e.target.value)}>
                             <option>Select</option>
                             <option>5.7</option>
