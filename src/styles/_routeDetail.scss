@@ -211,3 +211,43 @@
     align-items: center;
     border-bottom: 1px solid #2e2e2e;
 }
+
+// ===== COMMENT SECTION ===== //
+
+.comment-input-container {
+    background-color: #f2f2f2;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    input {
+        height: 75%;
+        width: 85%;
+        padding-left: 10px;
+    }
+}
+
+.comment-container {
+    min-height: 65px;
+    display: grid;
+    grid-template-columns: 1fr 5fr .5fr;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.comment-container:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.name-date-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.flag-button {
+    text-align: right;
+}

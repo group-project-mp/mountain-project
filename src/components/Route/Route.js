@@ -59,8 +59,7 @@ class Route extends Component {
                         </div> */}
 
                         <div className='bottom-section-container'>
-                            <h1>Comments</h1>
-                            <Comments comments={comments} />
+                            <Comments />
                         </div>
                     </div>
                 </div>

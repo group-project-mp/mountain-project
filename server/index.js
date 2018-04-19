@@ -115,6 +115,7 @@ app.post('/api/newRoute', addController.submit);
 app.get('/api/route/:id', routeDetail.routeDetail);
 app.get('/api/similar/:id', routeDetail.getSimilar);
 app.get('/api/comments/:id', routeDetail.comments);
+app.post('/api/comments/:id', routeDetail.addComment);
 
 // nodemailer
 app.post('/api/email', mailer.mail);
