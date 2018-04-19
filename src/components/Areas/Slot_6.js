@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSlot6, getDescription } from '../../ducks/areas'
 import { Link } from 'react-router-dom'
+import Map from './Map'
 
 
 class Slot_6 extends Component {
@@ -33,7 +34,11 @@ class Slot_6 extends Component {
                 </div>
                     : null}
                     <h3>Areas</h3>
+                    <Link to = {'/'}><p>All Locations</p></Link>
                 {mappedAreas}
+                <div>
+                <Map areas = {this.props.areas.slot_6}/>
+                </div>
             </div>
         )
 }

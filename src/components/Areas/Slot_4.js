@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSlot4, getDescription } from '../../ducks/areas'
 import { Link } from 'react-router-dom'
+import Map from './Map'
 
 
 class Slot_4 extends Component {
@@ -14,12 +15,13 @@ class Slot_4 extends Component {
         const mappedAreas = this.props.areas.slot_4.map((area) => {
             // {console.log(area.slot_4)}
                return < div > 
+               
                 {(area.slot_5) ? <Link to={`/subarea5/${area.slot_4}`}><p>{area.slot_4}</p></Link>
                    : <Link to={`/finalarea/${area.slot_4}`}><p>{area.slot_4}</p></Link>}
                       <p>{area.count}</p>
                 </div >
     })
-    console.log(mappedAreas)
+    // console.log(mappedAreas)
     return(
         <div>
                 <h2>{this.props.match.params.area}</h2>
@@ -35,7 +37,11 @@ class Slot_4 extends Component {
                 </div>
                     : null}
                     <h3>Areas</h3>
+                    <Link to = {'/'}><p>All Locations</p></Link>
                 {mappedAreas}
+                <div>
+                <Map areas = {this.props.areas.slot_4}/>
+                </div>
             </div>
         )
 }

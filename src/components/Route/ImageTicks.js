@@ -54,7 +54,6 @@ class ImageTicks extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className='similar-tick'>
                 <div className='you-and-this-route'>
