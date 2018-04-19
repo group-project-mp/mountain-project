@@ -13,10 +13,11 @@ class FinalArea extends Component {
     render() {
         const finalAreaRoutes = this.props.areas.finalAreaRoutes
         const mappedRoutes = finalAreaRoutes.map((route) => {
-            console.log(this.props.areas.finalAreaRoutes)
+            // console.log(this.props.areas.finalAreaRoutes)
+            console.log(route)
             return < div >
                 <div>
-                    <Link to={`/route/${route.route_id}`}><p>{route.name}</p></Link>
+                    <Link to={`/route/${route.id}`}><p>{route.name}</p></Link>
                 </div>
                 <div>
                     {route.stars}
@@ -33,14 +34,15 @@ class FinalArea extends Component {
             <div>
                 <div>
                     <h2>{this.props.match.params.area}</h2>
-                    {finalAreaRoutes[0]?
-                    <div>
-                        <Link to={`/state/${finalAreaRoutes[0].slot_1}`}> <p>{finalAreaRoutes[0].slot_1}</p></Link>
-                        <Link to={`/area/${finalAreaRoutes[0].slot_2}`}> <p>{finalAreaRoutes[0].slot_2}</p></Link>
-                        {this.props.match.params.area !== finalAreaRoutes[0].slot_3 ? <Link to={`/subarea/${finalAreaRoutes[0].slot_3}`}> <p>{finalAreaRoutes[0].slot_3}</p></Link>: null}
-                        {this.props.match.params.area !== finalAreaRoutes[0].slot_4 ? <Link to={`/subarea5/${finalAreaRoutes[0].slot_4}`}> <p>{finalAreaRoutes[0].slot_4}</p></Link>: null}
-                       {this.props.match.params.area !== finalAreaRoutes[0].slot_5 ? <Link to={`/subarea6/${finalAreaRoutes[0].slot_5}`}> <p>{finalAreaRoutes[0].slot_5}</p></Link>: null}
-                    </div>: null}
+                    {finalAreaRoutes[0] ?
+                        <div>
+                                <Link to = {'/'}><p>All Locations</p></Link>
+                            <Link to={`/state/${finalAreaRoutes[0].slot_1}`}> <p>{finalAreaRoutes[0].slot_1}</p></Link>
+                            <Link to={`/area/${finalAreaRoutes[0].slot_2}`}> <p>{finalAreaRoutes[0].slot_2}</p></Link>
+                            {this.props.match.params.area !== finalAreaRoutes[0].slot_3 ? <Link to={`/subarea/${finalAreaRoutes[0].slot_3}`}> <p>{finalAreaRoutes[0].slot_3}</p></Link> : null}
+                            {this.props.match.params.area !== finalAreaRoutes[0].slot_4 ? <Link to={`/subarea5/${finalAreaRoutes[0].slot_4}`}> <p>{finalAreaRoutes[0].slot_4}</p></Link> : null}
+                            {this.props.match.params.area !== finalAreaRoutes[0].slot_5 ? <Link to={`/subarea6/${finalAreaRoutes[0].slot_5}`}> <p>{finalAreaRoutes[0].slot_5}</p></Link> : null}
+                        </div> : null}
                 </div>
                 {this.props.areas.description[0] ? <div>
                     <div>
@@ -53,7 +55,7 @@ class FinalArea extends Component {
                     </div>
                 </div>
                     : null}
-                    <h3>Routes</h3>
+                <h3>Routes</h3>
                 {mappedRoutes}
             </div>
         )
@@ -61,7 +63,7 @@ class FinalArea extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state, "hit state")
+    // console.log(state, "hit state")
     return {
         areas: state.areas
     }
