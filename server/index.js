@@ -20,6 +20,7 @@ const {
     CALLBACK_URL
  } = process.env;
 
+const controller = require('./controller/controller');
 const addController = require('./controller/addRoute');
 const routeDetail = require('./controller/routeDetail');
 const mailer = require('./controller/mail');

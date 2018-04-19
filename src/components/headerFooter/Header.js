@@ -7,7 +7,7 @@ function Header(props) {
     return (
         <div id='header'>
             <div className='header-top'>
-
+                {/* <button onClick={this.test}>click me</button> */}
             </div>
 
             <div className='header-bottom'>
@@ -16,7 +16,7 @@ function Header(props) {
                 </div>
 
                 <div className='header-bottom-right'>
-
+                    <a href={'http://localhost:3009/auth'}><button>Login/Register</button></a>
                 </div>
             </div>
         </div>
@@ -24,3 +24,11 @@ function Header(props) {
 }
 
 export default Header;
+
+
+
+// test() {
+//     axios.post(`/api/test`).then(res => {
+//         console.log(res)
+//     })
+// }

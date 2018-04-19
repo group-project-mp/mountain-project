@@ -13,7 +13,6 @@ const GETCOMMENTS = 'GETCOMMENTS';
 const ADDTICK = 'ADDTICK';
 const ADDTODO = 'ADDTODO';
 const ADDRATING = 'SUBMITRATING';
-const ADD_DIFFICULTY = 'ADD_DIFFICULTY';
 
 
 export default function reducer(state = initialState, action) {
@@ -50,13 +49,6 @@ export function addRating(id){
     let promise = axios.post(`/api/addRating/${id}`).then(res => res.data);
     return {
         type: ADDRATING
-    }
-}
-
-export function addDifficulty(id){
-    let promise = axios.post(`/api/addDifficulty/${id}`).then(res => res.data);
-    return {
-        type: ADD_DIFFICULTY
     }
 }
 

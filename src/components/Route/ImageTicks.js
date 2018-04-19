@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Rating } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { addTodo, addTick, addRating, addDifficulty } from '../../ducks/routeDetail';
+import { addTodo, addTick, addRating } from '../../ducks/routeDetail';
 import { Modal, Header, Button } from 'semantic-ui-react';
-import Boulder from '../Add/Boulder';
-import Difficulty from '../Add/Difficulty';
 
 class ImageTicks extends Component {
     constructor(props) {
@@ -144,5 +142,5 @@ class ImageTicks extends Component {
     }
 }
 
-export default connect(null, { addTodo, addTick, addRating, addDifficulty })(ImageTicks);
+export default connect(null, { addTodo, addTick, addRating })(ImageTicks);
 
