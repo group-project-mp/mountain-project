@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Stars from './Stars';
-import { Button, Header, TextArea, Modal } from 'semantic-ui-react'
+import { Button, Header, Modal } from 'semantic-ui-react'
 import axios from 'axios';
 
 export default class RouteHeader extends Component {
@@ -27,15 +27,14 @@ export default class RouteHeader extends Component {
 
     submitChange() {
         let body = {
-            text: this.state.text,
+            text: this.state.message,
             subject: `Changes to ${this.props.route.id} / ${this.props.route.name}`
         }
         axios.post('/api/email', body).then(res => {
-            console.log(res)
-            // this.setState({
-            //     showModal: false,
-            //     message: ''
-            // })
+            this.setState({
+                showModal: false,
+                message: ''
+            })
         })
     }
 
@@ -96,7 +95,7 @@ export default class RouteHeader extends Component {
                 </div>
                 <div className='route-stars-rating'>
                     <h2>{route.rating}</h2>
-                    <Stars stars={route.stars} />
+                    <Stars stars={route.stars} size='large'/>
                     <span>Avg: {route.stars} from {route.star_votes} votes</span>
                 </div>
                 <hr />
