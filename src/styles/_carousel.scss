@@ -3,8 +3,15 @@
     height: 100%;
     width: 100%;
     background: black;
-    border-top: 12px solid #486796;
+    border-top: 5px solid #486796;
     // border-bottom: 12px solid #486796;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.crsl {
+    padding: 10px;
 }
 .fltr {
     display: flex;

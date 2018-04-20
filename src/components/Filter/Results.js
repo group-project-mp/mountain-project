@@ -34,8 +34,8 @@ class Results extends Component {
             return (
                 <div key={index} className='routes'>
                     <p className='route-name' > <Link to={`/route/${route.id}`}>{route.name}</Link></p>
-                    <div style={{textAlign: 'center'}}>{route.stars}</div>
-                    <div style={{textAlign: 'center'}}> {route.rating}</div>
+                    <div style={{textAlign: 'right'}}>{route.stars}</div>
+                    <div style={{textAlign: 'right'}}> {route.rating}</div>
                     <div style={{textAlign: 'right'}}>{route.type}</div>
                 </div>
             )
