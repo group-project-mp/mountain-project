@@ -1,14 +1,14 @@
 .routes{
     display: grid;
     grid-template-columns: repeat(1, 2fr 1fr 1fr 1fr);
-    grid-gap: 10px;
+    // grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
+    div {
+        height: 5%;
+    }
 } 
 
 .results {
     padding: 5%;
 }
 
-.route-type {
-    text-align: right;
-}

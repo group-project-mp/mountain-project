@@ -47,7 +47,7 @@ class slot_2 extends Component {
                     <Map areas = {this.props.areas.slot_2}/>
                 </div>
             </div>
-            </div>
+            
         )
 }
 }
