@@ -16,15 +16,26 @@ class slot_2 extends Component {
 
         const mappedAreas = this.props.areas.slot_2.map((area) => {
             // {console.log(area.slot_2)}
+
+            return
+            < div >
+
             return < div >
+
 
                 <Link to={`/area/${area.slot_2}`}><p>{area.slot_2}</p></Link>
                 <p>{area.count}</p>
             </div >
         })
+
+        console.log(mappedAreas)
+        return (
+            <div className='area-main-wrapper'>
+
         // console.log(mappedAreas)
         return (
             <div>
+
                 <h2>{this.props.match.params.area}</h2>
 
                 {this.props.areas.description[0] ? <div>
@@ -39,7 +50,10 @@ class slot_2 extends Component {
                 </div>
                     : null}
                 <h3>Areas</h3>
+
+
                 <Link to={'/'}><p>All Locations</p></Link>
+
                 {mappedAreas}
                 <div>
                     <Map areas={this.props.areas.slot_2} />

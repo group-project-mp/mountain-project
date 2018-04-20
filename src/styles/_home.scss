@@ -1,18 +1,64 @@
 .main {
     display: flex;
-    flex-direction:column;
-  
-    height: 50%;
-    padding-top: 0px;
-    justify-content: space-around;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    
+
+    flex-direction: column;
+    height: 200vh;
 }
 
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #486796;
+    height: 5%;
+}
+.main-header {
+    box-sizing: border-box;
+    display: flex;
+    height: 45%;
+    justify-content: space-between;
+    background: #000000;
+    padding: 20px;
+}
 
-// .mainheader {
-//     height: 50%;
-//     display: flex;
-//     // justify-content: space-around;
-// }
+.crsl {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 5%;
+    width: 60%;
+    // background: gray;
+
+}
+
+.fltr {
+    display: flex;
+    justify-content: center;
+    // background: lightgray;
+}
+
+.main-body {
+    background: #f2f2f2;
+
+    flex-direction:column;
+  
+
+    height: 50%;
+}
+
+.mapped-routes {
+    display: flex;
+    justify-content: center;
+    width: 33%;
+    height: 100px;
+    p {
+        padding: 10px;
+    }
+}
+
+.mapped-routes-display {
+    display: flex;
+    justify-content: space-around; 
+    flex-wrap: wrap;
+    padding: 5%;
+}
