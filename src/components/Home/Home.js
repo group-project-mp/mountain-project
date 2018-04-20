@@ -23,29 +23,22 @@ export default class Home extends Component {
         return (
 
             <div className='main'>
-                {/* <div className='mainheader'> */}
-                    <div className='carousel'>
-                        <Carousel />
-                    </div>
-                    <div className='filter'>
-                        <Filter />
-                    {/* </div> */}
-
-            <div>
-                <Carousel/>
-                Home
-                <div>
-
-                    <button onClick={this.test}>click me</button>
+                <div className='nav-bar'>
                     <a href={'http://localhost:3009/auth'}><button>Login/Register</button></a>
                 </div>
-                <div>
-                    <Slot_1/>
+                <div className='main-header'>
+                    <div className='crsl'>
+                        <Carousel />
+                    </div>
+                    <div className='fltr'>
+                        <Filter />
+                    </div>
+                </div>
 
-                <button onClick={this.test}>click me</button>
-                <br/>
-
-
+                <div className='main-body'>
+                    <div>
+                        <Slot_1 />
+                    </div>
                 </div>
             </div>
         )

@@ -48,7 +48,7 @@ export function inputChange(prop, val) {
 export function getRoutes({ min, max, quality, pitches, type }) {
     let filteredRoutes = axios.get(`/filteredroutes?min=${min}&max=${max}&quality=${quality}&pitches=${pitches}&type=${type}`)
         .then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             return res.data})
     return {
         type: GET_ROUTES,

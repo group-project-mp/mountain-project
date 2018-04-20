@@ -1,28 +1,11 @@
+.carousel-body {
+    height: 100%;
+    background: black;
+}
+
 .carousel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    height: 80vh;
- 
+    box-shadow: 5px 5px 15px 5px aliceblue;
 }
 
-.mainLanding {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 60vh;
-   
-}
 
-.mainLanding > img {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    margin-left: 0;
-}
+

@@ -13,6 +13,7 @@ module.exports = {
                     .catch(err => console.log(err))
                 )
             }
+            )},
    getStates: (req, res) => {
        const db = req.app.get('db');
        db.gets.state_and_count().then(response => {

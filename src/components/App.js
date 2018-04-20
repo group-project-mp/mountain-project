@@ -12,6 +12,9 @@ import slot_5 from '../components/Areas/Slot_5';
 import slot_6 from '../components/Areas/Slot_6';
 import filter from '../components/Filter/Filter';
 import FilteredRoutes from './Filter/FilteredRoutes';
+import Carousel from './Carousel/Carousel';
+import Results from '../components/Filter/Results';
+import Slot_1 from './Areas/Slot_1';
 
 class App extends Component {
   render() {
@@ -31,6 +34,9 @@ class App extends Component {
             <Route path='/subarea6/:area' component={slot_6}/>
             <Route path='/filter' component={filter}/>
             <Route path='/filteredroutes' component={FilteredRoutes}/>
+            <Route path='/carousel' component={Carousel}/>
+            <Route path='/Results' component={Results}/>
+            <Route path='/areas' component={Slot_1}/>
           </Switch>
         </HashRouter>
       </div>

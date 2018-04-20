@@ -12,18 +12,25 @@ class slot_1 extends Component {
     render() {
         const mappedAreas = this.props.areas.slot_1.map((area) => {
             // {console.log(area.slot_1)}
-               return < div > 
+            return <div className='mapped-routes'>
                 <Link to={`/state/${area.slot_1}`}><p>{area.slot_1}</p></Link>
+                <p>  _ _ _ _ _ _ _ _ _ _ _ _   </p>
                 <p>{area.count}</p>
-                </div >
-    })
-    // console.log(mappedAreas)
-    return(
-            <div>
-            { mappedAreas }
+
+                <p>{area.slot_2}</p>
             </div>
+        })
+        // console.log(mappedAreas)
+        return (
+
+            <div className='mapped-routes-display'>
+              
+                    {mappedAreas}
+                
+            </div>
+
         )
-}
+    }
 }
 
 function mapStateToProps(state) {

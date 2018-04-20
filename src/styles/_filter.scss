@@ -1,19 +1,21 @@
 .filtermain {
-    display: grid;
+    display: flex;
     flex-direction: column;
-    height: 200vh;
+    height: 100%;
     width: 100%;
-    padding: 20px;;
+    padding: 20px;
 }
 
 .filterbody {
     width: 100%;
-    height: 60%;
+    height: 100%;
     border: 1px solid black;
     background: gray;
     display: flex;
     flex-direction: column;
     padding: 20px;
+    box-sizing: border-box;
+    border-radius: 1%;
     button {
         min-width: 100px;
         max-width: 100px;
@@ -32,9 +34,9 @@
     text-align: left;
     margin-top: 0px;
     padding: 20px;
-    div:nth-child(odd){
-        background-color:lightgray;
-    }
+    // div:nth-child(odd){
+    //     background-color:lightgray;
+    // }
 }
 .filtermain > button {
     max-width: 150px;
@@ -54,12 +56,27 @@
 }
 
 .routes{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
-}   
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+    div {
+        height: 100%;
+        display: flex;
+        justify-content: start;
+        align-content: center;
+        div.route-name {
+            grid-column: 1 / 1;
+        }
+        
+        div.route-type {
+            grid-column: 6;
+        }
+    }
+} 
+
+
+
 
 .results {
 

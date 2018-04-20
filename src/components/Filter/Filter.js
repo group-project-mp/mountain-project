@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Form, Dropdown } from 'semantic-ui-react';
+import { Form, Dropdown, Pagination } from 'semantic-ui-react';
 import vSystem from './VSystem';
 import difficulty from './Difficulty';
 import quality from './Quality';
 import pitches from './Pitches';
 import typeOptions from './TypeOptions';
 import Spinner from '../Spinner/Spinner';
+// import Pagination from 'react-js-pagination';
 import { inputChange, getRoutes } from '../../ducks/filterroutes';
 
 
@@ -20,6 +21,7 @@ class Filter extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            
         }
         this.handleSelect = this.handleSelect.bind(this)
     }
@@ -31,23 +33,14 @@ class Filter extends Component {
     render() {
         const filter = this.props.filter;
 
-        let routeDisplay = Array.isArray(filter.routes) ? filter.routes.map((route, index) => {
-            return (<div key={index} className='routes'>
-                <p style={{ textAlign: 'left', alignContent: 'center' }}><Link to={`/route/${route.id}`}>{route.name}</Link></p>
-                <p>{route.stars}</p>
-                <p>{route.rating}</p>
-                <p>{route.type}</p>
-            </div>
-            )
-        }) : null
 
         return (
             <div className='filtermain'>
                 <div className='filterbody'>
                     <h1>Route Finder</h1>
-                    <br />
+
                     <h3>Tell us what you like, we'll tell you what to climb!</h3>
-                    <br />
+
                     <Form.Field>
                         <label>Quality</label>
                         <Dropdown placeholder='quality'
@@ -77,16 +70,9 @@ class Filter extends Component {
                         </Form.Field>
                     </div>
                     <br />
-                    <button onClick={() => this.props.getRoutes(filter)} color='rgb(44,92,142)'>Find Routes</button>
+                   <Link to={`/results`}> <button onClick={() => this.props.getRoutes(filter)} color='rgb(44,92,142)'>Find Routes</button></Link>
                 </div>
                 {/* <Spinner /> */}
-                {/* <br /> */}
-                <div className='results'>
-                    <h1>Filtered Routes</h1>
-                    <span>{routeDisplay}</span>
-                </div>
-
-
             </div>
         )
     }
