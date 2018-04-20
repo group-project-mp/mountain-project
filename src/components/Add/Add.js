@@ -43,7 +43,7 @@ class Add extends Component {
             description: state.description
         };
         return (
-            <div id='add-main'>
+            <div id='add-main' style={{width: '75%', margin: 'auto', border: 'solid 1px black', padding: '15px', marginTop: '30px'}}>
                 <h1>New Route</h1>
                 <div>
                     <Form className='form'>

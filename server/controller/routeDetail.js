@@ -12,7 +12,7 @@ module.exports = {
             res.status(200).send(areas)
         }).catch(err => res.status(500).send(areas))
     },
-    comments: (req, res) => { 
+    comments: (req, res) => {
         const db = req.app.get('db');
         db.gets.get_comments([req.params.id]).then(response => {
             res.status(200).send(response);
@@ -47,5 +47,11 @@ module.exports = {
             })
                 .catch(err => res.status(500).send(err))
         }
+    },
+    topTwenty: (req, res) => {
+        const db = req.app.get('db');
+        db.gets.top_20().then(routes => {
+            res.status(200).send(routes)
+        }).catch(err => res.status(500).send(err))
     }
 }
