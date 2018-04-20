@@ -39,12 +39,9 @@ class App extends Component {
           <Route path='/subarea6/:area' component={slot_6} />
           <Route path='/filter' component={filter} />
           <Route path='/filteredroutes' component={FilteredRoutes} />
-<<<<<<< HEAD
           <Route path='/carousel' component={Carousel} />
           <Route path='/Results' component={Results} />
           <Route path='/areas' component={Slot_1} />
-=======
->>>>>>> c820e6ae128a28d314e2506e76be9b8cca789b35
         </Switch>
 
       </div >
