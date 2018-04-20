@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Stars from './Stars';
-import { Button, Header, TextArea, Modal } from 'semantic-ui-react'
+import { Button, Header, Modal } from 'semantic-ui-react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class RouteHeader extends Component {
     constructor(props) {
@@ -21,21 +22,20 @@ export default class RouteHeader extends Component {
     }
 
     addMessage(value) {
-        this.setState({message: value})
+        this.setState({ message: value })
     }
 
 
     submitChange() {
         let body = {
-            text: this.state.text,
+            text: this.state.message,
             subject: `Changes to ${this.props.route.id} / ${this.props.route.name}`
         }
         axios.post('/api/email', body).then(res => {
-            console.log(res)
-            // this.setState({
-            //     showModal: false,
-            //     message: ''
-            // })
+            this.setState({
+                showModal: false,
+                message: ''
+            })
         })
     }
 
@@ -44,30 +44,30 @@ export default class RouteHeader extends Component {
         return (
             <div className='route-header-main'>
                 <div className='route-locations'>
-                    <span>{route.slot_1}</span>
+                    <Link to={`/state/${route.slot_1}`}><span>{route.slot_1}</span></Link>
                     {
                         route.slot_2
-                            ? <span>{' > ' + route.slot_2}</span>
+                            ? <Link to={`/area/${route.slot_2}`}><span>{' > ' + route.slot_2}</span></Link>
                             : null
                     }
                     {
                         route.slot_3
-                            ? <span>{' > ' + route.slot_3}</span>
+                            ? <Link to={`/subarea/${route.slot_3}`}><span>{' > ' + route.slot_3}</span></Link>
                             : null
                     }
                     {
                         route.slot_4
-                            ? <span>{' > ' + route.slot_4}</span>
+                            ? <Link to={`/subarea5/${route.slot_4}`}><span>{' > ' + route.slot_4}</span></Link>
                             : null
                     }
                     {
                         route.slot_5
-                            ? <span>{' > ' + route.slot_5}</span>
+                            ? <Link to={`/subarea6/${route.slot_5}`}><span>{' > ' + route.slot_5}</span></Link>
                             : null
                     }
                     {
                         route.slot_6
-                            ? <span>{' > ' + route.slot_6}</span>
+                            ? <Link to={`/finalarea/${route.slot_6}`}><span>{' > ' + route.slot_6}</span></Link>
                             : null
                     }
                 </div>
@@ -91,12 +91,11 @@ export default class RouteHeader extends Component {
                                 <Button content='Cancel' onClick={() => this.handleModal()} />
                             </Modal.Actions>
                         </Modal>
-                        <span>Add To Page</span>
                     </div>
                 </div>
                 <div className='route-stars-rating'>
                     <h2>{route.rating}</h2>
-                    <Stars stars={route.stars} />
+                    <Stars stars={route.stars} size='large' />
                     <span>Avg: {route.stars} from {route.star_votes} votes</span>
                 </div>
                 <hr />

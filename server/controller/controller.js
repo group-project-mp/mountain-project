@@ -6,7 +6,7 @@ module.exports = {
         const db = req.app.get('db');
         axios.get('https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=39.277&lon=-111.174&maxResults=200&maxDistance=25&minDiff=V0&maxDiff=V12&key=107710868-83b40f4d964852ae1674deb85b4e6a00')
             .then(response => {
-                response.data.routes.map(e => db.ADDS.add_route(e.imgMedium, e.latitude, e.longitude, e.name, e.pitches, e.rating, e.starVotes, e.stars, e.type, e.id, e.location[0], e.location[1], e.location[2], e.location[3], e.location[4], e.location[5])
+                response.data.routes.map(e => db.adds.add_route(e.imgMedium, e.latitude, e.longitude, e.name, e.pitches, e.rating, e.starVotes, e.stars, e.type, e.id, e.location[0], e.location[1], e.location[2], e.location[3], e.location[4], e.location[5])
                     .then(response => {
                         res.status(200).send('added route')
                     })
@@ -28,6 +28,7 @@ module.exports = {
        }).catch(err => res.status(500).send('Error'))
    },
    getUserInfo: (req, res, next) => {
+    //    console.log(req.user)
        const id = req.user.user_id
        const db = req.app.get('db');
        db.user.get_user_info(id)

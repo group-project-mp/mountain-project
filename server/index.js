@@ -8,6 +8,7 @@ const express = require('express')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
     , path = require('path')
+    , controller = require('./controller/controller')
 
 const { 
     REACT_APP_SUCCESS,
@@ -48,7 +49,7 @@ massive(CONNECTION_STRING).then(db => {
         const db = app.get('db')
         db.user.find_user([profile.id]).then(users => {
             if (!users[0]) {
-                db.user.create_user([profile.id, profile.name.givenName]).then(userCreated => {
+                db.user.create_user([profile.id, profile.name.givenName, profile.picture]).then(userCreated => {
                     done(null, userCreated[0])
                 })
             } else {
@@ -56,7 +57,6 @@ massive(CONNECTION_STRING).then(db => {
             }
         })
     }))
-
     passport.serializeUser((id, done) => {
         done(null, id)
     })
@@ -69,6 +69,7 @@ massive(CONNECTION_STRING).then(db => {
     
     app.get('/auth', passport.authenticate('auth0'));
     app.get('/auth/callback', passport.authenticate('auth0', {
+        
         successRedirect: REACT_APP_SUCCESS,
         failureRedirect: 'http://localhost:3000/#/',
     }))
@@ -80,10 +81,9 @@ massive(CONNECTION_STRING).then(db => {
             res.status(401).send('didnt work')
         }
     })
-    
     app.get('/auth/logout', (req, res) => {
         req.logOut();
-        res.redirect('/')
+        res.redirect('http://localhost:3000/#/')
     })
 
     
@@ -93,8 +93,12 @@ massive(CONNECTION_STRING).then(db => {
 app.get('/getuserinfo', controller.getUserInfo)
 app.get('/getticks', controller.getTicks)
 app.get('/gettodos', controller.getTodos)
+app.delete('/deletetodo/:id', controller.deleteTodo);
+app.post('/api/addTick/:route', routeDetail.addTick);
+app.post('/api/addTodo/:route', routeDetail.addTodo);
 app.delete('/deletetodo/:id', controller.deleteTodo)
 app.get('/filteredroutes', controller.getRoutes)
+
 
 //mp api data access
 
@@ -110,7 +114,9 @@ app.get(`/api/slot5/:id`, addController.distinct5);
 app.get(`/api/slot6/:id`, addController.distinct6);
 app.post('/api/newRoute', addController.submit);
 app.get('/api/route/:id', routeDetail.routeDetail);
-
+app.get('/api/similar/:id', routeDetail.getSimilar);
+app.get('/api/comments/:id', routeDetail.comments);
+app.post('/api/comments/:id', routeDetail.addComment);
 
 // nodemailer
 app.post('/api/email', mailer.mail);

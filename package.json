@@ -11,6 +11,9 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "google-map-react": "^0.34.0",
+    "google-maps-react": "^2.0.0",
+    "jest": "^22.4.3",
     "massive": "^4.7.1",
     "node-sass-chokidar": "^1.2.2",
     "nodemailer": "^4.6.4",
@@ -22,8 +25,12 @@
     "react": "^16.3.1",
     "react-chartjs-2": "^2.7.0",
     "react-dom": "^16.3.1",
+
     "react-js-pagination": "^3.0.1",
     "react-loading-bar": "0.0.7",
+
+    "react-google-maps": "^9.4.5",
+
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -35,7 +42,7 @@
   "scripts": {
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
