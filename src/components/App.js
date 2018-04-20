@@ -38,6 +38,7 @@ class App extends Component {
           <Route path='/filter' component={filter} />
           <Route path='/filteredroutes' component={FilteredRoutes} />
           <Route path='/carousel' component={Carousel} />
+
           <Route path='/areas' component={Slot_1} />
         </Switch>
 

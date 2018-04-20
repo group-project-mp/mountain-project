@@ -16,8 +16,10 @@ class slot_2 extends Component {
      
         const mappedAreas = this.props.areas.slot_2.map((area) => {
             // {console.log(area.slot_2)}
-               return < div > 
-                
+
+
+            return < div >
+
                 <Link to={`/area/${area.slot_2}`}><p>{area.slot_2}</p></Link>
                 <p>{area.count}</p>
                 </div >
@@ -45,15 +47,15 @@ class slot_2 extends Component {
                     <Map areas = {this.props.areas.slot_2}/>
                 </div>
             </div>
+            </div>
         )
 }
 }
 
 function mapStateToProps(state) {
-    console.log(state, "hit state")
+    // console.log(state, "hit state")
     return {
         areas: state.areas
-
     }
 }
 

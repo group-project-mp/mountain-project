@@ -4,23 +4,21 @@ import Carousel from '../Carousel/Carousel';
 import Filter from '../Filter/Filter';
 
 
+
+
 export default function Home() {
 
-   return (
+    return (
 
-       <div className='main'>
-           <div className='mainheader'>
-               <div className='carousel'>
-                   <Carousel />
-               </div>
-               <div className='filter'>
-                   <Filter />
-               </div>
-           <div>
-               <Slot_1 />
-           </div>
-           </div>
-       </div>
-   )
+        <div className='main'>
+            <div className='mainheader'>
+                <Carousel />
+                <div>
+                    <Slot_1 />
+                </div>
+            </div>
+        </div>
+    )
+
 }
 

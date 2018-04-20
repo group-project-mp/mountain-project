@@ -4,11 +4,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Button, Icon } from 'semantic-ui-react';
 import reilogo from './reilogo.png';
-
 class Header extends Component {
     constructor() {
         super();
-
         this.state = {
             user: false,
             img: null
@@ -22,7 +20,6 @@ class Header extends Component {
             })
         })
     }
-
     render() {
         const { user, img } = this.state;
         return (
@@ -38,7 +35,6 @@ class Header extends Component {
                         <a href='https://www.rei.com/opt-outside'><span>{'#optoutside'}</span></a>
                     </div>
                 </div>
-
                 <div className='header-bottom'>
                     <div className='header-bottom-left'>
                         <Link to='/'><img src={logo} alt='logo' /></Link>
@@ -48,7 +44,6 @@ class Header extends Component {
                             <Link to='/results'><span>Route Finder</span></Link>
                         </div>
                     </div>
-
                     <div className='header-bottom-right'>
                         {
                             user && img
@@ -69,15 +64,10 @@ class Header extends Component {
         )
     }
 }
-
 export default Header;
-
-
 // test() {
 //     axios.post(`/api/test`).then(res => {
 //         console.log(res)
 //     })
 // }
-
-
 {/* <button onClick={this.test}>click me</button> */ }

@@ -13,7 +13,8 @@ class Results extends Component {
             routes: this.props.filter.routes,
             pageNumber: 1,
             routesPerPage: 20,
-
+            pagesArr: [],
+            dataCount: [],
         }
     }
 
@@ -33,9 +34,9 @@ class Results extends Component {
             return (
                 <div key={index} className='routes'>
                     <p className='route-name' > <Link to={`/route/${route.id}`}>{route.name}</Link></p>
-                    <div>{route.stars}</div>
-                    <div> {route.rating}</div>
-                    <div className='route-type'>{route.type}</div>
+                    <div style={{textAlign: 'center'}}>{route.stars}</div>
+                    <div style={{textAlign: 'center'}}> {route.rating}</div>
+                    <div style={{textAlign: 'right'}}>{route.type}</div>
                 </div>
             )
         }) : null
