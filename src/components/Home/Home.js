@@ -6,62 +6,19 @@ import Filter from '../Filter/Filter';
 
 
 
-export default class Home extends Component {
-    constructor() {
-        super();
-
-        this.test = this.test.bind(this);
-    }
-
-    test() {
-        axios.post(`/api/test`).then(res => {
-            console.log(res)
-        })
-    }
-
-    render() {
-        return (
-
-            <div className='main'>
-                <div className='nav-bar'>
-                    <a href={'http://localhost:3009/auth'}><button>Login/Register</button></a>
-                </div>
-                <div className='main-header'>
-                    <div className='crsl'>
-                        <Carousel />
-                    </div>
-                    <div className='fltr'>
-                        <Filter />
-                    </div>
-                </div>
-
-                <div className='main-body'>
-                    <div>
-                        <Slot_1 />
-                    </div>
-                </div>
-            </div>
-        )
-    }
-}
 
 export default function Home() {
 
-   return (
+    return (
 
-       <div className='main'>
-           <div className='mainheader'>
-               <div className='carousel'>
-                   <Carousel />
-               </div>
-               <div className='filter'>
-                   <Filter />
-               </div>
-           <div>
-               <Slot_1 />
-           </div>
-           </div>
-       </div>
-   )
+        <div className='main'>
+            <div className='mainheader'>
+                <Carousel />
+                <div>
+                    <Slot_1 />
+                </div>
+            </div>
+        </div>
+    )
 }
 

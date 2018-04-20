@@ -41,20 +41,20 @@ class Filter extends Component {
 
                     <h3>Tell us what you like, we'll tell you what to climb!</h3>
 
-                    <Form.Field>
                         <label>Quality</label>
+                    <Form.Field>
                         <Dropdown placeholder='quality'
                             selection options={quality} onChange={this.handleSelect} />
                     </Form.Field>
-                    <br />
-                    <Form.Field>
+                    {/* <br /> */}
                         <label>Pitches</label>
+                    <Form.Field>
                         <Dropdown placeholder='pitches'
                             selection options={pitches} onChange={this.handleSelect} />
                     </Form.Field>
-                    <br />
-                    <Form.Field>
+                    {/* <br /> */}
                         <label>Type</label>
+                    <Form.Field>
                         <Dropdown placeholder='type' selection options={typeOptions} onChange={this.handleSelect} />
                     </Form.Field>
                     <br />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 import home from '../components/Home/Home';
 import route from '../components/Route/Route';
 import profile from '../components/Profile/Profile';
@@ -22,26 +22,6 @@ class App extends Component {
     return (
       <div className="App">
 
-        <HashRouter>
-          <Switch>
-            <Route exact path='/' component={home} />
-            <Route path='/route/:id' component={route} />
-            <Route path='/user/:id' component={profile} />
-            <Route path='/add' component={add} />
-            <Route path='/finalarea/:area' component={FinalArea}/>
-            <Route path='/state/:area' component={slot_2}/>
-            <Route path='/area/:area' component={slot_3}/>
-            <Route path='/subarea/:area' component={slot_4}/>
-            <Route path='/subarea5/:area' component={slot_5}/>
-            <Route path='/subarea6/:area' component={slot_6}/>
-            <Route path='/filter' component={filter}/>
-            <Route path='/filteredroutes' component={FilteredRoutes}/>
-            <Route path='/carousel' component={Carousel}/>
-            <Route path='/Results' component={Results}/>
-            <Route path='/areas' component={Slot_1}/>
-          </Switch>
-        </HashRouter>
-
         <Header />
         <Switch>
           <Route exact path='/' component={home} />
@@ -55,7 +35,10 @@ class App extends Component {
           <Route path='/subarea5/:area' component={slot_5} />
           <Route path='/subarea6/:area' component={slot_6} />
           <Route path='/filter' component={filter} />
-          <Route path='/filteredroutes' component={FilteredRoutes}/>
+          <Route path='/filteredroutes' component={FilteredRoutes} />
+          <Route path='/carousel' component={Carousel} />
+          <Route path='/Results' component={Results} />
+          <Route path='/areas' component={Slot_1} />
         </Switch>
 
       </div>

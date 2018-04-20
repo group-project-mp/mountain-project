@@ -1,11 +1,14 @@
 .carousel-body {
+    display: flex;
     height: 100%;
+    width: 100%;
     background: black;
+    border-top: 12px solid #486796;
+    // border-bottom: 12px solid #486796;
 }
-
-.carousel {
-    box-shadow: 5px 5px 15px 5px aliceblue;
+.fltr {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    background: #000000;
 }
-
-
-
