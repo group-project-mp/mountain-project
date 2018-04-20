@@ -8,7 +8,6 @@ const initialState = {
 const _PENDING = '_PENDING';
 const _FULFILLED = '_FULFILLED';
 const GETROUTE = 'GETROUTE';
-const GETCOMMENTS = 'GETCOMMENTS';
 const ADDTICK = 'ADDTICK';
 const ADDTODO = 'ADDTODO';
 
