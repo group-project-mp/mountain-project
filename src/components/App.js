@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 import home from '../components/Home/Home';
 import route from '../components/Route/Route';
 import profile from '../components/Profile/Profile';
@@ -29,6 +29,9 @@ class App extends Component {
           <Route path='/user/:id' component={profile} />
           <Route path='/add' component={add} />
           <Route path='/finalarea/:area' component={FinalArea} />
+          <Route path='/carousel' component={Carousel} />
+          <Route path='/Results' component={Results} />
+          <Route path='/areas' component={Slot_1} />
           <Route path='/state/:area' component={slot_2} />
           <Route path='/area/:area' component={slot_3} />
           <Route path='/subarea/:area' component={slot_4} />
@@ -36,9 +39,12 @@ class App extends Component {
           <Route path='/subarea6/:area' component={slot_6} />
           <Route path='/filter' component={filter} />
           <Route path='/filteredroutes' component={FilteredRoutes} />
+<<<<<<< HEAD
           <Route path='/carousel' component={Carousel} />
           <Route path='/Results' component={Results} />
           <Route path='/areas' component={Slot_1} />
+=======
+>>>>>>> c820e6ae128a28d314e2506e76be9b8cca789b35
         </Switch>
 
       </div >

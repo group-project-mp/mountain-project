@@ -13,44 +13,40 @@ class slot_2 extends Component {
     }
 
     render() {
+     
         const mappedAreas = this.props.areas.slot_2.map((area) => {
-            return
-            < div >
+            // {console.log(area.slot_2)}
+               return < div > 
+                
                 <Link to={`/area/${area.slot_2}`}><p>{area.slot_2}</p></Link>
                 <p>{area.count}</p>
-            </div >
-        })
+                </div >
+    })
+    // console.log(mappedAreas)
+    return(
+        <div>
+                <h2>{this.props.match.params.area}</h2>
 
-        console.log(mappedAreas)
-        return (
-            <div className='area-main-wrapper'>
-            <div>
-                    <h2>{this.props.match.params.area}</h2>
-
-                    {this.props.areas.description[0] ? <div>
-                        <div>
-                            <h3>Directions</h3>
-                            <p>{this.props.areas.description[0].description}</p>
+                {this.props.areas.description[0] ? <div>
+                    <div>
+                        <h3>Directions</h3>
+                        <p>{this.props.areas.description[0].description}</p>
                         </div>
                         <div>
                             <h3>Getting There</h3>
-                            <p>{this.props.areas.description[0].getting_there}</p>
-                        </div>
+                    <p>{this.props.areas.description[0].getting_there}</p>
                     </div>
-                        : null}
+                </div>
+                    : null}
                     <h3>Areas</h3>
-
-
-                    <Link to={'/'}><p>All Locations</p></Link>
-
-                    {mappedAreas}
-                    <div>
-                        <Map areas={this.props.areas.slot_2} />
-                    </div>
+                    <Link to = {'/'}><p>All Locations</p></Link>
+                {mappedAreas}
+                <div>
+                    <Map areas = {this.props.areas.slot_2}/>
                 </div>
             </div>
         )
-    }
+}
 }
 
 function mapStateToProps(state) {
