@@ -50,15 +50,11 @@ export default connect(mapStateToProps, { getUserInfo })(Header)
 
 
 
-export default connect(mapStateToProps, { getUserInfo })(Header)
-
-
-
 // test() {
 //     axios.post(`/api/test`).then(res => {
 //         console.log(res)
 //     })
 // }`
-=======
+
 {/* <button onClick={this.test}>click me</button> */ }
 

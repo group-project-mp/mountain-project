@@ -8,7 +8,6 @@ const express = require('express')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
     , path = require('path')
-    , controller = require('./controller/controller')
 
 const { 
     REACT_APP_SUCCESS,
