@@ -28,6 +28,7 @@ module.exports = {
        }).catch(err => res.status(500).send('Error'))
    },
    getUserInfo: (req, res, next) => {
+    //    console.log(req.user)
        const id = req.user.user_id
        const db = req.app.get('db');
        db.user.get_user_info(id)
