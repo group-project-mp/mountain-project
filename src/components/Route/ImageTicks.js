@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Rating } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { addTodo, addTick, addRating, addDifficulty } from '../../ducks/routeDetail';
+import { addTodo, addTick } from '../../ducks/routeDetail';
 import { Modal, Header, Button } from 'semantic-ui-react';
-import Boulder from '../Add/Boulder';
-import Difficulty from '../Add/Difficulty';
 
 class ImageTicks extends Component {
     constructor(props) {
@@ -70,19 +68,43 @@ class ImageTicks extends Component {
                     </div>
                     <div className='you-sub'>
                         <span style={{ fontWeight: 'bold' }}>Your Difficulty Rating:</span>
-                        <select onChange={(e) => this.handleInput('difficuly', e.target.value)}>
-                            <option>Select</option>
-                            <option>5.7</option>
-                            <option>5.8</option>
-                            <option>5.9</option>
-                            <option>5.10</option>
-                            <option>5.11</option>
-                            <option>5.12</option>
-                            <option>5.13</option>
-                            <option>5.14</option>
-                            <option>5.15</option>
-                            <option>5.16</option>
-                        </select>
+                        {
+                            this.props.type === 'Boulder'
+                                ?
+                                <select>
+                                    <option value='V0'>V0</option>
+                                    <option value='V1'>V1</option>
+                                    <option value='V2'>V2</option>
+                                    <option value='V3'>V3</option>
+                                    <option value='V4'>V4</option>
+                                    <option value='V5'>V5</option>
+                                    <option value='V6'>V6</option>
+                                    <option value='V7'>V7</option>
+                                    <option value='V8'>V8</option>
+                                    <option value='V9'>V9</option>
+                                    <option value='V10'>V10</option>
+                                    <option value='V11'>V11</option>
+                                    <option value='V12'>V12</option>
+                                    <option value='V13'>V13</option>
+                                    <option value='V14'>V14</option>
+                                    <option value='V15'>V15</option>
+                                    <option value='V16'>V16</option>
+                                    <option value='V17'>V17</option>
+                                </select>
+                                :
+                                <select onChange={(e) => this.handleInput('difficuly', e.target.value)}>
+                                    <option>Select</option>
+                                    <option>5.7</option>
+                                    <option>5.8</option>
+                                    <option>5.9</option>
+                                    <option>5.10</option>
+                                    <option>5.11</option>
+                                    <option>5.12</option>
+                                    <option>5.13</option>
+                                    <option>5.14</option>
+                                    <option>5.15</option>
+                                </select>
+                        }
                     </div>
                     <div className='you-sub'>
 
@@ -142,5 +164,5 @@ class ImageTicks extends Component {
     }
 }
 
-export default connect(null, { addTodo, addTick, addRating, addDifficulty })(ImageTicks);
+export default connect(null, { addTodo, addTick })(ImageTicks);
 

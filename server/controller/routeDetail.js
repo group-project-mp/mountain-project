@@ -19,12 +19,12 @@ module.exports = {
         }).catch(err => res.status(500).send(err))
     },
     addTick: (req, res) => {
-       const id = req.user.user_id
-       const db = req.app.get('db');
-       const { style, date, pitches, notes, leadStyle, difficulty } = req.body;
-       db.adds.add_tick([id, req.params.route, notes, date, style, leadStyle, difficulty]).then(response => {
-           res.status(200).send('Successfully added Tick')
-       }).catch(err => res.status(500).send(err));
+        const id = req.user.user_id
+        const db = req.app.get('db');
+        const { style, date, pitches, notes, leadStyle, difficulty } = req.body;
+        db.adds.add_tick([id, req.params.route, notes, date, style, leadStyle, difficulty]).then(response => {
+            res.status(200).send('Successfully added Tick')
+        }).catch(err => res.status(500).send(err));
     },
     addTodo: (req, res) => {
         const id = req.user.user_id
@@ -32,6 +32,20 @@ module.exports = {
         db.adds.add_todo([req.params.route, id]).then(response => {
             res.status(200).send('Success');
         })
-        .catch(err => res.status(500).send(err));
+            .catch(err => res.status(500).send(err));
+    },
+    addComment: (req, res) => {
+        const db = req.app.get('db');
+        const { id } = req.params;
+        const user = req.user;
+        const { date, comment } = req.body;
+        if (!user) {
+            res.send('no')
+        } else {
+            db.adds.add_comment([user.user_id, comment, id, date]).then(response => {
+                res.status(200).send({ user_name: user.user_name, date: date, comment: comment })
+            })
+                .catch(err => res.status(500).send(err))
+        }
     }
 }
