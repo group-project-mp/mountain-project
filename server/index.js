@@ -20,6 +20,7 @@ const {
     CALLBACK_URL
  } = process.env;
 
+const controller = require('./controller/controller');
 const addController = require('./controller/addRoute');
 const routeDetail = require('./controller/routeDetail');
 const mailer = require('./controller/mail');
@@ -114,6 +115,7 @@ app.post('/api/newRoute', addController.submit);
 app.get('/api/route/:id', routeDetail.routeDetail);
 app.get('/api/similar/:id', routeDetail.getSimilar);
 app.get('/api/comments/:id', routeDetail.comments);
+app.post('/api/comments/:id', routeDetail.addComment);
 
 // nodemailer
 app.post('/api/email', mailer.mail);

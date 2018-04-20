@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getRoute, getComments } from '../../ducks/routeDetail';
+import { getRoute } from '../../ducks/routeDetail';
 import RouteHeader from './RouteHeader';
 import ImageTicks from './ImageTicks';
 import SimilarArea from './SimilarArea';
 import Comments from './Comments';
 import { withRouter } from 'react-router';
 import { Icon } from 'semantic-ui-react';
+import Routemap from './Routemap';
 
 class Route extends Component {
     componentDidMount() {
         const { id } = this.props.match.params;
         this.props.getRoute(id);
-        this.props.getComments(id);
+        // this.props.getComments(id);
     }
 
     render() {
@@ -28,14 +29,14 @@ class Route extends Component {
                             {
                                 route.image
                                     ? <img src={route.image} alt='route' />
-                                    : <div className='no-photo'><Icon name='photo' size='massive' color='grey'/></div>
+                                    : <div className='no-photo'><Icon name='photo' size='massive' color='grey' /></div>
                             }
 
                         </div>
 
                         <div className='similar-tick-container'>
                             <SimilarArea area={slot_6 ? slot_6 : slot_5 ? slot_5 : slot_4 ? slot_4 : slot_3} />
-                            <ImageTicks type={route.type} pitches={route.pitches} id={route.id}/>
+                            <ImageTicks type={route.type} pitches={route.pitches} id={route.id} />
                         </div>
                     </div>
 
@@ -51,14 +52,14 @@ class Route extends Component {
                         </div>
                         <div className='bottom-section-container'>
                             <h1>Location</h1>
+                            <Routemap latitude={route.latitude} longitude={route.longitude} />
                         </div>
                         {/* <div>
                             <h1>Photos</h1>
                         </div> */}
 
                         <div className='bottom-section-container'>
-                            <h1>Comments</h1>
-                            <Comments comments={comments} />
+                            <Comments />
                         </div>
                     </div>
                 </div>
@@ -74,4 +75,4 @@ var mapStateToProps = (state) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, { getRoute, getComments })(Route));
+export default withRouter(connect(mapStateToProps, { getRoute })(Route));
