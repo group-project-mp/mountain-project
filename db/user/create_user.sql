@@ -1,3 +1,3 @@
 INSERT INTO users
-(auth_id, user_name)
-values ($1, $2)
+(auth_id, user_name, img)
+values ($1, $2, $3)

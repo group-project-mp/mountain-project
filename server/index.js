@@ -8,6 +8,7 @@ const express = require('express')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
     , path = require('path')
+    , controller = require('./controller/controller')
 
 const { 
     REACT_APP_SUCCESS,
@@ -48,7 +49,7 @@ massive(CONNECTION_STRING).then(db => {
         const db = app.get('db')
         db.user.find_user([profile.id]).then(users => {
             if (!users[0]) {
-                db.user.create_user([profile.id, profile.name.givenName]).then(userCreated => {
+                db.user.create_user([profile.id, profile.name.givenName, profile.picture]).then(userCreated => {
                     done(null, userCreated[0])
                 })
             } else {
@@ -82,7 +83,7 @@ massive(CONNECTION_STRING).then(db => {
     })
     app.get('/auth/logout', (req, res) => {
         req.logOut();
-        res.redirect('/')
+        res.redirect('http://localhost:3000/#/')
     })
 
     

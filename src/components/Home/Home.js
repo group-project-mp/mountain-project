@@ -6,23 +6,21 @@ import Filter from '../Filter/Filter';
 
 
 export default function Home() {
-    return (
 
-        <div className='main'>
+   return (
 
-            <div className='mainheader'>
-            
-                <div className='carousel'>
-                    <Carousel />
-                </div>
-                <div className='filter'>
-                    <Filter />
-                </div>
-            </div>
-            
-            <div>
-                <Slot_1 />
-            </div>
-        </div>
-    )
+       <div className='main'>
+           <div className='mainheader'>
+               <div className='carousel'>
+                   <Carousel />
+               </div>
+               <div className='filter'>
+                   <Filter />
+               </div>
+           <div>
+               <Slot_1 />
+           </div>
+           </div>
+       </div>
+   )
 }

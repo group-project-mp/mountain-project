@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { getUserInfo, getTicks, getTodos, deleteTodo } from '../../ducks/users';
 import Chart from './Chart'
 
-
 class Profile extends Component {
     constructor(){
         super()
@@ -14,7 +13,6 @@ class Profile extends Component {
         }
     }
     
-
     componentDidMount() {
         this.props.getUserInfo();
         this.props.getTicks();
@@ -101,9 +99,12 @@ class Profile extends Component {
         return (
             <div>
                 <h1>User</h1>
+
                 {user ?
                     <div>
                         <div>name {user.user_name}</div>
+                        
+                        <div><img className = 'img'src={user.img} alt=""/></div>
                         <div>
                             ticks{this.state.showAllTicks? mappedTicks : fiveTicks}
                             <button onClick = {() => this.setState({showAllTicks:!this.state.showAllTicks})}>{this.state.showAllTicks ? <p>Close</p> : <p>Show All</p>}</button>

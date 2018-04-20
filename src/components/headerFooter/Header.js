@@ -3,8 +3,12 @@ import logo from '../../logo.svg';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../ducks/users';
+
+
+
 class Header extends Component {
     componentDidMount() {
+
         this.props.getUserInfo();
     }
     render() {
@@ -12,18 +16,22 @@ class Header extends Component {
         return (
             <div id='header'>
                 <div className='header-top'>
-                </div>
+                    {/* <button onClick={this.test}>click me</button> */}
+                    </div>
                 <div className='header-bottom'>
                     <div>
                         <Link to='/'><img src={logo} alt='logo' /></Link>
                     </div>
+
                     <div className='header-bottom-right'>
                         <a href={user ? process.env.REACT_APP_LOGOUT : process.env.REACT_APP_LOGIN} ><button>{user ? <p>Logout</p> : <p>Login/Register</p>}</button></a>
+
                     </div>
                 </div>
             </div>
         )
     }
+
 }
 function mapStateToProps(state) {
     return {
@@ -40,4 +48,17 @@ export default connect(mapStateToProps, { getUserInfo })(Header)
 // }
 
 
+
+
+export default connect(mapStateToProps, { getUserInfo })(Header)
+
+
+
+// test() {
+//     axios.post(`/api/test`).then(res => {
+//         console.log(res)
+//     })
+// }`
+=======
 {/* <button onClick={this.test}>click me</button> */ }
+
