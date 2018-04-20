@@ -1,14 +1,19 @@
 .routes{
     display: grid;
-    grid-template-columns: repeat(1, 2fr 1fr 1fr 1fr);
+    grid-template-columns: repeat(1, 2fr 5fr .5fr .5fr .5fr);
     // grid-gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: minmax(15px, auto);
     div {
-        height: 5%;
+        display: flex;
+        justify-content: center;
     }
 } 
 
 .results {
     padding: 5%;
+    
+    div:nth-child(even){
+        background: #f2f2f2;
+    }
 }
 
