@@ -17,7 +17,7 @@ class Route extends Component {
     }
 
     render() {
-        const { route, comments } = this.props;
+        const { route } = this.props;
         const { slot_6, slot_5, slot_4, slot_3 } = route;
         return (
             <div>

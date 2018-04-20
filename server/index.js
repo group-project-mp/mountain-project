@@ -8,7 +8,7 @@ const express = require('express')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
     , path = require('path')
-    
+
 
 const { 
     REACT_APP_SUCCESS,
@@ -97,7 +97,8 @@ app.delete('/deletetodo/:id', controller.deleteTodo);
 app.post('/api/addTick/:route', routeDetail.addTick);
 app.post('/api/addTodo/:route', routeDetail.addTodo);
 app.delete('/deletetodo/:id', controller.deleteTodo)
-app.get('/filteredroutes', controller.getRoutes)
+app.get('/filteredroutes', controller.getRoutes);
+app.get('/api/session', controller.session);
 
 
 //mp api data access

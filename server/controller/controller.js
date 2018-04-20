@@ -13,62 +13,63 @@ module.exports = {
                     .catch(err => console.log(err))
                 )
             }
-            )},
-   getStates: (req, res) => {
-       const db = req.app.get('db');
-       db.gets.state_and_count().then(response => {
-           res.status(200).send(response)
-       }).catch(err => res.status(500).send('Error'))
-   },
-   slot_2: (req, res) => {
-       const db = req.app.get('db');
-       const { slot_1 } = req.query;
-       db.gets.slot_2([slot_1]).then(slot_2 => {
-           res.status(200).send(slot_2)
-       }).catch(err => res.status(500).send('Error'))
-   },
-   getUserInfo: (req, res, next) => {
-    //    console.log(req.user)
-       const id = req.user.user_id
-       const db = req.app.get('db');
-       db.user.get_user_info(id)
-       .then( user => res.status(200).send( user ))
-       .catch( () => res.status(500).send());
-   },
-   getTicks: (req, res, next) => {
-       const id = req.user.user_id
-       const db = req.app.get('db');
-       db.user.get_ticks(id)
-       .then( ticks => res.status(200).send( ticks ))
-       .catch( () => res.status(500).send());
-   },
-   getTodos: (req, res, next) => {
-       const db = req.app.get('db');
-       const id = req.user.user_id
-       // arr will by req.user.todos probably
-       db.user.get_todos(id)
-       .then( todos => res.status(200).send( todos ))
-       .catch( () => res.status(500).send());
-   },
-   deleteTodo: (req, res, next) => {
-       const userId = req.user.user_id
-       const routeId = req.params.id
-       const db = req.app.get('db');
-       db.user.delete_todo(userId, routeId)
-       .then((todos)=> res.status(200).send(todos))
-       .catch(() => res.status(500).send())
-   },
-   distinct2: (req, res) => {
-       const db = req.app.get('db');
-       const { id } = req.params;
-       db.gets.slot2_distinct(id).then(response => {
-           res.status(200).send(response)
-       }).catch(res.status(500).send('Error'))
+            )
+    },
+    getStates: (req, res) => {
+        const db = req.app.get('db');
+        db.gets.state_and_count().then(response => {
+            res.status(200).send(response)
+        }).catch(err => res.status(500).send('Error'))
+    },
+    slot_2: (req, res) => {
+        const db = req.app.get('db');
+        const { slot_1 } = req.query;
+        db.gets.slot_2([slot_1]).then(slot_2 => {
+            res.status(200).send(slot_2)
+        }).catch(err => res.status(500).send('Error'))
+    },
+    getUserInfo: (req, res, next) => {
+        //    console.log(req.user)
+        const id = req.user.user_id
+        const db = req.app.get('db');
+        db.user.get_user_info(id)
+            .then(user => res.status(200).send(user))
+            .catch(() => res.status(500).send());
+    },
+    getTicks: (req, res, next) => {
+        const id = req.user.user_id
+        const db = req.app.get('db');
+        db.user.get_ticks(id)
+            .then(ticks => res.status(200).send(ticks))
+            .catch(() => res.status(500).send());
+    },
+    getTodos: (req, res, next) => {
+        const db = req.app.get('db');
+        const id = req.user.user_id
+        // arr will by req.user.todos probably
+        db.user.get_todos(id)
+            .then(todos => res.status(200).send(todos))
+            .catch(() => res.status(500).send());
+    },
+    deleteTodo: (req, res, next) => {
+        const userId = req.user.user_id
+        const routeId = req.params.id
+        const db = req.app.get('db');
+        db.user.delete_todo(userId, routeId)
+            .then((todos) => res.status(200).send(todos))
+            .catch(() => res.status(500).send())
+    },
+    distinct2: (req, res) => {
+        const db = req.app.get('db');
+        const { id } = req.params;
+        db.gets.slot2_distinct(id).then(response => {
+            res.status(200).send(response)
+        }).catch(res.status(500).send('Error'))
 
     },
     getRoutes: (req, res) => {
         const db = req.app.get('db');
-        const {quality, type, pitches, min, max} = req.query;
+        const { quality, type, pitches, min, max } = req.query;
         db.gets.get_filtered_routes(min, max, quality, pitches, type).then(response => {
             res.status(200).send(response)
         }).catch(err => res.status(500).send('Error'))
@@ -85,31 +86,31 @@ module.exports = {
         const id = req.user.user_id
         const db = req.app.get('db');
         db.user.get_user_info(id)
-        .then( user => res.status(200).send( user ))
-        .catch( () => res.status(500).send());
+            .then(user => res.status(200).send(user))
+            .catch(() => res.status(500).send());
     },
     getTicks: (req, res, next) => {
         const id = req.user.user_id
         const db = req.app.get('db');
         db.user.get_ticks(id)
-        .then( ticks => res.status(200).send( ticks ))
-        .catch( () => res.status(500).send());
+            .then(ticks => res.status(200).send(ticks))
+            .catch(() => res.status(500).send());
     },
     getTodos: (req, res, next) => {
         const db = req.app.get('db');
         const id = req.user.user_id
         // arr will by req.user.todos probably
         db.user.get_todos(id)
-        .then( todos => res.status(200).send( todos ))
-        .catch( () => res.status(500).send());
+            .then(todos => res.status(200).send(todos))
+            .catch(() => res.status(500).send());
     },
     deleteTodo: (req, res, next) => {
         const userId = req.user.user_id
         const routeId = req.params.id
         const db = req.app.get('db');
         db.user.delete_todo(userId, routeId)
-        .then((todos)=> res.status(200).send(todos))
-        .catch(() => res.status(500).send())
+            .then((todos) => res.status(200).send(todos))
+            .catch(() => res.status(500).send())
     },
     distinct2: (req, res) => {
         const db = req.app.get('db');
@@ -117,58 +118,68 @@ module.exports = {
         db.gets.slot2_distinct(id).then(response => {
             res.status(200).send(response)
         }).catch(res.status(500).send('Error'))
-     },
-     getSlot1: (req, res, next) => {
-         const db = req.app.get('db');
-         db.areas.get_slot_1()
-         .then((areas) =>  res.status(200).send(areas))
-         .catch(() => res.status(500).send())
-     },
-     getSlot2: (req, res, next) => {
-         const db = req.app.get('db');
+    },
+    getSlot1: (req, res, next) => {
+        const db = req.app.get('db');
+        db.areas.get_slot_1()
+            .then((areas) => res.status(200).send(areas))
+            .catch(() => res.status(500).send())
+    },
+    getSlot2: (req, res, next) => {
+        const db = req.app.get('db');
         //  console.log(req.params)
-         db.areas.get_slot_2(req.params.area)
-         .then((areas) =>  res.status(200).send(areas))
-         .catch(() => res.status(500).send())
-     },
-     getSlot3: (req, res, next) => {
-         const db = req.app.get('db');
+        db.areas.get_slot_2(req.params.area)
+            .then((areas) => res.status(200).send(areas))
+            .catch(() => res.status(500).send())
+    },
+    getSlot3: (req, res, next) => {
+        const db = req.app.get('db');
         //  console.log(req.params)
-         db.areas.get_slot_3(req.params.area)
-         .then((areas) =>  res.status(200).send(areas))
-         .catch(() => res.status(500).send())
-     },
-     getSlot4: (req, res, next) => {
-         const db = req.app.get('db');
+        db.areas.get_slot_3(req.params.area)
+            .then((areas) => res.status(200).send(areas))
+            .catch(() => res.status(500).send())
+    },
+    getSlot4: (req, res, next) => {
+        const db = req.app.get('db');
         //  console.log(req.params)
-         db.areas.get_slot_4(req.params.area)
-         .then((areas) =>  res.status(200).send(areas))
-         .catch(() => res.status(500).send())
-     },
-     getSlot5: (req, res, next) => {
-         const db = req.app.get('db');
+        db.areas.get_slot_4(req.params.area)
+            .then((areas) => res.status(200).send(areas))
+            .catch(() => res.status(500).send())
+    },
+    getSlot5: (req, res, next) => {
+        const db = req.app.get('db');
         //  console.log(req.params)
-         db.areas.get_slot_5(req.params.area)
-         .then((areas) =>  res.status(200).send(areas))
-         .catch(() => res.status(500).send())
-     },
-     getSlot6: (req, res, next) => {
-         const db = req.app.get('db');
+        db.areas.get_slot_5(req.params.area)
+            .then((areas) => res.status(200).send(areas))
+            .catch(() => res.status(500).send())
+    },
+    getSlot6: (req, res, next) => {
+        const db = req.app.get('db');
         //  console.log(req.params)
-         db.areas.get_slot_6(req.params.area)
-         .then((areas) =>  res.status(200).send(areas))
-         .catch(() => res.status(500).send())
-     },
-     getFinalAreaRoutes: (req, res, next) => {
-         const db = req.app.get('db');
-         db.areas.get_final_area_routes(req.params.area)
-         .then((areas) =>  res.status(200).send(areas))
-         .catch(() => res.status(500).send())
-     },
-     getDescription: (req, res, next) => {
-         const db = req.app.get('db');
-         db.areas.get_description(req.params.area)
-         .then((areas) =>  res.status(200).send(areas))
-         .catch(() => res.status(500).send())
-     }
+        db.areas.get_slot_6(req.params.area)
+            .then((areas) => res.status(200).send(areas))
+            .catch(() => res.status(500).send())
+    },
+    getFinalAreaRoutes: (req, res, next) => {
+        const db = req.app.get('db');
+        db.areas.get_final_area_routes(req.params.area)
+            .then((areas) => res.status(200).send(areas))
+            .catch(() => res.status(500).send())
+    },
+    getDescription: (req, res, next) => {
+        const db = req.app.get('db');
+        db.areas.get_description(req.params.area)
+            .then((areas) => res.status(200).send(areas))
+            .catch(() => res.status(500).send())
+    },
+    session: (req, res) => {
+        const db = req.app.get('db');
+        if (!req.user) {
+            res.send({ user: false, image: null })
+        } else {
+            db.user.get_user_info([req.user.user_id]).then(response => {
+                res.send({ user: true, image: response[0].img })
+            })
+        }
+    }
 }

@@ -2,16 +2,14 @@ import axios from 'axios'
 
 const initialState = {
     user: {},
-    ticks:[],
-    todos:[]
+    ticks: [],
+    todos: []
 }
 
 const GET_USER_INFO = 'GET_USER_INFO'
 const GET_TICKS = 'GET_TICKS'
 const GET_TODOS = 'GET_TODOS'
 const DELETE_TODO = 'DELETE_TODO'
-
-
 
 export function getUserInfo() {
     let userData = axios.get('/getuserinfo').then(res => {
@@ -47,7 +45,7 @@ export function getTodos() {
 }
 
 export function deleteTodo(id) {
-    let userData = axios.delete(`/deletetodo/${id}`, {id}).then(res => {
+    let userData = axios.delete(`/deletetodo/${id}`, { id }).then(res => {
         // console.log(res.data)
         return res.data;
     })
@@ -56,24 +54,23 @@ export function deleteTodo(id) {
         payload: userData
     }
 }
-
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-    
+
         case GET_USER_INFO + '_FULFILLED':
-        return Object.assign({}, state, {user: action.payload});
+            return Object.assign({}, state, { user: action.payload });
 
         case GET_TICKS + '_FULFILLED':
-        return Object.assign({}, state, {ticks: action.payload});
+            return Object.assign({}, state, { ticks: action.payload });
 
         case GET_TODOS + '_FULFILLED':
-        return Object.assign({}, state, {todos: action.payload});
+            return Object.assign({}, state, { todos: action.payload });
 
         case DELETE_TODO + '_FULFILLED':
-        return Object.assign({}, state, {todos: action.payload});
+            return Object.assign({}, state, { todos: action.payload });
 
         default:
             return state;
-            
+
     }
 }
