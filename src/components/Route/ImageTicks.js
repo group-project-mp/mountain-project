@@ -3,6 +3,7 @@ import { Rating } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { addTodo, addTick } from '../../ducks/routeDetail';
 import { Modal, Header, Button } from 'semantic-ui-react';
+import axios from 'axios';
 
 class ImageTicks extends Component {
     constructor(props) {
@@ -28,6 +29,16 @@ class ImageTicks extends Component {
         this.setState({ showModal: !this.state.showModal })
     }
 
+    handleTodo() {
+        axios.get('/api/session').then(res => {
+            if (res.data.user === false) {
+                alert('Must be logged in to add todo')
+            } else {
+                this.props.addTodo();
+            }
+        })
+    }
+
     cancel() {
         this.setState({
             showModal: false,
@@ -49,8 +60,15 @@ class ImageTicks extends Component {
             leadStyle: this.state.leadStyle,
             difficulty: this.state.difficulty
         }
-        this.props.addTick(this.props.id, body);
-        this.cancel();
+        axios.get('/api/session').then(res => {
+            if (res.data.user === false) {
+                alert('Must be logged in to add tick')
+            } else {
+                this.props.addTick(this.props.id, body);
+                this.cancel();
+            }
+        })
+
     }
 
     render() {
@@ -60,7 +78,7 @@ class ImageTicks extends Component {
                     <h3>{'You & This Route'}</h3>
                     <div className='you-sub'>
                         <span style={{ fontWeight: 'bold', fontSize: '16px' }}>Your To-Do List:</span>
-                        <span style={{ cursor: 'pointer' }} onClick={(e) => this.props.addTodo()}>Add To-Do</span>
+                        <span style={{ cursor: 'pointer' }} onClick={() => this.handleTodo()}>Add To-Do</span>
                     </div>
                     <div className='you-sub'>
                         <span style={{ fontWeight: 'bold' }}>Your Star Rating:</span>

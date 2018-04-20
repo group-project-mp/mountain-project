@@ -17,8 +17,8 @@ class Top20 extends Component {
                     <span>{`${i + 1}. `}</span>
                     <Link to={`/route/${x.id}`}><span>{x.name}</span></Link>
                     <div>
-                        <Link to={`/area/${x.slot_1}`}><span>{`${x.slot_1} > `}</span></Link>
-                        <Link to={`/state/${x.slot_2}`}><span>{x.slot_2}</span></Link>
+                        <Link to={`/state/${x.slot_1}`}><span>{`${x.slot_1} > `}</span></Link>
+                        <Link to={`/area/${x.slot_2}`}><span>{x.slot_2}</span></Link>
                     </div>
                     <Stars stars={Number(x.stars)} size='small' />
                     <span>{x.rating}</span>
