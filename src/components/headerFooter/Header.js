@@ -4,11 +4,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../ducks/users';
 
-
-
 class Header extends Component {
     componentDidMount() {
-
         this.props.getUserInfo();
     }
     render() {
@@ -25,7 +22,6 @@ class Header extends Component {
 
                     <div className='header-bottom-right'>
                         <a href={user ? process.env.REACT_APP_LOGOUT : process.env.REACT_APP_LOGIN} ><button>{user ? <p>Logout</p> : <p>Login/Register</p>}</button></a>
-
                     </div>
                 </div>
             </div>

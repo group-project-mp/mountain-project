@@ -1,5 +1,91 @@
-.area-main-wrapper {
-    display: flex; 
+.area-wrapper {
+    display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+}
+
+.area-header-main-wrapper {
+    border-bottom: 2px solid#486796;
+    margin: 10px;
+    min-height: 100px;
+    width:85%;
+
+    H1 {
+        font-size: 40px;
+    }
+}
+
+.area-count-container {
+    width: 85%;
+    margin: auto;
+    min-height: 30px;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr  1fr;
+    align-items: center;
+    border-bottom: solid 1px #2e2e2e;
+    overflow:visible;
+}
+
+.sub-area-container {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 40px;
+    padding: 10px;
+    min-width:400px;
+    width: 50%;
+    min-height: 200px;
+    background-color: #f2f2f2;
+    overflow: hidden;
+    height: auto;
+    border-radius: 3px;
+    h2 {
+        text-align: center;
+    }
+}
+
+.areas-main {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 80%
+}
+.description-getting-there {
+    width: 75%;
+    padding: 15px;
+    min-height: 200px;
+    min-width: 500px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid#486796;
+    p {
+        padding-left: 20px;
+    }
+}
+
+.areas-map {
+    margin:30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.map-header {
+    margin: 50px;
+}
+
+.routes-list {
+    display: flex;
+    align-items: center;
+}
+
+.area-route-container {
+    width: 85%;
+    margin: auto;
+    min-height: 30px;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr .5fr .5fr;
+    align-items: center;
+    border-bottom: solid 1px #2e2e2e;
 }
