@@ -20,7 +20,7 @@ class SimilarArea extends Component {
                 this.setState({ area: res.data })
             })
         } else {
-            null
+            this.setState({area: []})
         }
     }
 
@@ -37,7 +37,7 @@ class SimilarArea extends Component {
                 </div>
             )
         })
-            : null
+            : similarList = similarList;
         return (
             <div className='similar-tick similar-container'>
                 <h4>Routes in the {this.props.area}</h4>

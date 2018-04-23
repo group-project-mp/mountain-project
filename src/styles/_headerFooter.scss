@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
 #header {
-    height: 100px;
+    height: 110px;
     width: 100vw;
-    margin-bottom: 10px;
+    border-bottom: solid 10px #486796;
 }
 
 .header-bottom {
@@ -18,14 +20,148 @@
     }
 }
 
+.header-bottom-left {
+    display: flex;
+    flex-direction: row;
+    width: 45%;
+    justify-content: space-between;
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 60%;
+        span {
+            color: white;
+        }
+    }
+}
+
 .header-top {
-    height: 30px;
+    height: 40px;
     width: 100%;
     background-color: #2e2e2e;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 25px;
+    div {
+        width: 75%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        span {
+            text-transform: uppercase;
+            color: #CBCBCB;
+            font-family: 'Fjalla One', sans-serif;
+            letter-spacing: .75px;
+        }
+    }
 }
 
 .header-bottom-right {
-    border: solid 1px white;
-    width: 300px;
-    height: 100%
+    min-width: 275px;
+    max-width: 325px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    span {
+        color: white;
+    }
 }
+
+.user-icon {
+    border-radius: 50%;
+}
+
+.rei-logo {
+    border-left: solid .5px gray;
+    padding-left: 15px;
+}
+
+@media (max-width:710px){
+    .header-top {
+        padding-right: 20px;
+        div {
+            width: 100%;
+            span {
+                font-size: 11px;
+                letter-spacing: 0;
+            }
+        }
+    }
+    .header-bottom-left {
+        width: 75%;
+        flex-direction: column;
+        img {
+            height: 35px;
+        }
+        div {
+            width: 100% !important;
+        }
+    }
+}
+
+@media (max-width:536px){
+    .header-top {
+        div {
+            span {
+                font-size: 8px;
+                letter-spacing: 0;
+            }
+        }
+    }
+    .header-bottom-left {
+        div {
+            span {
+                font-size: 9px;
+            }
+        }
+    }
+    .header-bottom-right {
+        margin-left: 20px;
+        width: 225px !important;
+        flex-direction: column;
+    }
+    .rei-logo {
+        height: 20px !important;
+        border-left: none;
+        margin-left: 20px;
+    }
+    .user-icon {
+        display: none;
+    }
+}
+
+@media (max-width:1045px){
+    .header-bottom-left {
+        width: 65%;
+        div {
+            width: 80%;
+        }
+    }
+}
+
+@media (max-width:950px){
+    .header-bottom-left {
+        width: 85%;
+        div {
+            width: 80%;
+        }
+    }
+}
+
+@media (max-width:440px){
+    .header-bottom-left {
+        div {
+            span {
+                font-size: 8px;
+            }
+        }
+    }
+}
+
+// ===== FOOTER ===== // 

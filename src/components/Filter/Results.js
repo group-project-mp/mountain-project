@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Filter from './Filter';
+import Stars from '../Route/Stars';
 
 
 class Results extends Component {
@@ -13,13 +14,14 @@ class Results extends Component {
             routes: this.props.filter.routes,
             pageNumber: 1,
             routesPerPage: 20,
-
+            pagesArr: [],
+            dataCount: [],
         }
     }
 
 
     render() {
-        console.log(this.sate.routes)
+        
         const filter = this.props.filter
 
         const paginationStart = this.sate.pageNumber * 20 -20
@@ -33,9 +35,10 @@ class Results extends Component {
             return (
                 <div key={index} className='routes'>
                     <p className='route-name' > <Link to={`/route/${route.id}`}>{route.name}</Link></p>
-                    <div>{route.stars}</div>
-                    <div> {route.rating}</div>
-                    <div className='route-type'>{route.type}</div>
+                    <div> <Link/></div>
+                    <div style={{alignItems: 'right'}}> <Stars stars={Number(route.stars)} size={'small'}/> </div>
+                    <div style={{textAlign: 'right'}}> {route.rating}</div>
+                    <div style={{textAlign: 'right'}}>{route.type}</div>
                 </div>
             )
         }) : null

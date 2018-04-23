@@ -3,16 +3,14 @@ import { connect } from 'react-redux';
 import { getSlot2, getDescription } from '../../ducks/areas';
 import Map from './Map'
 import { Link } from 'react-router-dom'
-
-
 class slot_2 extends Component {
     componentDidMount() {
         this.props.getSlot2(this.props.match.params.area);
         this.props.getDescription(this.props.match.params.area)
         // this.props.getDescription(this.props.match.params.area);
     }
-
     render() {
+
         const areas = this.props.areas.slot_2[0]
         console.log(areas)
         const mappedAreas = this.props.areas.slot_2.map((area, i) => {
@@ -58,18 +56,16 @@ class slot_2 extends Component {
                 <div className='areas-map'>
                     <h2 className='map-header'>Map of Areas within {this.props.match.params.area}</h2>
                     <Map className='map-container' areas={this.props.areas.slot_2} />
+
                 </div>
             </div>
         )
-    }
 }
-
+}
 function mapStateToProps(state) {
-    console.log(state, "hit state")
+    // console.log(state, "hit state")
     return {
         areas: state.areas
-
     }
 }
-
 export default connect(mapStateToProps, { getSlot2, getDescription })(slot_2)

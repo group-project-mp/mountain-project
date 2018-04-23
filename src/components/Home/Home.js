@@ -1,30 +1,25 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import React from 'react';
 import Slot_1 from '../Areas/Slot_1'
 import Carousel from '../Carousel/Carousel';
 import Filter from '../Filter/Filter';
-
-
-
-
+import Top20 from './Top20';
 
 export default function Home() {
 
-   return (
+    return (
 
-       <div className='main'>
-           <div className='mainheader'>
-               <div className='carousel'>
-                   <Carousel />
-               </div>
-               <div className='filter'>
-                   <Filter />
-               </div>
-           <div>
-               <Slot_1 />
-           </div>
-           </div>
-       </div>
-   )
+        <div className='main'>
+            <div className='mainheader'>
+                <Carousel />
+                <div>
+                    <Slot_1 />
+                </div>
+                <div>
+                    <Top20 />
+                </div>
+            </div>
+        </div>
+    )
+
 }
 
