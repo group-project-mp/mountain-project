@@ -14,6 +14,7 @@ class Route extends Component {
         const { id } = this.props.match.params;
         this.props.getRoute(id);
         // this.props.getComments(id);
+        window.scrollTo(0,0)
     }
 
     render() {
