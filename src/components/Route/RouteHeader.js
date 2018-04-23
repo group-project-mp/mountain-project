@@ -52,18 +52,18 @@ export default class RouteHeader extends Component {
                     }
                     {
                         route.slot_3
-                            ? <Link to={`/subarea/${route.slot_3}`}><span>{' > ' + route.slot_3}</span></Link>
+                            ? <Link to={ route.slot_4 ? `/subarea/${route.slot_3}` : `/finalarea/${route.slot_3}`}><span>{' > ' + route.slot_3}</span></Link>
                             : null
                     }
                     {
                         route.slot_4
-                            ? <Link to={`/subarea5/${route.slot_4}`}><span>{' > ' + route.slot_4}</span></Link>
-                            : null
+                        ? <Link to={ route.slot_5 ? `/subarea6/${route.slot_5}` : `/finalarea/${route.slot_4}`}><span>{' > ' + route.slot_4}</span></Link>
+                        : null
                     }
                     {
                         route.slot_5
-                            ? <Link to={`/subarea6/${route.slot_5}`}><span>{' > ' + route.slot_5}</span></Link>
-                            : null
+                        ? <Link to={ route.slot_6 ? `/subarea6/${route.slot_6}` : `/finalarea/${route.slot_5}`}><span>{' > ' + route.slot_5}</span></Link>
+                        : null
                     }
                     {
                         route.slot_6

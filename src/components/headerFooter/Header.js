@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
 import { Link } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+import { getUserInfo } from '../../ducks/users';
 import axios from 'axios';
 import { Button, Icon } from 'semantic-ui-react';
 import reilogo from './reilogo.png';
+
 class Header extends Component {
     constructor() {
         super();
@@ -13,12 +17,14 @@ class Header extends Component {
         }
     }
     componentDidMount() {
+
         axios.get('/api/session').then(res => {
             this.setState({
                 user: res.data.user,
                 img: res.data.image
             })
         })
+
     }
     render() {
         const { user, img } = this.state;
@@ -45,6 +51,8 @@ class Header extends Component {
                         </div>
                     </div>
                     <div className='header-bottom-right'>
+
+
                         {
                             user && img
                                 ? <Link to='/user'><img src={img} alt='user' className='user-icon' /></Link>

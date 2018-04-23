@@ -3,22 +3,22 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 
 export default class Map extends Component {
     render() {
-        const { areas } = this.props
-        // console.log(areas)
-         const defaultLat = areas[0] ? areas.reduce((acc, area) => parseFloat(area.latitude) + acc, 0)/areas.length :null
-        const defaultLng = areas[0] ? areas.reduce((acc, area) => parseFloat(area.longitude) + acc, 0)/areas.length :null
+        const { routes } = this.props
+        // console.log(routes)
+         const defaultLat = routes[0] ? routes.reduce((acc, route) => parseFloat(route.latitude) + acc, 0)/routes.length :null
+        const defaultLng = routes[0] ? routes.reduce((acc, route) => parseFloat(route.longitude) + acc, 0)/routes.length :null
 
         //default zoom quantifier logic
-        const latArray = areas[0] ? areas.map(area => (parseFloat(area.latitude))): null
-        const lngArray = areas[0] ? areas.map(area => (parseFloat(area.longitude))): null
-        const maxLatArray =  areas[0] ? Math.max(...latArray) : null
-        const minLatArray = areas[0] ? Math.min(...latArray) : null
-        const maxLngArray = areas[0] ? Math.max(...lngArray) : null
-        const minLngArray = areas[0] ? Math.min(...lngArray) : null
+        const latArray = routes[0] ? routes.map(route => (parseFloat(route.latitude))): null
+        const lngArray = routes[0] ? routes.map(route => (parseFloat(route.longitude))): null
+        const maxLatArray =  routes[0] ? Math.max(...latArray) : null
+        const minLatArray = routes[0] ? Math.min(...latArray) : null
+        const maxLngArray = routes[0] ? Math.max(...lngArray) : null
+        const minLngArray = routes[0] ? Math.min(...lngArray) : null
         
         const coordinateDiff = Math.abs(maxLatArray - minLatArray + maxLngArray - minLngArray)
-        console.log(coordinateDiff)
-        //setting zoom
+        // console.log(coordinateDiff)
+        // setting zoom
         const zoom = coordinateDiff > 1.5 ? 8
                     :coordinateDiff > 1  ? 9
                     :coordinateDiff > .75  ? 10
@@ -27,11 +27,10 @@ export default class Map extends Component {
                     :coordinateDiff > .01 ? 13
                     : 14
 
-                    
-        const markers = areas.map(area => {
+        const markers = routes.map(route => {
             return <Marker 
-            label = {area.slot_6 || area.slot_5 || area.slot_4 || area.slot_3 || area.slot_2 }
-            position={{lat: parseFloat(area.latitude), lng: parseFloat(area.longitude)}}/>
+            label = {route.name}
+            position={{lat: parseFloat(route.latitude), lng: parseFloat(route.longitude)}}/>
         })
         // console.log(markers)
         const MyMapComponent = withScriptjs(withGoogleMap((props) =>
