@@ -9,7 +9,8 @@ class Comments extends Component {
 
         this.state = {
             comments: [],
-            newComment: ''
+            newComment: '',
+            current: null
         }
     }
 
@@ -17,6 +18,16 @@ class Comments extends Component {
         axios.get(`/api/comments/${this.props.match.params.id}`).then(res => {
             this.setState({ comments: res.data })
         })
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.match.params.id !== this.props.match.params.id) {
+            axios.get(`/api/comments/${this.props.match.params.id}`).then(res => {
+                this.setState({ comments: res.data })
+            })
+        } else {
+            this.setState({current: []})
+        }
     }
 
     handleInput(value) {
@@ -74,11 +85,5 @@ class Comments extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        comments: state.detail.comments,
-        newComment: state.detail.newComment
-    }
-}
 
 export default withRouter(Comments);
