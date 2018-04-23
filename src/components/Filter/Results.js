@@ -13,7 +13,7 @@ class Results extends Component {
         this.state = {
             routes: this.props.filter.routes,
             currentPage: 1,
-            routesPerPage: 20,
+            routesPerPage: 40,
         }
         this.handleClick = this.handleClick.bind(this)
     }
