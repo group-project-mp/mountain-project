@@ -165,3 +165,42 @@
 }
 
 // ===== FOOTER ===== // 
+
+.footer-main {
+    border-top: 10px solid #2e2e2e;
+    margin-top: 150px;
+    width: 100vw;
+    min-height: 200px;
+    background-color: black;
+}
+
+.footer-links {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    img {
+        margin: 15px;
+        height: 50px;
+    }
+}
+
+
+@media (min-width:600px){
+    .footer-links {
+        margin: auto;
+        width: 90%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        img {
+            margin: 15px;
+            height: 60px;
+        }
+    }
+}
+
+@media (min-width:1000px){
+    .footer-links {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

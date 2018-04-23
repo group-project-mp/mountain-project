@@ -8,6 +8,7 @@ import Comments from './Comments';
 import { withRouter } from 'react-router';
 import { Icon } from 'semantic-ui-react';
 import Routemap from './Routemap';
+import Footer from '../headerFooter/Footer';
 
 class Route extends Component {
     componentDidMount() {
@@ -63,6 +64,9 @@ class Route extends Component {
                         </div>
                     </div>
                 </div>
+                <footer>
+                    <Footer />
+                </footer>
             </div>
         )
     }

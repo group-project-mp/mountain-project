@@ -26,7 +26,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={home} />
           <Route path='/route/:id' component={route} />
-          <Route path='/user/:id' component={profile} />
+          <Route path='/user' component={profile} />
           <Route path='/add' component={add} />
           <Route path='/finalarea/:area' component={FinalArea} />
           <Route path='/results' component={Results} />
@@ -38,7 +38,6 @@ class App extends Component {
           <Route path='/filter' component={filter} />
           <Route path='/filteredroutes' component={FilteredRoutes} />
           <Route path='/carousel' component={Carousel} />
-
           <Route path='/areas' component={Slot_1} />
         </Switch>
 

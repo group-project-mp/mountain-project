@@ -74,11 +74,5 @@ class Comments extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        comments: state.detail.comments,
-        newComment: state.detail.newComment
-    }
-}
 
 export default withRouter(Comments);
