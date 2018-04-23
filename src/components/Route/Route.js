@@ -15,6 +15,10 @@ class Route extends Component {
     componentDidMount() {
         const { id } = this.props.match.params;
         this.props.getRoute(id);
+
+        // this.props.getComments(id);
+        window.scrollTo(0,0)
+
     }
 
     componentWillReceiveProps(nextProps) {
@@ -23,6 +27,7 @@ class Route extends Component {
         } else {
             null
         }
+
     }
 
     render() {
