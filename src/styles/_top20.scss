@@ -1,0 +1,37 @@
+.top-routes-container {
+    width: 75%;
+    margin: auto;
+    background-color: white;
+}
+
+.top-routes-row:nth-child(odd){
+    background-color: #F2F2F2;
+}
+
+.top-routes-row {
+    padding-left: 15px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: .25fr 2.65fr 3fr 2fr 1fr;
+    align-items: center;
+    height: 30px;
+    div {
+        span {
+            font-size: 12px;
+            color: #2E2E2E;
+        }
+    }
+}
+
+@media (max-width:768px){
+    .top-routes-row {
+        span {
+            font-size: 10px;
+        }
+        div {
+            span {
+                font-size: 8px;
+            }
+        }
+    }
+}

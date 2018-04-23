@@ -118,6 +118,9 @@ app.get('/api/route/:id', routeDetail.routeDetail);
 app.get('/api/similar/:id', routeDetail.getSimilar);
 app.get('/api/comments/:id', routeDetail.comments);
 app.post('/api/comments/:id', routeDetail.addComment);
+app.get('/api/20', routeDetail.topTwenty);
+app.post('/api/addPhoto/:id', routeDetail.addPhoto);
+app.get('/api/getPhotos/:id', routeDetail.getPhotos);
 
 // nodemailer
 app.post('/api/email', mailer.mail);

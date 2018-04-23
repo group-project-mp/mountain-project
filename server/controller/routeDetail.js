@@ -12,7 +12,7 @@ module.exports = {
             res.status(200).send(areas)
         }).catch(err => res.status(500).send(areas))
     },
-    comments: (req, res) => { 
+    comments: (req, res) => {
         const db = req.app.get('db');
         db.gets.get_comments([req.params.id]).then(response => {
             res.status(200).send(response);
@@ -47,5 +47,23 @@ module.exports = {
             })
                 .catch(err => res.status(500).send(err))
         }
+    },
+    topTwenty: (req, res) => {
+        const db = req.app.get('db');
+        db.gets.top_20().then(routes => {
+            res.status(200).send(routes)
+        }).catch(err => res.status(500).send(err))
+    },
+    addPhoto: (req, res) => {
+        const db = req.app.get('db');
+        db.adds.add_photo([req.params.id, req.body.url]).then(response => {
+            res.status(200).send('Success')
+        }).catch(err => res.status(500).send('Error adding Photo'))
+    },
+    getPhotos: (req, res) => {
+        const db = req.app.get('db');
+        db.gets.get_photos([req.params.id]).then(photos => {
+            res.status(200).send(photos)
+        }).catch(err => res.status(500).send(err))
     }
 }

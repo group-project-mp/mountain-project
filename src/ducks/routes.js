@@ -10,7 +10,7 @@ const initialState = {
     rating: 1,
     description: '',
     protection: '',
-    image: '',
+    image: null,
     latitude: null,
     longitude: null,
     typeOptions: [
@@ -150,7 +150,9 @@ export function getSlot6(value) {
 }
 
 export function submitNew(body) {
-    let promise = axios.post('/api/newRoute', body).then(res => res.data);
+    let promise = axios.post('/api/newRoute', body).then(res => {
+        res.status === 200 ? alert('Successfully added route') : alert('error adding route, please try again');
+    });
     return {
         type: SUBMIT,
         payload: promise
