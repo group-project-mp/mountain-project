@@ -9,12 +9,20 @@ import { withRouter } from 'react-router';
 import { Icon } from 'semantic-ui-react';
 import Routemap from './Routemap';
 import Footer from '../headerFooter/Footer';
+import Photos from './Photos';
 
 class Route extends Component {
     componentDidMount() {
         const { id } = this.props.match.params;
         this.props.getRoute(id);
-        // this.props.getComments(id);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.match.params.id !== this.props.match.params.id) {
+            this.props.getRoute(nextProps.match.params.id);
+        } else {
+            null
+        }
     }
 
     render() {
@@ -55,9 +63,10 @@ class Route extends Component {
                             <h1>Location</h1>
                             <Routemap latitude={route.latitude} longitude={route.longitude} />
                         </div>
-                        {/* <div>
-                            <h1>Photos</h1>
-                        </div> */}
+
+                        <div className='bottom-section-container'>
+                            <Photos />
+                        </div>
 
                         <div className='bottom-section-container'>
                             <Comments />
