@@ -39,14 +39,10 @@ module.exports = {
         const { id } = req.params;
         const user = req.user;
         const { date, comment } = req.body;
-        if (!user) {
-            res.send(false)
-        } else {
-            db.adds.add_comment([user.user_id, comment, id, date]).then(response => {
-                res.status(200).send({ user_name: user.user_name, date: date, comment: comment })
-            })
-                .catch(err => res.status(500).send(err))
-        }
+        db.adds.add_comment([user.user_id, comment, id, date]).then(response => {
+            res.status(200).send({ user_name: user.user_name, date: date, comment: comment })
+        })
+            .catch(err => res.status(500).send(err))
     },
     topTwenty: (req, res) => {
         const db = req.app.get('db');
