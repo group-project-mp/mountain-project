@@ -35,7 +35,7 @@ class SimilarArea extends Component {
                     <Stars stars={Number(area.stars)} size='small' />
                     <Link to={`/route/${area.id}`}><span onClick={() => getRoute(area.id)} className='area-name'>{area.name}</span></Link>
                     <span className='area-type'>{area.rating}</span>
-                    {/* <span className='area-type'>{area.type}</span> */}
+                    <span className='area-type'>{area.type}</span>
                 </div>
             )
         })

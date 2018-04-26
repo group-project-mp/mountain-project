@@ -15,28 +15,16 @@ class slot_1 extends Component {
             // {console.log(area.slot_1)}
             return <div key = {i} className='mapped-routes'>
                 <Link to={`/state/${area.slot_1}`}><p>{area.slot_1}</p></Link>
-<<<<<<< HEAD
-                <p>_ _ _ _ _ _ _ _ _ _ _ _</p>
-
-                <p>{area.count}</p>
-=======
                 <p>  _ _ _ _ _ _ _ _ _ _ _ _   </p>
                 <p>{area.count}</p>
                 <p>{area.slot_2}</p>
->>>>>>> master
             </div>
         })
         // console.log(mappedAreas)
         return (
 
             <div className='mapped-routes-display'>
-<<<<<<< HEAD
-
-                {mappedAreas}
-
-=======
                     {mappedAreas}
->>>>>>> master
             </div>
         )
     }
