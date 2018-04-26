@@ -18,7 +18,6 @@ class SimilarArea extends Component {
         if (nextProps.area !== this.props.area) {
             axios.get(`/api/similar/${nextProps.area}`).then(res => {
                 this.setState({ area: res.data })
-                console.log(res.data)
             })
         } else {
             this.setState({area: []})

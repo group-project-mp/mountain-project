@@ -10,13 +10,19 @@ class Comments extends Component {
         this.state = {
             comments: [],
             newComment: '',
-            current: null
+            current: null,
+            user: null
         }
     }
 
     componentDidMount() {
         axios.get(`/api/comments/${this.props.match.params.id}`).then(res => {
             this.setState({ comments: res.data })
+        })
+        axios.get('/api/session').then(res => {
+            this.setState({
+                user: res.data.user
+            })
         })
     }
 
@@ -35,15 +41,12 @@ class Comments extends Component {
     }
 
     handleSubmit(id, body) {
-        axios.get('/api/session').then(res => {
-            if (res.data.user === false) {
-                alert('Must be logged in to add tick')
-            } else {
-                axios.post(`/api/comments/${id}`, body).then(res => {
-                    this.setState({ comments: [...this.state.comments, res.data], newComment: '' })
-                });
-            }
-        })
+        this.state.user
+            ?
+            axios.post(`/api/comments/${id}`, body).then(res => {
+                this.setState({ comments: [...this.state.comments, res.data], newComment: '' })
+            })
+            : alert('Must be logged in to leave comment')
     }
     render() {
         const { comments, newComment } = this.state;
