@@ -40,7 +40,7 @@ module.exports = {
         const user = req.user;
         const { date, comment } = req.body;
         if (!user) {
-            res.send('no')
+            res.send(false)
         } else {
             db.adds.add_comment([user.user_id, comment, id, date]).then(response => {
                 res.status(200).send({ user_name: user.user_name, date: date, comment: comment })

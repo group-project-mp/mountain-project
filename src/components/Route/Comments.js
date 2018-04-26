@@ -36,12 +36,11 @@ class Comments extends Component {
 
     handleSubmit(id, body) {
         axios.post(`/api/comments/${id}`, body).then(res => {
-            res.data === 'no'
+            res.data === false
                 ? alert('please login to add comment')
                 : this.setState({ comments: [...this.state.comments, res.data], newComment: '' })
         });
     }
-
     render() {
         const { comments, newComment } = this.state;
         const { id } = this.props.match.params;
