@@ -4,6 +4,7 @@ import { getFinalAreaRoutes, getDescription } from '../../ducks/areas';
 import { Link } from 'react-router-dom';
 import FinalAreaMap from './FinalAreaMap';
 import Stars from '../Route/Stars';
+import Footer from '../headerFooter/Footer'
 
 
 class FinalArea extends Component {
@@ -73,9 +74,12 @@ class FinalArea extends Component {
                     </div>
                 </div>
                 <div className='areas-map'>
-                    <h2 className='map-header'>Map of Areas within {this.props.match.params.area}</h2>
+                    <h2 className='map-header'>Map of Routes within {this.props.match.params.area}</h2>
                     <FinalAreaMap className='map-container' routes={finalAreaRoutes} />
                 </div>
+                <footer>
+                    <Footer/>
+                </footer>
             </div>
         )
     }

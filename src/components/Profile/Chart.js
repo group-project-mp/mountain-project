@@ -16,8 +16,7 @@ class Chart extends Component {
         const tradTotal = ticks.filter(e => e.type.includes('Trad')).length
         const sportTotal = ticks.filter(e => e.type.includes('Sport')).length
         const boulderTotal = ticks.filter(e => e.type.includes('Boulder')).length
-        console.log(tradTotal, 'tradTotal')
-console.log(ticks)
+      
         const pieChartData = {
             labels: ['Trad', 'Sport', 'Boulder'],
             datasets: [
@@ -25,7 +24,7 @@ console.log(ticks)
                     data:[
                         tradTotal, sportTotal, boulderTotal
                     ],
-                    backgroundColor: ['blue', 'green', 'red']
+                    backgroundColor: ['#486796', '#f2f2f2', '#2e2e2e']
                 }
             ]
         }
@@ -39,7 +38,6 @@ console.log(ticks)
         const fiveTwelveTotal = ticks.filter(e => e.rating.includes('5.12')).length
         const fiveThirteenTotal = ticks.filter(e => e.rating.includes('5.13')).length
         const fiveFourteenTotal = ticks.filter(e => e.rating.includes('5.14')).length
-        console.log(ticks)
         const barChartData = {
             labels: ['5.6', '5.7', '5.8', '5.9', '5.10', '5.11', '5.12', '5.13', '>=5.14'],
             datasets: [
@@ -48,30 +46,32 @@ console.log(ticks)
                     data:[
                         fiveSixTotal, fiveSevenTotal, fiveEightTotal, fiveNineTotal, fiveTenTotal, fiveElevenTotal, fiveTwelveTotal, fiveThirteenTotal, fiveFourteenTotal
                     ],
-                    backgroundColor: 'purple'
+                    backgroundColor: '#486796'
                 }
             ]
         }
 
         return (
-            <div className = 'chart'>
-            Chart Component
+            <div className = 'charts'>
+                <div style = {{width: '600px'}}>
                 <Bar
                     data={barChartData}
                     width={100}
-                    height={50}
+                    height={300}
                     options={{
                         maintainAspectRatio: false
-                    }}
-                />
+                    }}/>
+                </div>
+                <div style = {{width: '400px'}}>
                 <Pie
                     data={pieChartData}
                     width={100}
-                    height={50}
+                    height={400}
                     options={{
                         maintainAspectRatio: false
                     }}
                     />
+                    </div>
             </div>
         )
     }
@@ -79,7 +79,6 @@ console.log(ticks)
 }
 
 function mapStateToProps(state) {
-    // console.log(state, "hit state")
     return {
         users: state.users
 

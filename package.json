@@ -44,8 +44,12 @@
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start-js": "react-scripts start"
+    "start-js": "react-scripts start",
+    "cypress:open": "cypress open"
   },
   "main": "server/index.js",
-  "proxy": "http://localhost:3009"
+  "proxy": "http://localhost:3009",
+  "devDependencies": {
+    "cypress": "^2.1.0"
+  }
 }

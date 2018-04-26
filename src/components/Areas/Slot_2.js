@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSlot2, getDescription } from '../../ducks/areas';
-import Map from './Map'
-import { Link } from 'react-router-dom'
+import Map from './Map';
+import { Link } from 'react-router-dom';
+import Footer from '../headerFooter/Footer'
+
 class slot_2 extends Component {
     componentDidMount() {
         this.props.getSlot2(this.props.match.params.area);
@@ -56,8 +58,10 @@ class slot_2 extends Component {
                 <div className='areas-map'>
                     <h2 className='map-header'>Map of Areas within {this.props.match.params.area}</h2>
                     <Map className='map-container' areas={this.props.areas.slot_2} />
-
                 </div>
+                <footer>
+                    <Footer/>
+                </footer>
             </div>
         )
 }

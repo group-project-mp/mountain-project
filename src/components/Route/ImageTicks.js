@@ -34,7 +34,7 @@ class ImageTicks extends Component {
             if (res.data.user === false) {
                 alert('Must be logged in to add todo')
             } else {
-                this.props.addTodo();
+                this.props.addTodo(this.props.id);
             }
         })
     }
