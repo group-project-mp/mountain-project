@@ -1,0 +1,48 @@
+.forum {
+    display: flex;
+    flex-direction: column;
+    width: 130%;
+    padding: 5px;
+}
+.forum-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    height: 10%;
+    font-size: 50px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #f2f2f2;
+}
+.forum-body {
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+    height: 100%;
+    a {
+        margin: 10px;
+    }
+}
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    background: #f2f2f2;
+    width: 50%;
+    margin-left: 5px;
+    h2 {
+        padding-left: 30%
+    }
+}
+.training {
+    display: flex;
+    flex-direction: column;
+    background: #f2f2f2;
+    height: 100%;
+    width: 50%;
+    margin-right: 5px;
+    h2 {
+        padding-left: 30%
+    }
+}
