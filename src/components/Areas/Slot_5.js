@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSlot5, getDescription } from '../../ducks/areas'
-import { Link } from 'react-router-dom'
-import Map from './Map'
+import { getSlot5, getDescription } from '../../ducks/areas';
+import { Link } from 'react-router-dom';
+import Map from './Map';
+import Footer from '../headerFooter/Footer'
 
 
 class Slot_5 extends Component {
@@ -68,6 +69,9 @@ class Slot_5 extends Component {
                     <h2 className='map-header'>Map of Areas within {this.props.match.params.area}</h2>
                     <Map className='map-container' areas={this.props.areas.slot_5} />
                 </div>
+                <footer>
+                    <Footer/>
+                </footer>
             </div>
         )
 }

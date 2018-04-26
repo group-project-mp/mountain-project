@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSlot1 } from '../../ducks/areas'
 import { Link } from 'react-router-dom'
+import Footer from '../headerFooter/Footer'
 
 
 class slot_1 extends Component {
@@ -10,13 +11,12 @@ class slot_1 extends Component {
     }
 
     render() {
-        const mappedAreas = this.props.areas.slot_1.map((area) => {
+        const mappedAreas = this.props.areas.slot_1.map((area, i) => {
             // {console.log(area.slot_1)}
-            return <div className='mapped-routes'>
+            return <div key = {i} className='mapped-routes'>
                 <Link to={`/state/${area.slot_1}`}><p>{area.slot_1}</p></Link>
                 <p>  _ _ _ _ _ _ _ _ _ _ _ _   </p>
                 <p>{area.count}</p>
-
                 <p>{area.slot_2}</p>
             </div>
         })
@@ -24,11 +24,8 @@ class slot_1 extends Component {
         return (
 
             <div className='mapped-routes-display'>
-              
                     {mappedAreas}
-                
             </div>
-
         )
     }
 }
