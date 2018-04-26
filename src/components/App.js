@@ -16,6 +16,7 @@ import FilteredRoutes from './Filter/FilteredRoutes';
 import Carousel from './Carousel/Carousel';
 import Results from '../components/Filter/Results';
 import Slot_1 from './Areas/Slot_1';
+import Forum from './Forums/Forum';
 
 class App extends Component {
   render() {
@@ -39,6 +40,7 @@ class App extends Component {
           <Route path='/filteredroutes' component={FilteredRoutes} />
           <Route path='/carousel' component={Carousel} />
           <Route path='/areas' component={Slot_1} />
+          <Route path='/forum' component={Forum} />
         </Switch>
 
       </div >

@@ -8,7 +8,7 @@ const initialState = {
     min: '',
     max: '',
     type: '',
-    loading: true,
+    loading: false,
 };
 
 

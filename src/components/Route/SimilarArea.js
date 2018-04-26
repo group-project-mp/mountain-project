@@ -18,6 +18,7 @@ class SimilarArea extends Component {
         if (nextProps.area !== this.props.area) {
             axios.get(`/api/similar/${nextProps.area}`).then(res => {
                 this.setState({ area: res.data })
+                console.log(res.data)
             })
         } else {
             this.setState({area: []})
@@ -33,7 +34,8 @@ class SimilarArea extends Component {
                 <div key={i} className='similar-route-container'>
                     <Stars stars={Number(area.stars)} size='small' />
                     <Link to={`/route/${area.id}`}><span onClick={() => getRoute(area.id)} className='area-name'>{area.name}</span></Link>
-                    <span className='area-type'>{area.type}</span>
+                    <span className='area-type'>{area.rating}</span>
+                    {/* <span className='area-type'>{area.type}</span> */}
                 </div>
             )
         })
