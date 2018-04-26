@@ -26,7 +26,7 @@ class Comments extends Component {
                 this.setState({ comments: res.data })
             })
         } else {
-            this.setState({current: []})
+            this.setState({ current: [] })
         }
     }
 
@@ -35,11 +35,15 @@ class Comments extends Component {
     }
 
     handleSubmit(id, body) {
-        axios.post(`/api/comments/${id}`, body).then(res => {
-            res.data === false
-                ? alert('please login to add comment')
-                : this.setState({ comments: [...this.state.comments, res.data], newComment: '' })
-        });
+        axios.get('/api/session').then(res => {
+            if (res.data.user === false) {
+                alert('Must be logged in to add tick')
+            } else {
+                axios.post(`/api/comments/${id}`, body).then(res => {
+                    this.setState({ comments: [...this.state.comments, res.data], newComment: '' })
+                });
+            }
+        })
     }
     render() {
         const { comments, newComment } = this.state;
