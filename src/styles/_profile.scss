@@ -1,5 +1,155 @@
-.img {
-    width: 50px;
-    height: 50px;
-    border-radius: 100px;
+button {
+    cursor: pointer;
+}
+
+.profile {
+display: flex;
+flex-direction: column;
+align-items: center;
+
+button {
+    color:white;
+    border-radius:5px;
+    background-color:#336799;
+    border-color:black;
+    padding: 3px;
+    vertical-align: center;
+}
+
+.title {
+    margin: 30px;
+    margin-bottom:20px;
+    h1 {
+    font-size: 50px;
+    }
+    }
+}
+
+.user-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    H2 {
+     margin: 10px;
+     font-size: 30px;
+    }
+    .user-name {
+        width: 80%;
+        border-bottom: 2px solid#486796;
+    }
+}
+
+.ticks-container {
+    width: 80%;
+    margin: 25px;
+    margin-top: 15px;
+    background-color: white;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+    
+}
+
+.toggle-button {
+        width: 8%;
+        font-size: 16px;
+        margin-top: 5px;
+}
+
+.ticks-row:nth-child(odd){
+    background-color: #F2F2F2;
+}
+
+.ticks-row {
+    padding-left: 15px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1fr .5fr .5fr 1fr 2fr;
+    align-items: center;
+    min-height: 30px;
+    height: auto;
+    div {
+        span {
+            font-size: 12px;
+            color: #2E2E2E;
+        }
+    }
+}
+
+@media (max-width:768px){
+    .ticks-row {
+        span {
+            font-size: 10px;
+        }
+        div {
+            span {
+                font-size: 8px;
+            }
+        }
+    }
+}
+
+.todos-container {
+        width: 80%;
+        margin: auto;
+        background-color: white;
+        border-bottom: 2px solid#486796;
+        margin-bottom: 15px;
+        padding-bottom: 25px;
+}
+
+.todos-row:nth-child(odd){
+    background-color: #F2F2F2;
+}
+
+.todos-row {
+    padding-left: 15px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr .75fr .75fr 1fr;
+    align-items: center;
+    min-height: 30px;
+    height: auto;
+    div {
+        span {
+            font-size: 12px;
+            color: #2E2E2E;
+        }
+    }
+}
+
+@media (max-width:768px){
+    .todos-row {
+        span {
+            font-size: 10px;
+        }
+        div {
+            span {
+                font-size: 8px;
+            }
+        }
+    }
+}
+
+.profile-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-chart {
+margin: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+    width: 80%
+}
+
+.charts {
+    width: 100%;
+    height:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

@@ -49,5 +49,8 @@
     "cypress:open": "cypress open"
   },
   "main": "server/index.js",
-  "proxy": "http://localhost:3009"
+  "proxy": "http://localhost:3009",
+  "devDependencies": {
+    "cypress": "^2.1.0"
+  }
 }

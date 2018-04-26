@@ -56,7 +56,7 @@ class Header extends Component {
                         {
                             user && img
                                 ? <Link to='/user'><img src={img} alt='user' className='user-icon' /></Link>
-                                : user
+                                : user && !img
                                     ? <Link to='/user'><Icon name='user circle' color='grey' size='big' /></Link>
                                     : null
                         }
