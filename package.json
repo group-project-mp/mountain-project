@@ -13,7 +13,6 @@
     "express-session": "^1.15.6",
     "google-map-react": "^0.34.0",
     "google-maps-react": "^2.0.0",
-    "jest": "^22.4.3",
     "massive": "^4.7.1",
     "node-sass-chokidar": "^1.2.2",
     "nodemailer": "^4.6.4",
@@ -47,5 +46,8 @@
     "start-js": "react-scripts start"
   },
   "main": "server/index.js",
-  "proxy": "http://localhost:3009"
+  "proxy": "http://localhost:3009",
+  "devDependencies": {
+    "jest": "^22.4.3"
+  }
 }
