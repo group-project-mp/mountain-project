@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
 import axios from 'axios';
 import { withRouter } from 'react-router';
+import { getComments, addComment } from '../../ducks/routeDetail';
+import { connect } from 'react-redux';
 
 class Comments extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            comments: [],
             newComment: '',
             current: null,
             user: null
@@ -16,9 +17,7 @@ class Comments extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/comments/${this.props.match.params.id}`).then(res => {
-            this.setState({ comments: res.data })
-        })
+        this.props.getComments(this.props.match.params.id);
         axios.get('/api/session').then(res => {
             this.setState({
                 user: res.data.user
@@ -42,15 +41,12 @@ class Comments extends Component {
 
     handleSubmit(id, body) {
         this.state.user
-            ?
-            axios.post(`/api/comments/${id}`, body).then(res => {
-                // this.componentDidMount()
-                console.log(res)
-            })
+            ? this.props.addComment(id, body)
             : alert('Must be logged in to leave comment')
     }
     render() {
-        const { comments, newComment } = this.state;
+        const { newComment } = this.state;
+        const { comments } = this.props;
         const { id } = this.props.match.params;
 
         let commentList = comments.map((x, i) => {
@@ -92,5 +88,10 @@ class Comments extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        comments: state.detail.comments
+    }
+}
 
-export default withRouter(Comments);
+export default withRouter(connect(mapStateToProps, { getComments, addComment })(Comments));
