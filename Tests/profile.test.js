@@ -1,15 +1,5 @@
-// const profile = require('../src/components/Profile/Profile')
+const routes = require('./functions');
 
-// describe('Tick Properties', function() {
-//     test('fiveTicks should have a length of 5 and be an array', function(){
-//         expect( Array.isArray(profile.fiveTicks) ).toEqual(true);
-//         expect( profile.fiveTicks.length ).toEqual(5)
-//     })
-// });
-
-// describe('Todo Properties', function() {
-
-// });
 let difficulty = [
     { key: '5.0', value: '5.0', text: '5.0' },
     { key: '5.1', value: '5.1', text: '5.1' },
@@ -161,15 +151,49 @@ let boulder = [
     { key: 'V17', value: 'V17', text: 'V17' }
 ]
 
-// let detailDucks = require('../src/ducks/routeDetail');
 
 describe('Type Selections', () => {
     test('Checking boulder selections', () => {
         expect(boulder.length).toEqual(71);
-        expect(Array.isArray(boulder)).toEqual(true)
     });
+    test('Type of boulder selection', () => {
+        expect(Array.isArray(boulder)).toEqual(true);
+    })
     test('Checking Sport/Trad selections', () => {
         expect(difficulty.length).toEqual(75);
-        expect(Array.isArray(difficulty)).toEqual(true)
     });
+    test('Checking diffulty type', () => {
+        expect(Array.isArray(difficulty)).toEqual(true);
+    })
+})
+
+describe('Testing sales coming back', () => {
+    test('checking data type to be an array', () => {
+        let promise = routes.get20();
+        promise.then(result => {
+            expect(typeof result).toBe('array');
+        })
+    })
+    test('checking data type to be an array', () => {
+        let promise = routes.get20();
+        promise.then(result => {
+            expect(result.length).toEqual(20);
+        })
+    })
+})
+
+describe('Getting specific route', () => {
+    test('Get request for route 4303', () => {
+        let promise = routes.routeDetail(4303);
+        promise.then(route => {
+            expect(result.length).toEqual(1);
+            expect(route.id).toBe(4303);
+        })
+    })
+    test('Get request for route 4303', () => {
+        let promise = routes.routeDetail(4303);
+        promise.then(route => {
+            expect(route.id).toBe(4303);
+        })
+    })
 })
