@@ -5,7 +5,6 @@ const initialState = {
     route: [],
     top20: [],
     comments: [],
-    loading: false
 }
 
 const _PENDING = '_PENDING';

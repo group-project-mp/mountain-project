@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
 import { Link } from 'react-router-dom';
-
-import { connect } from 'react-redux';
-import { getUserInfo } from '../../ducks/users';
 import axios from 'axios';
 import { Button, Icon } from 'semantic-ui-react';
 import reilogo from './reilogo.png';
