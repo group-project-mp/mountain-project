@@ -21,7 +21,7 @@ export default function Forum() {
                     <a href='https://www.climbing.com/skills/5-etiquette-tips-for-sport-climbing/'>-Sport Climbing Etiquette</a>
                     <a href='https://www.climbing.com/skills/learn-this-the-12-point-trad-anchor-rubric/'>-Evaluating Trad Anchors</a>
                     <a href='https://www.climbing.com/skills/trad-skills-rack-management/'>-Rack Management</a>
-                    <a href='https://www.climbing.com/skills/learn-to-climb-trad-a-complete-beginners-guide/'>Trad is Rad</a>
+                    <a href='https://www.climbing.com/skills/learn-to-climb-trad-a-complete-beginners-guide/'>-Trad is Rad</a>
                     <a href='https://www.rei.com/learn/expert-advice/traditional-climbing-basics.html'>-Trad Climbing Basics</a>
                     <a href='https://www.climbing.com/skills/five-tips-for-safer-belaying/'>-5 Tips for a Safer Belay</a>
                     <a href='https://www.climbing.com/skills/learn-this-belay-extensions/'>-Belay Extensions</a>

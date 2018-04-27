@@ -21,7 +21,7 @@ class Filter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+
         }
         this.handleSelect = this.handleSelect.bind(this)
     }
@@ -41,19 +41,19 @@ class Filter extends Component {
 
                     <h3>Tell us what you like, we'll tell you what to climb!</h3>
 
-                        <label>Quality</label>
+                    <label>Quality</label>
                     <Form.Field>
                         <Dropdown placeholder='quality'
                             selection options={quality} onChange={this.handleSelect} />
                     </Form.Field>
                     {/* <br /> */}
-                        <label>Pitches</label>
+                    <label>Pitches</label>
                     <Form.Field>
                         <Dropdown placeholder='pitches'
                             selection options={pitches} onChange={this.handleSelect} />
                     </Form.Field>
                     {/* <br /> */}
-                        <label>Type</label>
+                    <label>Type</label>
                     <Form.Field>
                         <Dropdown placeholder='type' selection options={typeOptions} onChange={this.handleSelect} />
                     </Form.Field>
@@ -63,14 +63,14 @@ class Filter extends Component {
                             {filter.type === 'Boulder' ?
                                 <Dropdown placeholder='min' search selection options={vSystem} /> :
                                 <Dropdown placeholder='min' search selection options={difficulty} onChange={this.handleSelect} />}
-                            <h4>to</h4>
+                            <h4 >to</h4>
                             {filter.type === 'Boulder' ?
                                 <Dropdown placeholder='max' search selection options={vSystem} /> :
                                 <Dropdown placeholder='max' search selection options={difficulty} onChange={this.handleSelect} />}
                         </Form.Field>
+                        <br />
+                        <Link to={`/results`}> <button onClick={() => this.props.getRoutes(filter)} style={{ height: '25px' }} >Find Routes</button></Link>
                     </div>
-                    <br />
-                   <Link to={`/results`}> <button onClick={() => this.props.getRoutes(filter)} color='rgb(44,92,142)'>Find Routes</button></Link>
                 </div>
                 {/* <Spinner /> */}
             </div>
