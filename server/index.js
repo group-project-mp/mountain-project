@@ -26,7 +26,7 @@ const addController = require('./controller/addRoute');
 const routeDetail = require('./controller/routeDetail');
 const mailer = require('./controller/mail');
 
-app.use( express.static( `${__dirname}/../build` ) );
+// app.use( express.static( `${__dirname}/../build` ) );
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);

@@ -38,9 +38,9 @@ module.exports = {
         const db = req.app.get('db');
         const { id } = req.params;
         const user = req.user;
-        const { date, comment } = req.body;
-        db.adds.add_comment([user.user_id, comment, id, date]).then(response => {
-            res.status(200).send({ user_name: user.user_name, date: date, comment: comment })
+        const { comment } = req.body;
+        db.adds.add_comment([user.user_id, comment, id ]).then(response => {
+            res.status(200).send({ user_name: user.user_name, comment: comment })
         }).catch(err => res.status(500).send(err))
     },
     topTwenty: (req, res) => {

@@ -54,33 +54,20 @@ class Comments extends Component {
                 <div key={i} className='comment-container'>
                     <div className='name-date-container'>
                         <span style={{ fontWeight: 'bold' }}>{x.user_name}</span>
-                        <span>{x.date || '04/17/2018'}</span>
+                        <span>{x.date || '04/27/2018'}</span>
                     </div>
                     <span className='comment'>{x.comment}</span>
                     <span className='flag-button' onClick={() => alert('Admin has been notified of flag')}>Flag</span>
-
                 </div>
             )
         })
-
-        let today = new Date();
-        let dd = today.getDate();
-        let mm = today.getMonth() + 1;
-        let yyyy = today.getFullYear();
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-        if (mm < 10) {
-            mm = '0' + mm
-        }
-        today = mm + '/' + dd + '/' + yyyy;
 
         return (
             <div>
                 <h1>{comments.length} Comments</h1>
                 <div className='comment-input-container'>
                     <input placeholder='Write a comment' onChange={(e) => this.handleInput(e.target.value)} />
-                    <Button color='blue' onClick={() => this.handleSubmit(id, { date: today, comment: newComment })}>Submit</Button>
+                    <Button color='blue' onClick={() => this.handleSubmit(id, { comment: newComment })}>Submit</Button>
                 </div>
                 {comments ? commentList : null}
             </div>
