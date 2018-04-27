@@ -36,11 +36,9 @@ module.exports = {
     },
     addComment: (req, res) => {
         const db = req.app.get('db');
-        const { id } = req.params;
-        const user = req.user;
         const { comment } = req.body;
-        db.adds.add_comment([user.user_id, comment, id ]).then(response => {
-            res.status(200).send({ user_name: user.user_name, comment: comment })
+        db.adds.add_comment([req.user.user_id, comment, req.params.route]).then(response => {
+            res.status(200).send({ user_name: req.user.user_name, comment: comment, date: response[0].date })
         }).catch(err => res.status(500).send(err))
     },
     topTwenty: (req, res) => {

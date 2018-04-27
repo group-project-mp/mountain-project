@@ -4,7 +4,8 @@ const initialState = {
     loading: false,
     route: [],
     top20: [],
-    comments: []
+    comments: [],
+    loading: false
 }
 
 const _PENDING = '_PENDING';
@@ -27,8 +28,10 @@ export default function reducer(state = initialState, action) {
             return { ...state, loading: true }
         case TOP20 + _FULFILLED:
             return { ...state, top20: payload, loading: false }
+        case ADDCOMMENT + _PENDING:
+            return { ...state, loading: true }
         case ADDCOMMENT + _FULFILLED:
-            return { ...state, comments: [...state.comments, payload] }
+            return { ...state, comments: [...state.comments, payload], loading: false }
         case GETCOMMENTS + _FULFILLED:
             return { ...state, comments: payload }
         default:
