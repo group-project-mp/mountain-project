@@ -44,7 +44,8 @@ class Comments extends Component {
         this.state.user
             ?
             axios.post(`/api/comments/${id}`, body).then(res => {
-                this.setState({ comments: [...this.state.comments, res.data], newComment: '' })
+                // this.componentDidMount()
+                console.log(res)
             })
             : alert('Must be logged in to leave comment')
     }

@@ -32,7 +32,7 @@ module.exports = {
         db.adds.add_todo([req.params.route, id]).then(response => {
             res.status(200).send('Success');
         })
-            .catch(err => res.status(500).send(err));
+            .catch(err => res.send(err));
     },
     addComment: (req, res) => {
         const db = req.app.get('db');
