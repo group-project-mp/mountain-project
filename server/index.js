@@ -26,6 +26,8 @@ const addController = require('./controller/addRoute');
 const routeDetail = require('./controller/routeDetail');
 const mailer = require('./controller/mail');
 
+app.use( express.static( `${__dirname}/../build` ) );
+
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
 
@@ -71,7 +73,7 @@ massive(CONNECTION_STRING).then(db => {
     app.get('/auth/callback', passport.authenticate('auth0', {
         
         successRedirect: REACT_APP_SUCCESS,
-        failureRedirect: 'http://localhost:3000/#/',
+        failureRedirect: '/',
     }))
     
     app.get('/auth/me', (req, res) => {
@@ -83,7 +85,7 @@ massive(CONNECTION_STRING).then(db => {
     })
     app.get('/auth/logout', (req, res) => {
         req.logOut();
-        res.redirect('http://localhost:3000/#/')
+        res.redirect('/')
     })
 
     
@@ -117,7 +119,7 @@ app.post('/api/newRoute', addController.submit);
 app.get('/api/route/:id', routeDetail.routeDetail);
 app.get('/api/similar/:id', routeDetail.getSimilar);
 app.get('/api/comments/:id', routeDetail.comments);
-app.post('/api/comments/:id', routeDetail.addComment);
+app.post('/api/comments/:route', routeDetail.addComment);
 app.get('/api/20', routeDetail.topTwenty);
 app.post('/api/addPhoto/:id', routeDetail.addPhoto);
 app.get('/api/getPhotos/:id', routeDetail.getPhotos);

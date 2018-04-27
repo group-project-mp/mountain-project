@@ -16,9 +16,11 @@ class slot_1 extends Component {
             return <div key = {i} className='mapped-routes'>
                 <Link to={`/state/${area.slot_1}`}><p>{area.slot_1}</p></Link>
 
+
                 <p>_ _ _ _ _ _ _ _ _ _ </p>
 
                 <p>{area.count}</p>
+
 
             </div>
         })

@@ -32,21 +32,14 @@ module.exports = {
         db.adds.add_todo([req.params.route, id]).then(response => {
             res.status(200).send('Success');
         })
-            .catch(err => res.status(500).send(err));
+            .catch(err => res.send(err));
     },
     addComment: (req, res) => {
         const db = req.app.get('db');
-        const { id } = req.params;
-        const user = req.user;
-        const { date, comment } = req.body;
-        if (!user) {
-            res.send('no')
-        } else {
-            db.adds.add_comment([user.user_id, comment, id, date]).then(response => {
-                res.status(200).send({ user_name: user.user_name, date: date, comment: comment })
-            })
-                .catch(err => res.status(500).send(err))
-        }
+        const { comment } = req.body;
+        db.adds.add_comment([req.user.user_id, comment, req.params.route]).then(response => {
+            res.status(200).send({ user_name: req.user.user_name, comment: comment, date: response[0].date })
+        }).catch(err => res.status(500).send(err))
     },
     topTwenty: (req, res) => {
         const db = req.app.get('db');
