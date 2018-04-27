@@ -1,6 +1,7 @@
 .filtermain {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     height:100%;
     width: 100%;
     // padding: 10px;
@@ -15,7 +16,8 @@
     background: #2e2e2e;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
     box-sizing: border-box;
     // border-radius: 5px;
     color: #CBCBCB;
